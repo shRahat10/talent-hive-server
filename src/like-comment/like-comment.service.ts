@@ -4,7 +4,6 @@ import { Model } from 'mongoose';
 import { Comment, Like } from './like-comment.schema';
 import { CreateCommentDto, CreateLikeDto } from './dto/like-comment.dto';
 
-// Like service
 @Injectable()
 export class LikeService {
     constructor(
@@ -16,7 +15,7 @@ export class LikeService {
         return newLike.save();
     }
 
-    async removeLike(postId: string, uid: string): Promise<Like> {
+    async removeLike(postId: string, uid: string): Promise<Like | null> {
         return this.likeModel.findOneAndDelete({ postId, uid }).exec();
     }
 
@@ -25,7 +24,6 @@ export class LikeService {
     }
 }
 
-// Comment service
 @Injectable()
 export class CommentService {
     constructor(
@@ -37,7 +35,7 @@ export class CommentService {
         return newComment.save();
     }
 
-    async removeComment(postId: string, commentId: string): Promise<Comment> {
+    async removeComment(postId: string, commentId: string): Promise<Comment | null> {
         return this.commentModel.findOneAndDelete({ _id: commentId, postId }).exec();
     }
 

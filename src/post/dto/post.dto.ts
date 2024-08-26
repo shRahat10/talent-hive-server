@@ -32,10 +32,6 @@ export class CreatePostDto {
     @Type(() => CreateCommentDto)
     @IsArray()
     comments?: CreateCommentDto[];
-
-    @IsOptional()
-    @IsNumber()
-    shares?: number;
 }
 
 

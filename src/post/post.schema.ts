@@ -1,29 +1,36 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Schema as MongooseSchema } from 'mongoose';
-import { Comment, Like } from 'src/like-comment/like-comment.schema';
+import { Document, Types } from 'mongoose';
+import { Like } from '../like-comment/like-comment.schema';
+import { Comment } from '../like-comment/like-comment.schema';
 
 @Schema()
 export class Post extends Document {
-    @Prop({ required: true, unique: true })
+    @Prop({ required: true })
     uid: string;
 
-    @Prop()
+    @Prop({ required: true })
     userId: string;
 
     @Prop()
     content: string;
 
-    @Prop({ type: [String], default: [] })
+    @Prop([String])
     media: string[];
 
-    @Prop({ default: Date.now })
+    @Prop({ default: new Date() })
     timestamp: Date;
 
-    @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Like' }], default: [] })
-    likes: Like[];
+    @Prop({ default: 0 })
+    likesCount: number;
 
-    @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Comment' }], default: [] })
-    comments: Comment[];
+    @Prop({ default: 0 })
+    commentsCount: number;
+
+    @Prop([{ type: Types.ObjectId, ref: Like.name }])
+    likes: Types.Array<Types.ObjectId>;
+
+    @Prop([{ type: Types.ObjectId, ref: Comment.name }])
+    comments: Types.Array<Types.ObjectId>;
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);

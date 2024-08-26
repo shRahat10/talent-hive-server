@@ -2,11 +2,11 @@ import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common'
 import { PostService } from './post.service';
 import { CreatePostDto, UpdatePostDto } from './dto/post.dto';
 import { Post as PostModel } from './post.schema';
-import { CreateCommentDto, CreateLikeDto } from 'src/like-comment/dto/like-comment.dto';
+import { CreateCommentDto, CreateLikeDto } from '../like-comment/dto/like-comment.dto';
 
 @Controller('post')
 export class PostController {
-    constructor(private readonly postService: PostService) { }
+    constructor(private readonly postService: PostService) {}
 
     // Get all posts
     @Get()
