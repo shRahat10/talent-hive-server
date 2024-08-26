@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Schema as MongooseSchema } from 'mongoose';
+import { Comment, Like } from 'src/like-comment/like-comment.schema';
 
 @Schema()
 export class Post extends Document {
@@ -15,17 +16,14 @@ export class Post extends Document {
     @Prop({ type: [String], default: [] })
     media: string[];
 
-    @Prop()
-    timestamp: string;
+    @Prop({ default: Date.now })
+    timestamp: Date;
 
-    @Prop({ default: 0 })
-    likes: number;
+    @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Like' }], default: [] })
+    likes: Like[];
 
-    @Prop({ default: 0 })
-    comments: number;
-
-    @Prop({ default: 0 })
-    shares: number;
+    @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Comment' }], default: [] })
+    comments: Comment[];
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);

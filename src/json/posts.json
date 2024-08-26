@@ -9,8 +9,26 @@
             "/assets/bg1.jpg"
         ],
         "timestamp": "2024-08-23T09:20:00Z",
-        "likes": 15,
-        "comments": 14,
+        "likes": [
+            { "uid": "l123456", "userId": "u234567", "username": "john_doe" },
+            { "uid": "l123457", "userId": "u234568", "username": "jane_smith" }
+        ],
+        "comments": [
+            {
+                "commentId": "c123456",
+                "userId": "u234567",
+                "username": "john_doe",
+                "date": "2024-08-23T09:30:00Z",
+                "comment": "Absolutely beautiful!"
+            },
+            {
+                "commentId": "c123457",
+                "userId": "u234568",
+                "username": "jane_smith",
+                "date": "2024-08-23T09:35:00Z",
+                "comment": "Stunning view!"
+            }
+        ],
         "shares": 6
     },
     {
@@ -21,8 +39,18 @@
             "/assets/bg1.jpg"
         ],
         "timestamp": "2024-08-23T11:30:00Z",
-        "likes": 22,
-        "comments": 10,
+        "likes": [
+            { "uid": "l123458", "userId": "u234569", "username": "mike_jones" }
+        ],
+        "comments": [
+            {
+                "commentId": "c123458",
+                "userId": "u234569",
+                "username": "mike_jones",
+                "date": "2024-08-23T11:40:00Z",
+                "comment": "Looks delicious!"
+            }
+        ],
         "shares": 8
     },
     {
@@ -34,8 +62,26 @@
             "/assets/bg1.jpg"
         ],
         "timestamp": "2024-08-23T07:45:00Z",
-        "likes": 30,
-        "comments": 20,
+        "likes": [
+            { "uid": "l123459", "userId": "u234570", "username": "anna_lee" },
+            { "uid": "l123460", "userId": "u234571", "username": "david_clark" }
+        ],
+        "comments": [
+            {
+                "commentId": "c123459",
+                "userId": "u234570",
+                "username": "anna_lee",
+                "date": "2024-08-23T08:00:00Z",
+                "comment": "Great job!"
+            },
+            {
+                "commentId": "c123460",
+                "userId": "u234571",
+                "username": "david_clark",
+                "date": "2024-08-23T08:05:00Z",
+                "comment": "Keep it up!"
+            }
+        ],
         "shares": 12
     },
     {
@@ -48,8 +94,18 @@
             "/assets/bg1.jpg"
         ],
         "timestamp": "2024-08-23T19:15:00Z",
-        "likes": 18,
-        "comments": 8,
+        "likes": [
+            { "uid": "l123461", "userId": "u234572", "username": "emily_watson" }
+        ],
+        "comments": [
+            {
+                "commentId": "c123461",
+                "userId": "u234572",
+                "username": "emily_watson",
+                "date": "2024-08-23T19:30:00Z",
+                "comment": "Looks like a fun time!"
+            }
+        ],
         "shares": 3
     },
     {
@@ -58,8 +114,18 @@
         "content": "Learning to play the guitar!",
         "media": [],
         "timestamp": "2024-08-23T13:00:00Z",
-        "likes": 12,
-        "comments": 5,
+        "likes": [
+            { "uid": "l123462", "userId": "u234573", "username": "jack_brown" }
+        ],
+        "comments": [
+            {
+                "commentId": "c123462",
+                "userId": "u234573",
+                "username": "jack_brown",
+                "date": "2024-08-23T13:15:00Z",
+                "comment": "Keep strumming!"
+            }
+        ],
         "shares": 1
     },
     {
@@ -75,8 +141,26 @@
             "/assets/bg1.jpg"
         ],
         "timestamp": "2024-08-23T20:45:00Z",
-        "likes": 25,
-        "comments": 17,
+        "likes": [
+            { "uid": "l123463", "userId": "u234574", "username": "lucy_adams" },
+            { "uid": "l123464", "userId": "u234575", "username": "matthew_johnson" }
+        ],
+        "comments": [
+            {
+                "commentId": "c123463",
+                "userId": "u234574",
+                "username": "lucy_adams",
+                "date": "2024-08-23T21:00:00Z",
+                "comment": "Breathtaking!"
+            },
+            {
+                "commentId": "c123464",
+                "userId": "u234575",
+                "username": "matthew_johnson",
+                "date": "2024-08-23T21:05:00Z",
+                "comment": "What a view!"
+            }
+        ],
         "shares": 10
     }
 ]

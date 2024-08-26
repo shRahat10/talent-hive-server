@@ -1,18 +1,17 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Post, PostSchema } from './post.schema';
-import { PostController } from './post.controller';
 import { PostService } from './post.service';
+import { PostController } from './post.controller';
+import { PostSchema } from './post.schema';
+import { LikeCommentModule } from '../like-comment/like-comment.module';
 
 @Module({
     imports: [
-        MongooseModule.forFeature([{
-            name: Post.name,
-            schema: PostSchema
-        }]),
+        MongooseModule.forFeature([{ name: 'Post', schema: PostSchema }]),
+        LikeCommentModule,
     ],
     controllers: [PostController],
     providers: [PostService],
-    exports: [PostService],
+    
 })
 export class PostModule { }

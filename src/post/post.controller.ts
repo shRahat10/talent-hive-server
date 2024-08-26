@@ -2,6 +2,7 @@ import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common'
 import { PostService } from './post.service';
 import { CreatePostDto, UpdatePostDto } from './dto/post.dto';
 import { Post as PostModel } from './post.schema';
+import { CreateCommentDto, CreateLikeDto } from 'src/like-comment/dto/like-comment.dto';
 
 @Controller('post')
 export class PostController {
@@ -35,5 +36,17 @@ export class PostController {
     @Delete(':uid')
     async delete(@Param('uid') uid: string): Promise<PostModel> {
         return this.postService.deletePost(uid);
+    }
+
+    // Add a like to a post
+    @Post(':uid/like')
+    async addLike(@Param('uid') uid: string, @Body() createLikeDto: CreateLikeDto): Promise<PostModel> {
+        return this.postService.addLike(uid, createLikeDto);
+    }
+
+    // Add a comment to a post
+    @Post(':uid/comment')
+    async addComment(@Param('uid') uid: string, @Body() createCommentDto: CreateCommentDto): Promise<PostModel> {
+        return this.postService.addComment(uid, createCommentDto);
     }
 }

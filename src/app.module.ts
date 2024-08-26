@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PostModule } from './post/post.module';
+import { LikeCommentModule } from './like-comment/like-comment.module';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -25,6 +26,7 @@ dotenv.config();
       inject: [ConfigService],
     }),
     PostModule,
+    LikeCommentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
