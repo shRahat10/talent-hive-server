@@ -1,0 +1,82 @@
+[
+    {
+        "uid": "12345678790",
+        "userId": "u5658746513",
+        "content": "Exploring the beauty of nature!",
+        "media": [
+            "/assets/bg1.jpg",
+            "/assets/bg1.jpg",
+            "/assets/bg1.jpg"
+        ],
+        "timestamp": "2024-08-23T09:20:00Z",
+        "likes": 15,
+        "comments": 14,
+        "shares": 6
+    },
+    {
+        "uid": "12345678791",
+        "userId": "u5658746514",
+        "content": "Just had an amazing lunch at the new cafe!",
+        "media": [
+            "/assets/bg1.jpg"
+        ],
+        "timestamp": "2024-08-23T11:30:00Z",
+        "likes": 22,
+        "comments": 10,
+        "shares": 8
+    },
+    {
+        "uid": "12345678792",
+        "userId": "u5658746515",
+        "content": "Workout done! Feeling energized!",
+        "media": [
+            "/assets/bg1.jpg",
+            "/assets/bg1.jpg"
+        ],
+        "timestamp": "2024-08-23T07:45:00Z",
+        "likes": 30,
+        "comments": 20,
+        "shares": 12
+    },
+    {
+        "uid": "12345678793",
+        "userId": "u5658746516",
+        "content": "A wonderful evening with friends!",
+        "media": [
+            "/assets/bg1.jpg",
+            "/assets/bg1.jpg",
+            "/assets/bg1.jpg"
+        ],
+        "timestamp": "2024-08-23T19:15:00Z",
+        "likes": 18,
+        "comments": 8,
+        "shares": 3
+    },
+    {
+        "uid": "12345678794",
+        "userId": "u5658746517",
+        "content": "Learning to play the guitar!",
+        "media": [],
+        "timestamp": "2024-08-23T13:00:00Z",
+        "likes": 12,
+        "comments": 5,
+        "shares": 1
+    },
+    {
+        "uid": "12345678795",
+        "userId": "u5658746518",
+        "content": "Sunset at the beach, simply stunning.",
+        "media": [
+            "/assets/bg1.jpg",
+            "/assets/bg1.jpg",
+            "/assets/bg1.jpg",
+            "/assets/bg1.jpg",
+            "/assets/bg1.jpg",
+            "/assets/bg1.jpg"
+        ],
+        "timestamp": "2024-08-23T20:45:00Z",
+        "likes": 25,
+        "comments": 17,
+        "shares": 10
+    }
+]
