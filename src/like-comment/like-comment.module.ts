@@ -5,8 +5,8 @@ import { LikeSchema, CommentSchema } from './like-comment.schema';
 
 @Module({
     imports: [
-        MongooseModule.forFeature([{ name: 'Like', schema: LikeSchema }]),
-        MongooseModule.forFeature([{ name: 'Comment', schema: CommentSchema }]),
+        MongooseModule.forFeature([{ name: 'Likes', schema: LikeSchema }]),
+        MongooseModule.forFeature([{ name: 'Comments', schema: CommentSchema }]),
     ],
     providers: [LikeService, CommentService],
     exports: [LikeService, CommentService],

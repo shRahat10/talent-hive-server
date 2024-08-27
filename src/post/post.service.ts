@@ -5,8 +5,7 @@ import { Post } from './post.schema';
 import { CreatePostDto, UpdatePostDto } from './dto/post.dto';
 import { CreateCommentDto, CreateLikeDto } from '../like-comment/dto/like-comment.dto';
 import { CommentService, LikeService } from '../like-comment/like-comment.service';
-import { Like } from '../like-comment/like-comment.schema'; // Import Like schema
-import { Comment } from '../like-comment/like-comment.schema'; // Import Comment schema
+import { Comments, Likes } from 'src/like-comment/like-comment.schema';
 
 @Injectable()
 export class PostService {
@@ -14,14 +13,20 @@ export class PostService {
         @InjectModel(Post.name) private postModel: Model<Post>,
         private readonly likeService: LikeService,
         private readonly commentService: CommentService,
-    ) {}
+    ) { }
 
     async findAllPost(): Promise<Post[]> {
-        return this.postModel.find().populate('likes').populate('comments').exec();
+        return this.postModel.find()
+            .populate({ path: 'likes', model: Likes.name })
+            .populate({ path: 'comments', model: Comments.name })
+            .exec();
     }
 
     async findOnePost(uid: string): Promise<Post> {
-        return this.postModel.findOne({ uid }).populate('likes').populate('comments').exec();
+        return this.postModel.findOne({ uid })
+            .populate({ path: 'likes', model: Likes.name })
+            .populate({ path: 'comments', model: Comments.name })
+            .exec();
     }
 
     async createPost(createPostDto: CreatePostDto): Promise<Post> {

@@ -1,25 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Comment, Like } from './like-comment.schema';
+import { Comments, Likes } from './like-comment.schema';
 import { CreateCommentDto, CreateLikeDto } from './dto/like-comment.dto';
 
 @Injectable()
 export class LikeService {
     constructor(
-        @InjectModel(Like.name) private likeModel: Model<Like>,
+        @InjectModel(Likes.name) private likeModel: Model<Likes>,
     ) {}
 
-    async addLike(createLikeDto: CreateLikeDto): Promise<Like> {
+    async addLike(createLikeDto: CreateLikeDto): Promise<Likes> {
         const newLike = new this.likeModel(createLikeDto);
         return newLike.save();
     }
 
-    async removeLike(postId: string, uid: string): Promise<Like | null> {
+    async removeLike(postId: string, uid: string): Promise<Likes | null> {
         return this.likeModel.findOneAndDelete({ postId, uid }).exec();
     }
 
-    async findLikesByPostId(postId: string): Promise<Like[]> {
+    async findLikesByPostId(postId: string): Promise<Likes[]> {
         return this.likeModel.find({ postId }).exec();
     }
 }
@@ -27,19 +27,19 @@ export class LikeService {
 @Injectable()
 export class CommentService {
     constructor(
-        @InjectModel(Comment.name) private commentModel: Model<Comment>,
+        @InjectModel(Comments.name) private commentModel: Model<Comments>,
     ) {}
 
-    async addComment(createCommentDto: CreateCommentDto): Promise<Comment> {
+    async addComment(createCommentDto: CreateCommentDto): Promise<Comments> {
         const newComment = new this.commentModel(createCommentDto);
         return newComment.save();
     }
 
-    async removeComment(postId: string, commentId: string): Promise<Comment | null> {
+    async removeComment(postId: string, commentId: string): Promise<Comments | null> {
         return this.commentModel.findOneAndDelete({ _id: commentId, postId }).exec();
     }
 
-    async findCommentsByPostId(postId: string): Promise<Comment[]> {
+    async findCommentsByPostId(postId: string): Promise<Comments[]> {
         return this.commentModel.find({ postId }).exec();
     }
 }
