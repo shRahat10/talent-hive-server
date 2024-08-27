@@ -8,15 +8,19 @@ import { CreateCommentDto, CreateLikeDto } from './dto/like-comment.dto';
 export class LikeService {
     constructor(
         @InjectModel(Likes.name) private likeModel: Model<Likes>,
-    ) {}
+    ) { }
 
     async addLike(createLikeDto: CreateLikeDto): Promise<Likes> {
         const newLike = new this.likeModel(createLikeDto);
         return newLike.save();
     }
 
-    async removeLike(postId: string, uid: string): Promise<Likes | null> {
+    async deleteLike(postId: string, uid: string): Promise<Likes | null> {
         return this.likeModel.findOneAndDelete({ postId, uid }).exec();
+    }
+
+    async deleteLikesByPostId(postId: string): Promise<void> {
+        await this.likeModel.deleteMany({ postId }).exec();
     }
 
     async findLikesByPostId(postId: string): Promise<Likes[]> {
@@ -28,15 +32,19 @@ export class LikeService {
 export class CommentService {
     constructor(
         @InjectModel(Comments.name) private commentModel: Model<Comments>,
-    ) {}
+    ) { }
 
     async addComment(createCommentDto: CreateCommentDto): Promise<Comments> {
         const newComment = new this.commentModel(createCommentDto);
         return newComment.save();
     }
 
-    async removeComment(postId: string, commentId: string): Promise<Comments | null> {
-        return this.commentModel.findOneAndDelete({ _id: commentId, postId }).exec();
+    async deleteComment(postId: string, uid: string): Promise<Comments | null> {
+        return this.commentModel.findOneAndDelete({ postId, uid }).exec();
+    }
+
+    async deleteCommentsByPostId(postId: string): Promise<void> {
+        await this.commentModel.deleteMany({ postId }).exec();
     }
 
     async findCommentsByPostId(postId: string): Promise<Comments[]> {

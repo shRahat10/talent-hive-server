@@ -23,12 +23,6 @@ export class Post extends Document {
 
     @Prop({ default: 0 })
     commentsCount: number;
-
-    @Prop([{ type: String }])
-    likes: string[];
-
-    @Prop([{ type: String }])
-    comments: string[];
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);

@@ -6,7 +6,7 @@ import { CreateCommentDto, CreateLikeDto } from '../like-comment/dto/like-commen
 
 @Controller('post')
 export class PostController {
-    constructor(private readonly postService: PostService) {}
+    constructor(private readonly postService: PostService) { }
 
     // Get all posts
     @Get()
@@ -48,5 +48,17 @@ export class PostController {
     @Post(':uid/comment')
     async addComment(@Param('uid') uid: string, @Body() createCommentDto: CreateCommentDto): Promise<PostModel> {
         return this.postService.addComment(uid, createCommentDto);
+    }
+
+    // Delete a comment on a post
+    @Delete(':uid/like/:likeUid')
+    async deleteLike(@Param('uid') uid: string, @Param('likeUid') likeUid: string) {
+        return this.postService.deleteLike(uid, likeUid);
+    }
+
+    // Delete a comment on a post
+    @Delete(':uid/comment/:commentUid')
+    async deleteComment(@Param('uid') uid: string, @Param('commentUid') commentUid: string) {
+        return this.postService.deleteComment(uid, commentUid);
     }
 }

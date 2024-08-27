@@ -12,6 +12,6 @@ import { LikeCommentModule } from '../like-comment/like-comment.module';
     ],
     controllers: [PostController],
     providers: [PostService],
-    
+
 })
 export class PostModule { }

@@ -11,4 +11,4 @@ import { LikeSchema, CommentSchema } from './like-comment.schema';
     providers: [LikeService, CommentService],
     exports: [LikeService, CommentService],
 })
-export class LikeCommentModule {}
+export class LikeCommentModule { }

@@ -16,17 +16,11 @@ export class PostService {
     ) { }
 
     async findAllPost(): Promise<Post[]> {
-        return this.postModel.find()
-            .populate({ path: 'likes', model: Likes.name })
-            .populate({ path: 'comments', model: Comments.name })
-            .exec();
+        return this.postModel.find().exec();
     }
 
     async findOnePost(uid: string): Promise<Post> {
-        return this.postModel.findOne({ uid })
-            .populate({ path: 'likes', model: Likes.name })
-            .populate({ path: 'comments', model: Comments.name })
-            .exec();
+        return this.postModel.findOne({ uid }).exec();
     }
 
     async createPost(createPostDto: CreatePostDto): Promise<Post> {
@@ -39,8 +33,18 @@ export class PostService {
     }
 
     async deletePost(uid: string): Promise<Post> {
+        const post = await this.findOnePost(uid);
+        if (!post) {
+            throw new Error('Post not found');
+        }
+
+        await this.likeService.deleteLikesByPostId(post._id.toString());
+
+        await this.commentService.deleteCommentsByPostId(post._id.toString());
+
         return this.postModel.findOneAndDelete({ uid }).exec();
     }
+
 
     async addLike(uid: string, createLikeDto: CreateLikeDto): Promise<Post> {
         const post = await this.findOnePost(uid);
@@ -49,12 +53,24 @@ export class PostService {
         }
         const newLike = await this.likeService.addLike(createLikeDto);
         if (newLike) {
-            post.likes.push(newLike._id.toString());
             post.likesCount += 1;
             await post.save();
         }
         return this.findOnePost(uid);
-    }    
+    }
+
+    async deleteLike(uid: string, likeUid: string): Promise<Post> {
+        const post = await this.findOnePost(uid);
+        if (!post) {
+            throw new Error('Post not found');
+        }
+        const deletedLike = await this.likeService.deleteLike(post._id.toString(), likeUid);
+        if (deletedLike) {
+            post.likesCount -= 1;
+            await post.save();
+        }
+        return this.findOnePost(uid);
+    }
 
     async addComment(uid: string, createCommentDto: CreateCommentDto): Promise<Post> {
         const post = await this.findOnePost(uid);
@@ -63,10 +79,22 @@ export class PostService {
         }
         const newComment = await this.commentService.addComment(createCommentDto);
         if (newComment) {
-            post.comments.push(newComment._id.toString());
             post.commentsCount += 1;
             await post.save();
         }
         return this.findOnePost(uid);
-    }    
+    }
+
+    async deleteComment(uid: string, commentUid: string): Promise<Post> {
+        const post = await this.findOnePost(uid);
+        if (!post) {
+            throw new Error('Post not found');
+        }
+        const deletedComment = await this.commentService.deleteComment(post._id.toString(), commentUid);
+        if (deletedComment) {
+            post.commentsCount -= 1;
+            await post.save();
+        }
+        return this.findOnePost(uid);
+    }
 }
