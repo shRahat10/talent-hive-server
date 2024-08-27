@@ -1,7 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Types } from 'mongoose';
-import { Likes } from '../like-comment/like-comment.schema';
-import { Comments } from '../like-comment/like-comment.schema';
+import { Document } from 'mongoose';
 
 @Schema()
 export class Post extends Document {
@@ -26,11 +24,11 @@ export class Post extends Document {
     @Prop({ default: 0 })
     commentsCount: number;
 
-    @Prop([{ type: Types.ObjectId, ref: Likes.name }])
-    likes: Types.Array<Types.ObjectId>;
+    @Prop([{ type: String }])
+    likes: string[];
 
-    @Prop([{ type: Types.ObjectId, ref: Comments.name }])
-    comments: Types.Array<Types.ObjectId>;
+    @Prop([{ type: String }])
+    comments: string[];
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);

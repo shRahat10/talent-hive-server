@@ -49,12 +49,12 @@ export class PostService {
         }
         const newLike = await this.likeService.addLike(createLikeDto);
         if (newLike) {
-            post.likes.push(newLike._id);
+            post.likes.push(newLike._id.toString());
             post.likesCount += 1;
             await post.save();
         }
         return this.findOnePost(uid);
-    }
+    }    
 
     async addComment(uid: string, createCommentDto: CreateCommentDto): Promise<Post> {
         const post = await this.findOnePost(uid);
@@ -63,10 +63,10 @@ export class PostService {
         }
         const newComment = await this.commentService.addComment(createCommentDto);
         if (newComment) {
-            post.comments.push(newComment._id);
+            post.comments.push(newComment._id.toString());
             post.commentsCount += 1;
             await post.save();
         }
         return this.findOnePost(uid);
-    }
+    }    
 }
