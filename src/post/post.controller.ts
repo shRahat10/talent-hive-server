@@ -2,7 +2,7 @@ import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common'
 import { PostService } from './post.service';
 import { CreatePostDto, UpdatePostDto } from './dto/post.dto';
 import { Post as PostModel } from './post.schema';
-import { CreateCommentDto, CreateLikeDto } from '../like-comment/dto/like-comment.dto';
+import { CreateCommentDto, CreateLikeDto, CreateShareDto } from '../like-comment-share/dto/like-comment-share.dto';
 
 @Controller('post')
 export class PostController {
@@ -44,6 +44,12 @@ export class PostController {
         return this.postService.addLike(uid, createLikeDto);
     }
 
+    // Delete a like on a post
+    @Delete(':uid/like/:likeUid')
+    async deleteLike(@Param('uid') uid: string, @Param('likeUid') likeUid: string) {
+        return this.postService.deleteLike(uid, likeUid);
+    }
+
     // Add a comment to a post
     @Post(':uid/comment')
     async addComment(@Param('uid') uid: string, @Body() createCommentDto: CreateCommentDto): Promise<PostModel> {
@@ -51,14 +57,20 @@ export class PostController {
     }
 
     // Delete a comment on a post
-    @Delete(':uid/like/:likeUid')
-    async deleteLike(@Param('uid') uid: string, @Param('likeUid') likeUid: string) {
-        return this.postService.deleteLike(uid, likeUid);
-    }
-
-    // Delete a comment on a post
     @Delete(':uid/comment/:commentUid')
     async deleteComment(@Param('uid') uid: string, @Param('commentUid') commentUid: string) {
         return this.postService.deleteComment(uid, commentUid);
+    }
+
+    // Share post
+    @Post(':uid/share')
+    async addShare(@Param('uid') uid: string, @Body() createShareDto: CreateShareDto): Promise<PostModel> {
+        return this.postService.addShare(uid, createShareDto);
+    }
+
+    // Delete share post
+    @Delete(':uid/share/:shareUid')
+    async deleteShare(@Param('uid') uid: string, @Param('shareUid') shareUid: string) {
+        return this.postService.deleteShare(uid, shareUid);
     }
 }

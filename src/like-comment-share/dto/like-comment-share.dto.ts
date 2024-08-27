@@ -11,7 +11,7 @@ export class CreateLikeDto {
 
     @IsString()
     @IsNotEmpty()
-    postId: string;
+    postUid: string;
 }
 
 export class CreateCommentDto {
@@ -25,9 +25,23 @@ export class CreateCommentDto {
 
     @IsString()
     @IsNotEmpty()
-    postId: string;
+    postUid: string;
 
     @IsString()
     @IsNotEmpty()
     comment: string;
+}
+
+export class CreateShareDto {
+    @IsString()
+    @IsNotEmpty()
+    uid: string;
+
+    @IsString()
+    @IsNotEmpty()
+    userName: string;
+
+    @IsString()
+    @IsNotEmpty()
+    postUid: string;
 }

@@ -10,7 +10,7 @@ export class Likes extends Document {
     userName: string;
 
     @Prop({ required: true })
-    postId: string;
+    postUid: string;
 }
 
 export const LikeSchema = SchemaFactory.createForClass(Likes);
@@ -24,7 +24,7 @@ export class Comments extends Document {
     userName: string;
 
     @Prop({ required: true })
-    postId: string;
+    postUid: string;
 
     @Prop({ required: true })
     comment: string;
@@ -34,3 +34,20 @@ export class Comments extends Document {
 }
 
 export const CommentSchema = SchemaFactory.createForClass(Comments);
+
+@Schema()
+export class Shares extends Document {
+    @Prop({ required: true })
+    uid: string;
+
+    @Prop({ required: true })
+    userName: string;
+
+    @Prop({ required: true })
+    postUid: string;
+
+    @Prop({ default: new Date() })
+    createdAt: Date;
+}
+
+export const ShareSchema = SchemaFactory.createForClass(Shares);

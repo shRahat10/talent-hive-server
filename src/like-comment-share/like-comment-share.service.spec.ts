@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { LikeService, CommentService } from './like-comment.service';
+import { LikeService, CommentService, ShareService } from './like-comment-share.service';
 
 describe('LikeService', () => {
   let service: LikeService;
@@ -26,6 +26,22 @@ describe('CommentService', () => {
     }).compile();
 
     service = module.get<CommentService>(CommentService);
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+});
+
+describe('ShareService', () => {
+  let service: ShareService;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [ShareService],
+    }).compile();
+
+    service = module.get<ShareService>(ShareService);
   });
 
   it('should be defined', () => {

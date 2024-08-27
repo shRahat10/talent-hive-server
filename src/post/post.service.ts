@@ -3,9 +3,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Post } from './post.schema';
 import { CreatePostDto, UpdatePostDto } from './dto/post.dto';
-import { CreateCommentDto, CreateLikeDto } from '../like-comment/dto/like-comment.dto';
-import { CommentService, LikeService } from '../like-comment/like-comment.service';
-import { Comments, Likes } from 'src/like-comment/like-comment.schema';
+import { CreateCommentDto, CreateLikeDto, CreateShareDto } from '../like-comment-share/dto/like-comment-share.dto';
+import { CommentService, LikeService, ShareService } from '../like-comment-share/like-comment-share.service';
 
 @Injectable()
 export class PostService {
@@ -13,6 +12,7 @@ export class PostService {
         @InjectModel(Post.name) private postModel: Model<Post>,
         private readonly likeService: LikeService,
         private readonly commentService: CommentService,
+        private readonly shareService: ShareService,
     ) { }
 
     async findAllPost(): Promise<Post[]> {
@@ -37,15 +37,15 @@ export class PostService {
         if (!post) {
             throw new Error('Post not found');
         }
-
-        await this.likeService.deleteLikesByPostId(post._id.toString());
-
-        await this.commentService.deleteCommentsByPostId(post._id.toString());
-
+    
+        // Ensure the correct postUid is passed
+        await this.likeService.deleteLikesBypostUid(uid);
+        await this.commentService.deleteCommentsBypostUid(uid);
+    
         return this.postModel.findOneAndDelete({ uid }).exec();
-    }
+    }    
 
-
+    // Like
     async addLike(uid: string, createLikeDto: CreateLikeDto): Promise<Post> {
         const post = await this.findOnePost(uid);
         if (!post) {
@@ -64,7 +64,7 @@ export class PostService {
         if (!post) {
             throw new Error('Post not found');
         }
-        const deletedLike = await this.likeService.deleteLike(post._id.toString(), likeUid);
+        const deletedLike = await this.likeService.deleteLike(uid, likeUid);
         if (deletedLike) {
             post.likesCount -= 1;
             await post.save();
@@ -72,6 +72,7 @@ export class PostService {
         return this.findOnePost(uid);
     }
 
+    // Comment
     async addComment(uid: string, createCommentDto: CreateCommentDto): Promise<Post> {
         const post = await this.findOnePost(uid);
         if (!post) {
@@ -90,9 +91,36 @@ export class PostService {
         if (!post) {
             throw new Error('Post not found');
         }
-        const deletedComment = await this.commentService.deleteComment(post._id.toString(), commentUid);
+        const deletedComment = await this.commentService.deleteComment(uid, commentUid);
         if (deletedComment) {
             post.commentsCount -= 1;
+            await post.save();
+        }
+        return this.findOnePost(uid);
+    }
+
+    // Share
+    async addShare(uid: string, createShareDto: CreateShareDto): Promise<Post> {
+        const post = await this.findOnePost(uid);
+        if (!post) {
+            throw new Error('Post not found');
+        }
+        const newShare = await this.shareService.addShare(createShareDto);
+        if (newShare) {
+            post.sharesCount += 1;
+            await post.save();
+        }
+        return this.findOnePost(uid);
+    }
+
+    async deleteShare(uid: string, shareUid: string): Promise<Post> {
+        const post = await this.findOnePost(uid);
+        if (!post) {
+            throw new Error('Post not found');
+        }
+        const deletedShare = await this.shareService.deleteShare(shareUid, uid);
+        if (deletedShare) {
+            post.sharesCount -= 1;
             await post.save();
         }
         return this.findOnePost(uid);
