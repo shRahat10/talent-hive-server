@@ -7,7 +7,7 @@ export class CreateLikeDto {
 
     @IsString()
     @IsNotEmpty()
-    userName: string;
+    userUid: string;
 
     @IsString()
     @IsNotEmpty()
@@ -21,7 +21,7 @@ export class CreateCommentDto {
 
     @IsString()
     @IsNotEmpty()
-    userName: string;
+    userUid: string;
 
     @IsString()
     @IsNotEmpty()
@@ -39,7 +39,7 @@ export class CreateShareDto {
 
     @IsString()
     @IsNotEmpty()
-    userName: string;
+    userUid: string;
 
     @IsString()
     @IsNotEmpty()

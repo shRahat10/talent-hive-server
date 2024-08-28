@@ -7,7 +7,7 @@ export class Likes extends Document {
     uid: string;
 
     @Prop({ required: true })
-    userName: string;
+    userUid: string;
 
     @Prop({ required: true })
     postUid: string;
@@ -21,7 +21,7 @@ export class Comments extends Document {
     uid: string;
 
     @Prop({ required: true })
-    userName: string;
+    userUid: string;
 
     @Prop({ required: true })
     postUid: string;
@@ -41,7 +41,7 @@ export class Shares extends Document {
     uid: string;
 
     @Prop({ required: true })
-    userName: string;
+    userUid: string;
 
     @Prop({ required: true })
     postUid: string;

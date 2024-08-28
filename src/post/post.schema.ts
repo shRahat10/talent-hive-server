@@ -7,7 +7,7 @@ export class Post extends Document {
     uid: string;
 
     @Prop({ required: true })
-    userId: string;
+    userUid: string;
 
     @Prop()
     content: string;
