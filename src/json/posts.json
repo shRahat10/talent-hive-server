@@ -1,165 +1,202 @@
 [
     {
-        "uid": "12345678790",
-        "userId": "u5658746513",
-        "content": "Exploring the beauty of nature!",
-        "media": [
-            "/assets/bg1.jpg",
-            "/assets/bg1.jpg",
-            "/assets/bg1.jpg"
-        ],
-        "timestamp": "2024-08-23T09:20:00Z",
-        "likes": [
-            { "uid": "l123456", "userId": "u234567", "username": "john_doe" },
-            { "uid": "l123457", "userId": "u234568", "username": "jane_smith" }
-        ],
-        "comments": [
-            {
-                "commentId": "c123456",
-                "userId": "u234567",
-                "username": "john_doe",
-                "date": "2024-08-23T09:30:00Z",
-                "comment": "Absolutely beautiful!"
-            },
-            {
-                "commentId": "c123457",
-                "userId": "u234568",
-                "username": "jane_smith",
-                "date": "2024-08-23T09:35:00Z",
-                "comment": "Stunning view!"
-            }
-        ]
+        "userUid": "u1724926406388327",
+        "content": "Streamlining workflows enhances efficiency in business operations.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:20:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p7392847391824738"
     },
     {
-        "uid": "12345678791",
-        "userId": "u5658746514",
-        "content": "Just had an amazing lunch at the new cafe!",
-        "media": [
-            "/assets/bg1.jpg"
-        ],
-        "timestamp": "2024-08-23T11:30:00Z",
-        "likes": [
-            { "uid": "l123458", "userId": "u234569", "username": "mike_jones" }
-        ],
-        "comments": [
-            {
-                "commentId": "c123458",
-                "userId": "u234569",
-                "username": "mike_jones",
-                "date": "2024-08-23T11:40:00Z",
-                "comment": "Looks delicious!"
-            }
-        ],
-        "shares": 8
+        "userUid": "u1724926406388327",
+        "content": "Effective management is key to a company's growth and success.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:21:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p2837461938274612"
     },
     {
-        "uid": "12345678792",
-        "userId": "u5658746515",
-        "content": "Workout done! Feeling energized!",
-        "media": [
-            "/assets/bg1.jpg",
-            "/assets/bg1.jpg"
-        ],
-        "timestamp": "2024-08-23T07:45:00Z",
-        "likes": [
-            { "uid": "l123459", "userId": "u234570", "username": "anna_lee" },
-            { "uid": "l123460", "userId": "u234571", "username": "david_clark" }
-        ],
-        "comments": [
-            {
-                "commentId": "c123459",
-                "userId": "u234570",
-                "username": "anna_lee",
-                "date": "2024-08-23T08:00:00Z",
-                "comment": "Great job!"
-            },
-            {
-                "commentId": "c123460",
-                "userId": "u234571",
-                "username": "david_clark",
-                "date": "2024-08-23T08:05:00Z",
-                "comment": "Keep it up!"
-            }
-        ],
-        "shares": 12
+        "userUid": "u1724926406388327",
+        "content": "Automating routine tasks can free up time for strategic planning.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:22:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p9283746192837461"
     },
     {
-        "uid": "12345678793",
-        "userId": "u5658746516",
-        "content": "A wonderful evening with friends!",
-        "media": [
-            "/assets/bg1.jpg",
-            "/assets/bg1.jpg",
-            "/assets/bg1.jpg"
-        ],
-        "timestamp": "2024-08-23T19:15:00Z",
-        "likes": [
-            { "uid": "l123461", "userId": "u234572", "username": "emily_watson" }
-        ],
-        "comments": [
-            {
-                "commentId": "c123461",
-                "userId": "u234572",
-                "username": "emily_watson",
-                "date": "2024-08-23T19:30:00Z",
-                "comment": "Looks like a fun time!"
-            }
-        ],
-        "shares": 3
+        "userUid": "u1724926406388327",
+        "content": "Data-driven decisions lead to more predictable outcomes in business.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:23:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p3748293741928374"
     },
     {
-        "uid": "12345678794",
-        "userId": "u5658746517",
-        "content": "Learning to play the guitar!",
-        "media": [],
-        "timestamp": "2024-08-23T13:00:00Z",
-        "likes": [
-            { "uid": "l123462", "userId": "u234573", "username": "jack_brown" }
-        ],
-        "comments": [
-            {
-                "commentId": "c123462",
-                "userId": "u234573",
-                "username": "jack_brown",
-                "date": "2024-08-23T13:15:00Z",
-                "comment": "Keep strumming!"
-            }
-        ],
-        "shares": 1
+        "userUid": "u1724926406388327",
+        "content": "Customer satisfaction is the cornerstone of long-term success.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:24:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p9182374629183746"
     },
     {
-        "uid": "12345678795",
-        "userId": "u5658746518",
-        "content": "Sunset at the beach, simply stunning.",
-        "media": [
-            "/assets/bg1.jpg",
-            "/assets/bg1.jpg",
-            "/assets/bg1.jpg",
-            "/assets/bg1.jpg",
-            "/assets/bg1.jpg",
-            "/assets/bg1.jpg"
-        ],
-        "timestamp": "2024-08-23T20:45:00Z",
-        "likes": [
-            { "uid": "l123463", "userId": "u234574", "username": "lucy_adams" },
-            { "uid": "l123464", "userId": "u234575", "username": "matthew_johnson" }
-        ],
-        "comments": [
-            {
-                "commentId": "c123463",
-                "userId": "u234574",
-                "username": "lucy_adams",
-                "date": "2024-08-23T21:00:00Z",
-                "comment": "Breathtaking!"
-            },
-            {
-                "commentId": "c123464",
-                "userId": "u234575",
-                "username": "matthew_johnson",
-                "date": "2024-08-23T21:05:00Z",
-                "comment": "What a view!"
-            }
-        ],
-        "shares": 10
+        "userUid": "u1724926406388327",
+        "content": "Leveraging technology can transform business operations.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:25:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p5647382918374629"
+    },
+    {
+        "userUid": "u1724926406388327",
+        "content": "Employee engagement is critical to sustaining productivity.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:26:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p1928374657382910"
+    },
+    {
+        "userUid": "u1724926406388327",
+        "content": "Sustainable practices can drive both profitability and social impact.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:27:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p8192736457281937"
+    },
+    {
+        "userUid": "u1724926406388327",
+        "content": "Clear communication fosters a positive work environment.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:28:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p6372918734657281"
+    },
+    {
+        "userUid": "u1724926406388327",
+        "content": "Innovation is essential for staying competitive in the market.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:29:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p2938474657382910"
+    },
+    {
+        "userUid": "u1724926406388327",
+        "content": "Quality control ensures that products meet customer expectations.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:30:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p8736491823746537"
+    },
+    {
+        "userUid": "u1724926406388327",
+        "content": "A robust supply chain is vital for smooth business operations.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:31:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p1738472938475647"
+    },
+    {
+        "userUid": "u1724926406388327",
+        "content": "Adaptive strategies help businesses navigate market changes.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:32:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p2837461928374651"
+    },
+    {
+        "userUid": "u1724926406388327",
+        "content": "Financial planning is crucial for long-term business stability.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:33:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p8293746573829183"
+    },
+    {
+        "userUid": "u1724926406388327",
+        "content": "Collaboration across teams enhances problem-solving capabilities.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:34:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p9485738293746510"
+    },
+    {
+        "userUid": "u1724926406388327",
+        "content": "Ethical business practices build trust with stakeholders.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:35:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p2819374657382910"
+    },
+    {
+        "userUid": "u1724926406388327",
+        "content": "Investing in employee development yields long-term benefits.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:36:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p9374659283746519"
+    },
+    {
+        "userUid": "u1724926406388327",
+        "content": "Market research provides insights into consumer behavior.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:37:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p2837465928374651"
+    },
+    {
+        "userUid": "u1724926406388327",
+        "content": "Effective leadership drives organizational success.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:38:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p2938475619283746"
+    },
+    {
+        "userUid": "u1724926406388327",
+        "content": "A customer-centric approach is essential for building loyalty.",
+        "media": ["/assets/bg.jpg"],
+        "timestamp": "2024-08-29T10:39:17.489000Z",
+        "likesCount": 0,
+        "commentsCount": 0,
+        "sharesCount": 0,
+        "uid": "p1827364856372910"
     }
 ]

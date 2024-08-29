@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class Post extends Document {
-    @Prop({ required: true })
+    @Prop({ required: true, unique: true, default: () => `p${Date.now()}${Math.floor(100 + Math.random() * 900)}` })
     uid: string;
 
     @Prop({ required: true })

@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class Likes extends Document {
-    @Prop({ required: true })
+    @Prop({ required: true, unique: true, default: () => `l${Date.now()}${Math.floor(100 + Math.random() * 900)}` })
     uid: string;
 
     @Prop({ required: true })
@@ -17,7 +17,7 @@ export const LikeSchema = SchemaFactory.createForClass(Likes);
 
 @Schema()
 export class Comments extends Document {
-    @Prop({ required: true })
+    @Prop({ required: true, unique: true, default: () => `c${Date.now()}${Math.floor(100 + Math.random() * 900)}` })
     uid: string;
 
     @Prop({ required: true })
@@ -37,7 +37,7 @@ export const CommentSchema = SchemaFactory.createForClass(Comments);
 
 @Schema()
 export class Shares extends Document {
-    @Prop({ required: true })
+    @Prop({ required: true, unique: true, default: () => `s${Date.now()}${Math.floor(100 + Math.random() * 900)}` })
     uid: string;
 
     @Prop({ required: true })

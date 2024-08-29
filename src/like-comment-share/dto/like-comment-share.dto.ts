@@ -3,10 +3,6 @@ import { IsString, IsNotEmpty } from 'class-validator';
 export class CreateLikeDto {
     @IsString()
     @IsNotEmpty()
-    uid: string;
-
-    @IsString()
-    @IsNotEmpty()
     userUid: string;
 
     @IsString()
@@ -15,10 +11,6 @@ export class CreateLikeDto {
 }
 
 export class CreateCommentDto {
-    @IsString()
-    @IsNotEmpty()
-    uid: string;
-
     @IsString()
     @IsNotEmpty()
     userUid: string;
@@ -33,10 +25,6 @@ export class CreateCommentDto {
 }
 
 export class CreateShareDto {
-    @IsString()
-    @IsNotEmpty()
-    uid: string;
-
     @IsString()
     @IsNotEmpty()
     userUid: string;
