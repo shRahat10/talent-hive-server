@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Comments, Likes, Shares } from './post-interaction.schema';
-import { CreateCommentDto, CreateLikeDto, CreateShareDto } from './dto/post-interaction.dto';
+import { Comments, Likes, Saves, Shares } from './post-interaction.schema';
+import { CreateCommentDto, CreateLikeDto, CreateSaveDto, CreateShareDto } from './dto/post-interaction.dto';
 
 @Injectable()
 export class LikeService {
@@ -69,5 +69,25 @@ export class ShareService {
 
     async findSharesBypostUid(postUid: string): Promise<Shares[]> {
         return this.shareModel.find({ postUid }).exec();
+    }
+}
+
+@Injectable()
+export class SaveService {
+    constructor(
+        @InjectModel(Saves.name) private saveModel: Model<Saves>,
+    ) { }
+
+    async addSave(createSaveDto: CreateSaveDto): Promise<Saves> {
+        const newSave = new this.saveModel(createSaveDto);
+        return newSave.save();
+    }
+
+    async deleteSave(uid: string, postUid: string): Promise<Saves | null> {
+        return this.saveModel.findOneAndDelete({ uid, postUid }).exec();
+    }
+
+    async findSavesBypostUid(postUid: string): Promise<Saves[]> {
+        return this.saveModel.find({ postUid }).exec();
     }
 }

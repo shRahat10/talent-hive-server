@@ -51,3 +51,20 @@ export class Shares extends Document {
 }
 
 export const ShareSchema = SchemaFactory.createForClass(Shares);
+
+@Schema()
+export class Saves extends Document {
+    @Prop({ required: true, unique: true, default: () => `s${Date.now()}${Math.floor(100 + Math.random() * 900)}` })
+    uid: string;
+
+    @Prop({ required: true })
+    userId: string;
+
+    @Prop({ required: true })
+    postUid: string;
+
+    @Prop({ default: new Date() })
+    createdAt: Date;
+}
+
+export const SaveSchema = SchemaFactory.createForClass(Saves);

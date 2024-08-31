@@ -3,8 +3,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Post } from './post.schema';
 import { CreatePostDto, UpdatePostDto } from './dto/post.dto';
-import { CreateCommentDto, CreateLikeDto, CreateShareDto } from '../post-interaction/dto/post-interaction.dto';
-import { CommentService, LikeService, ShareService } from '../post-interaction/post-interaction.service';
+import { CreateCommentDto, CreateLikeDto, CreateSaveDto, CreateShareDto } from '../post-interaction/dto/post-interaction.dto';
+import { CommentService, LikeService, SaveService, ShareService } from '../post-interaction/post-interaction.service';
 
 @Injectable()
 export class PostService {
@@ -13,6 +13,7 @@ export class PostService {
         private readonly likeService: LikeService,
         private readonly commentService: CommentService,
         private readonly shareService: ShareService,
+        private readonly saveService: SaveService,
     ) { }
 
     async findAllPost(): Promise<Post[]> {
@@ -38,7 +39,6 @@ export class PostService {
             throw new Error('Post not found');
         }
 
-        // Ensure the correct postUid is passed
         await this.likeService.deleteLikesBypostUid(uid);
         await this.commentService.deleteCommentsBypostUid(uid);
 
@@ -121,6 +121,31 @@ export class PostService {
         const deletedShare = await this.shareService.deleteShare(shareUid, uid);
         if (deletedShare) {
             post.sharesCount -= 1;
+            await post.save();
+        }
+        return this.findOnePost(uid);
+    }
+
+    // Save
+    async addSave(uid: string, createSaveDto: CreateSaveDto): Promise<Post> {
+        const post = await this.findOnePost(uid);
+        if (!post) {
+            throw new Error('Post not found');
+        }
+        const newSave = await this.saveService.addSave(createSaveDto);
+        if (newSave) {
+            await post.save();
+        }
+        return this.findOnePost(uid);
+    }
+
+    async deleteSave(uid: string, saveUid: string): Promise<Post> {
+        const post = await this.findOnePost(uid);
+        if (!post) {
+            throw new Error('Post not found');
+        }
+        const deletedSave = await this.saveService.deleteSave(saveUid, uid);
+        if (deletedSave) {
             await post.save();
         }
         return this.findOnePost(uid);

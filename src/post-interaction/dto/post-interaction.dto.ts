@@ -33,3 +33,13 @@ export class CreateShareDto {
     @IsNotEmpty()
     postUid: string;
 }
+
+export class CreateSaveDto {
+    @IsString()
+    @IsNotEmpty()
+    userId: string;
+
+    @IsString()
+    @IsNotEmpty()
+    postUid: string;
+}
