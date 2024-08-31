@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { LikeService, CommentService, ShareService } from './like-comment-share.service';
-import { LikeSchema, CommentSchema, ShareSchema } from './like-comment-share.schema';
-import { LikeCommentController } from './like-comment.controller';
+import { LikeService, CommentService, ShareService } from './post-interaction.service';
+import { LikeSchema, CommentSchema, ShareSchema } from './post-interaction.schema';
+import { PostInteractionController } from './post-interaction.controller';
 
 @Module({
     imports: [
@@ -12,6 +12,6 @@ import { LikeCommentController } from './like-comment.controller';
     ],
     providers: [LikeService, CommentService, ShareService],
     exports: [LikeService, CommentService, ShareService],
-    controllers: [LikeCommentController],
+    controllers: [PostInteractionController],
 })
-export class LikeCommentModule { }
+export class PostInteractionModule {}

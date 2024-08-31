@@ -1,7 +1,7 @@
 import { IsString, IsArray, IsOptional, ValidateNested, IsDate, IsNumber } from 'class-validator';
 import { Type } from 'class-transformer';
 import { PartialType } from '@nestjs/mapped-types';
-import { CreateCommentDto, CreateLikeDto, CreateShareDto } from 'src/like-comment-share/dto/like-comment-share.dto';
+import { CreateCommentDto, CreateLikeDto, CreateShareDto } from 'src/post-interaction/dto/post-interaction.dto';
 
 export class CreatePostDto {
     @IsString()

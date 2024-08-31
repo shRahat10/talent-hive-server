@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Comments, Likes, Shares } from './like-comment-share.schema';
-import { CreateCommentDto, CreateLikeDto, CreateShareDto } from './dto/like-comment-share.dto';
+import { Comments, Likes, Shares } from './post-interaction.schema';
+import { CreateCommentDto, CreateLikeDto, CreateShareDto } from './dto/post-interaction.dto';
 
 @Injectable()
 export class LikeService {

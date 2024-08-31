@@ -2,7 +2,7 @@ import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common'
 import { PostService } from './post.service';
 import { CreatePostDto, UpdatePostDto } from './dto/post.dto';
 import { Post as PostModel } from './post.schema';
-import { CreateCommentDto, CreateLikeDto, CreateShareDto } from '../like-comment-share/dto/like-comment-share.dto';
+import { CreateCommentDto, CreateLikeDto, CreateShareDto } from '../post-interaction/dto/post-interaction.dto';
 
 @Controller('post')
 export class PostController {

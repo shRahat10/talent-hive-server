@@ -3,8 +3,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Post } from './post.schema';
 import { CreatePostDto, UpdatePostDto } from './dto/post.dto';
-import { CreateCommentDto, CreateLikeDto, CreateShareDto } from '../like-comment-share/dto/like-comment-share.dto';
-import { CommentService, LikeService, ShareService } from '../like-comment-share/like-comment-share.service';
+import { CreateCommentDto, CreateLikeDto, CreateShareDto } from '../post-interaction/dto/post-interaction.dto';
+import { CommentService, LikeService, ShareService } from '../post-interaction/post-interaction.service';
 
 @Injectable()
 export class PostService {

@@ -3,7 +3,7 @@ import { IsString, IsNotEmpty } from 'class-validator';
 export class CreateLikeDto {
     @IsString()
     @IsNotEmpty()
-    userUid: string;
+    userId: string;
 
     @IsString()
     @IsNotEmpty()
@@ -13,7 +13,7 @@ export class CreateLikeDto {
 export class CreateCommentDto {
     @IsString()
     @IsNotEmpty()
-    userUid: string;
+    userId: string;
 
     @IsString()
     @IsNotEmpty()
@@ -27,7 +27,7 @@ export class CreateCommentDto {
 export class CreateShareDto {
     @IsString()
     @IsNotEmpty()
-    userUid: string;
+    userId: string;
 
     @IsString()
     @IsNotEmpty()
