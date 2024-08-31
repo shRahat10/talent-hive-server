@@ -16,11 +16,11 @@ export class PostService {
     ) { }
 
     async findAllPost(): Promise<Post[]> {
-        return this.postModel.find().exec();
+        return this.postModel.find().populate('userId', '-password -__v').exec();
     }
 
     async findOnePost(uid: string): Promise<Post> {
-        return this.postModel.findOne({ uid }).exec();
+        return this.postModel.findOne({ uid }).populate('userId', '-password -__v').exec();
     }
 
     async createPost(createPostDto: CreatePostDto): Promise<Post> {
@@ -37,13 +37,13 @@ export class PostService {
         if (!post) {
             throw new Error('Post not found');
         }
-    
+
         // Ensure the correct postUid is passed
         await this.likeService.deleteLikesBypostUid(uid);
         await this.commentService.deleteCommentsBypostUid(uid);
-    
+
         return this.postModel.findOneAndDelete({ uid }).exec();
-    }    
+    }
 
     // Like
     async addLike(uid: string, createLikeDto: CreateLikeDto): Promise<Post> {

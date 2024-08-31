@@ -5,7 +5,7 @@ import { CreateCommentDto, CreateLikeDto, CreateShareDto } from 'src/like-commen
 
 export class CreatePostDto {
     @IsString()
-    userUid: string;
+    userId: string;
 
     @IsString()
     content: string;
