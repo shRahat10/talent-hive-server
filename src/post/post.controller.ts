@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, Query } from '@nestjs/common';
 import { PostService } from './post.service';
 import { CreatePostDto, UpdatePostDto } from './dto/post.dto';
 import { Post as PostModel } from './post.schema';
@@ -35,6 +35,11 @@ export class PostController {
     }
 
     // Like api
+    @Get(':uid/like')
+    async getLike(@Param('uid') uid: string) {
+        return this.postService.getLike(uid);
+    }
+
     @Post(':uid/like')
     async addLike(@Param('uid') uid: string, @Body() createLikeDto: CreateLikeDto): Promise<PostModel> {
         return this.postService.addLike(uid, createLikeDto);
@@ -46,6 +51,15 @@ export class PostController {
     }
 
     // Comment api
+    @Get(':uid/comment')
+    async getComment(
+        @Param('uid') uid: string,
+        @Query('skip') skip: number,
+        @Query('limit') limit: number
+    ) {
+        return this.postService.getComment(uid, skip, limit);
+    }
+
     @Post(':uid/comment')
     async addComment(@Param('uid') uid: string, @Body() createCommentDto: CreateCommentDto): Promise<PostModel> {
         return this.postService.addComment(uid, createCommentDto);
@@ -57,6 +71,11 @@ export class PostController {
     }
 
     // Share api
+    @Get(':uid/share')
+    async getShare(@Param('uid') uid: string) {
+        return this.postService.getShare(uid);
+    }
+
     @Post(':uid/share')
     async addShare(@Param('uid') uid: string, @Body() createShareDto: CreateShareDto): Promise<PostModel> {
         return this.postService.addShare(uid, createShareDto);
@@ -68,6 +87,11 @@ export class PostController {
     }
 
     // Save api
+    @Get(':uid/save')
+    async getSave(@Param('uid') uid: string) {
+        return this.postService.getSave(uid);
+    }
+
     @Post(':uid/save')
     async addSave(@Param('uid') uid: string, @Body() createSaveDto: CreateSaveDto): Promise<PostModel> {
         return this.postService.addSave(uid, createSaveDto);

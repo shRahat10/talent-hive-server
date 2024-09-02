@@ -5,6 +5,7 @@ import { Post } from './post.schema';
 import { CreatePostDto, UpdatePostDto } from './dto/post.dto';
 import { CreateCommentDto, CreateLikeDto, CreateSaveDto, CreateShareDto } from '../post-interaction/dto/post-interaction.dto';
 import { CommentService, LikeService, SaveService, ShareService } from '../post-interaction/post-interaction.service';
+import { Comments, Likes, Saves, Shares } from 'src/post-interaction/post-interaction.schema';
 
 @Injectable()
 export class PostService {
@@ -39,13 +40,22 @@ export class PostService {
             throw new Error('Post not found');
         }
 
-        await this.likeService.deleteLikesBypostUid(uid);
-        await this.commentService.deleteCommentsBypostUid(uid);
+        await this.likeService.deleteLikesByPostUid(uid);
+        await this.commentService.deleteCommentsByPostUid(uid);
 
         return this.postModel.findOneAndDelete({ uid }).exec();
     }
 
     // Like
+    async getLike(uid: string): Promise<{ likes: Likes[] }> {
+        const post = await this.findOnePost(uid);
+        if (!post) {
+            throw new Error('Post not found');
+        }
+        const likes = await this.likeService.findLikesByPostUid(uid);
+        return { likes };
+    }
+
     async addLike(uid: string, createLikeDto: CreateLikeDto): Promise<Post> {
         const post = await this.findOnePost(uid);
         if (!post) {
@@ -73,6 +83,15 @@ export class PostService {
     }
 
     // Comment
+    async getComment(uid: string, skip = 0, limit = 5): Promise<{ comments: Comments[] }> {
+        const post = await this.findOnePost(uid);
+        if (!post) {
+            throw new Error('Post not found');
+        }
+        const comments = await this.commentService.findCommentsByPostUid(uid, skip, limit);
+        return { comments };
+    }
+
     async addComment(uid: string, createCommentDto: CreateCommentDto): Promise<Post> {
         const post = await this.findOnePost(uid);
         if (!post) {
@@ -100,6 +119,15 @@ export class PostService {
     }
 
     // Share
+    async getShare(uid: string): Promise<{ shares: Shares[] }> {
+        const post = await this.findOnePost(uid);
+        if (!post) {
+            throw new Error('Post not found');
+        }
+        const shares = await this.shareService.findSharesByPostUid(uid);
+        return { shares };
+    }
+
     async addShare(uid: string, createShareDto: CreateShareDto): Promise<Post> {
         const post = await this.findOnePost(uid);
         if (!post) {
@@ -127,6 +155,15 @@ export class PostService {
     }
 
     // Save
+    async getSave(uid: string): Promise<{ saves: Saves[] }> {
+        const post = await this.findOnePost(uid);
+        if (!post) {
+            throw new Error('Post not found');
+        }
+        const saves = await this.saveService.findSavesByPostUid(uid);
+        return { saves };
+    }
+
     async addSave(uid: string, createSaveDto: CreateSaveDto): Promise<Post> {
         const post = await this.findOnePost(uid);
         if (!post) {

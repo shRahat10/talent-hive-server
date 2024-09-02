@@ -1,13 +1,14 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
+import { User } from 'src/user/user.schema';
 
 @Schema()
 export class Likes extends Document {
     @Prop({ required: true, unique: true, default: () => `l${Date.now()}${Math.floor(100 + Math.random() * 900)}` })
     uid: string;
 
-    @Prop({ required: true })
-    userId: string;
+    @Prop({ type: Types.ObjectId, ref: User.name, required: true })
+    userId: Types.ObjectId;
 
     @Prop({ required: true })
     postUid: string;
@@ -20,8 +21,8 @@ export class Comments extends Document {
     @Prop({ required: true, unique: true, default: () => `c${Date.now()}${Math.floor(100 + Math.random() * 900)}` })
     uid: string;
 
-    @Prop({ required: true })
-    userId: string;
+    @Prop({ type: Types.ObjectId, ref: User.name, required: true })
+    userId: Types.ObjectId;
 
     @Prop({ required: true })
     postUid: string;
@@ -40,8 +41,8 @@ export class Shares extends Document {
     @Prop({ required: true, unique: true, default: () => `s${Date.now()}${Math.floor(100 + Math.random() * 900)}` })
     uid: string;
 
-    @Prop({ required: true })
-    userId: string;
+    @Prop({ type: Types.ObjectId, ref: User.name, required: true })
+    userId: Types.ObjectId;
 
     @Prop({ required: true })
     postUid: string;
@@ -57,8 +58,8 @@ export class Saves extends Document {
     @Prop({ required: true, unique: true, default: () => `s${Date.now()}${Math.floor(100 + Math.random() * 900)}` })
     uid: string;
 
-    @Prop({ required: true })
-    userId: string;
+    @Prop({ type: Types.ObjectId, ref: User.name, required: true })
+    userId: Types.ObjectId;
 
     @Prop({ required: true })
     postUid: string;

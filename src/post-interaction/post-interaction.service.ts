@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { Comments, Likes, Saves, Shares } from './post-interaction.schema';
 import { CreateCommentDto, CreateLikeDto, CreateSaveDto, CreateShareDto } from './dto/post-interaction.dto';
 
+// Like
 @Injectable()
 export class LikeService {
     constructor(
@@ -19,15 +20,16 @@ export class LikeService {
         return this.likeModel.findOneAndDelete({ postUid, uid }).exec();
     }
 
-    async deleteLikesBypostUid(postUid: string): Promise<void> {
+    async deleteLikesByPostUid(postUid: string): Promise<void> {
         await this.likeModel.deleteMany({ postUid }).exec();
     }
 
-    async findLikesBypostUid(postUid: string): Promise<Likes[]> {
-        return this.likeModel.find({ postUid }).exec();
+    async findLikesByPostUid(postUid: string): Promise<Likes[]> {
+        return this.likeModel.find({ postUid }).populate('userId', '-password -__v').exec();
     }
 }
 
+// Comment
 @Injectable()
 export class CommentService {
     constructor(
@@ -43,15 +45,21 @@ export class CommentService {
         return this.commentModel.findOneAndDelete({ postUid, uid }).exec();
     }
 
-    async deleteCommentsBypostUid(postUid: string): Promise<void> {
+    async deleteCommentsByPostUid(postUid: string): Promise<void> {
         await this.commentModel.deleteMany({ postUid }).exec();
     }
 
-    async findCommentsBypostUid(postUid: string): Promise<Comments[]> {
-        return this.commentModel.find({ postUid }).exec();
+    async findCommentsByPostUid(postUid: string, skip = 0, limit = 5): Promise<Comments[]> {
+        return this.commentModel.find({ postUid })
+            .populate('userId', '-password -__v')
+            .sort({ createdAt: -1, _id: -1 })
+            .skip(skip)
+            .limit(limit)
+            .exec();
     }
 }
 
+// Share
 @Injectable()
 export class ShareService {
     constructor(
@@ -67,11 +75,12 @@ export class ShareService {
         return this.shareModel.findOneAndDelete({ uid, postUid }).exec();
     }
 
-    async findSharesBypostUid(postUid: string): Promise<Shares[]> {
-        return this.shareModel.find({ postUid }).exec();
+    async findSharesByPostUid(postUid: string): Promise<Shares[]> {
+        return this.shareModel.find({ postUid }).populate('userId', '-password -__v').exec();
     }
 }
 
+// Save
 @Injectable()
 export class SaveService {
     constructor(
@@ -87,7 +96,7 @@ export class SaveService {
         return this.saveModel.findOneAndDelete({ uid, postUid }).exec();
     }
 
-    async findSavesBypostUid(postUid: string): Promise<Saves[]> {
-        return this.saveModel.find({ postUid }).exec();
+    async findSavesByPostUid(postUid: string): Promise<Saves[]> {
+        return this.saveModel.find({ postUid }).populate('userId', '-password -__v').exec();
     }
 }
