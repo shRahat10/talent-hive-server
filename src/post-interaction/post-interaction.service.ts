@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Comments, Likes, Saves, Shares } from './post-interaction.schema';
-import { CreateCommentDto, CreateLikeDto, CreateSaveDto, CreateShareDto } from './dto/post-interaction.dto';
+import { CreateCommentDto, CreateLikeDto, CreateSaveDto, CreateShareDto, UpdateCommentDto } from './dto/post-interaction.dto';
 
 // Like
 @Injectable()
@@ -41,6 +41,10 @@ export class CommentService {
         const newComment = new this.commentModel(createCommentDto);
         const savedComment = await newComment.save();
         return this.commentModel.findById(savedComment._id).populate('userId', '-password -__v').exec();
+    }
+
+    async updateComment(uid: string, updateCommentDto: UpdateCommentDto): Promise<Comments | null> {
+        return this.commentModel.findOneAndUpdate({ uid }, { $set: updateCommentDto }, { new: true }).populate('userId', '-password -__v').exec();
     }
 
     async deleteComment(postUid: string, uid: string): Promise<Comments | null> {

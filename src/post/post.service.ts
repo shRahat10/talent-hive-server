@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Post } from './post.schema';
 import { CreatePostDto, UpdatePostDto } from './dto/post.dto';
-import { CreateCommentDto, CreateLikeDto, CreateSaveDto, CreateShareDto } from '../post-interaction/dto/post-interaction.dto';
+import { CreateCommentDto, CreateLikeDto, CreateSaveDto, CreateShareDto, UpdateCommentDto } from '../post-interaction/dto/post-interaction.dto';
 import { CommentService, LikeService, SaveService, ShareService } from '../post-interaction/post-interaction.service';
 import { Comments, Likes, Saves, Shares } from 'src/post-interaction/post-interaction.schema';
 
@@ -103,6 +103,20 @@ export class PostService {
             await post.save();
         }
         return { comment: newComment };
+    }
+
+    async updateComment(uid: string, commentUid: string, updateCommentDto: UpdateCommentDto): Promise<{ comment: Comments }> {
+        const post = await this.findOnePost(uid);
+        if (!post) {
+            throw new Error('Post not found');
+        }
+
+        const updatedComment = await this.commentService.updateComment(commentUid, updateCommentDto);
+        if (!updatedComment) {
+            throw new Error('Comment not found or failed to update');
+        }
+
+        return { comment: updatedComment };
     }
 
     async deleteComment(uid: string, commentUid: string): Promise<{ comment: Comments }> {

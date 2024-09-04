@@ -1,8 +1,8 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, Query } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, Query, Patch } from '@nestjs/common';
 import { PostService } from './post.service';
 import { CreatePostDto, UpdatePostDto } from './dto/post.dto';
 import { Post as PostModel } from './post.schema';
-import { CreateCommentDto, CreateLikeDto, CreateSaveDto, CreateShareDto } from '../post-interaction/dto/post-interaction.dto';
+import { CreateCommentDto, CreateLikeDto, CreateSaveDto, CreateShareDto, UpdateCommentDto } from '../post-interaction/dto/post-interaction.dto';
 import { Comments, Likes, Saves, Shares } from 'src/post-interaction/post-interaction.schema';
 
 @Controller('post')
@@ -64,6 +64,11 @@ export class PostController {
     @Post(':uid/comment')
     async addComment(@Param('uid') uid: string, @Body() createCommentDto: CreateCommentDto): Promise<{ comment: Comments }> {
         return this.postService.addComment(uid, createCommentDto);
+    }
+
+    @Patch(':uid/comment/:commentUid')
+    async updateComment(@Param('uid') uid: string, @Param('commentUid') commentUid: string, @Body() updateCommentDto: UpdateCommentDto): Promise<{ comment: Comments }> {
+        return this.postService.updateComment(uid, commentUid, updateCommentDto);
     }
 
     @Delete(':uid/comment/:commentUid')

@@ -1,5 +1,7 @@
-import { IsString, IsNotEmpty } from 'class-validator';
+import { PartialType } from '@nestjs/mapped-types';
+import { IsString, IsNotEmpty, Allow } from 'class-validator';
 
+// Like
 export class CreateLikeDto {
     @IsString()
     @IsNotEmpty()
@@ -10,7 +12,11 @@ export class CreateLikeDto {
     postUid: string;
 }
 
+// Comment
 export class CreateCommentDto {
+    @Allow()
+    _id?: string;
+
     @IsString()
     @IsNotEmpty()
     userId: string;
@@ -23,7 +29,9 @@ export class CreateCommentDto {
     @IsNotEmpty()
     comment: string;
 }
+export class UpdateCommentDto extends PartialType(CreateCommentDto) { }
 
+// Share
 export class CreateShareDto {
     @IsString()
     @IsNotEmpty()
@@ -34,6 +42,7 @@ export class CreateShareDto {
     postUid: string;
 }
 
+// Save
 export class CreateSaveDto {
     @IsString()
     @IsNotEmpty()
