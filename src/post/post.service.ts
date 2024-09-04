@@ -18,7 +18,7 @@ export class PostService {
     ) { }
 
     async findAllPost(): Promise<Post[]> {
-        return this.postModel.find().populate('userId', '-password -__v').exec();
+        return this.postModel.find().populate('userId', '-password -__v').sort({ createdAt: -1, _id: -1 }).exec();
     }
 
     async findOnePost(uid: string): Promise<Post> {
@@ -27,11 +27,12 @@ export class PostService {
 
     async createPost(createPostDto: CreatePostDto): Promise<Post> {
         const newPost = new this.postModel(createPostDto);
-        return newPost.save();
+        const savedPost = await newPost.save();
+        return await this.postModel.findById(savedPost._id).populate('userId', '-password -__v').exec();
     }
 
     async updatePost(uid: string, updatePostDto: UpdatePostDto): Promise<Post> {
-        return this.postModel.findOneAndUpdate({ uid }, updatePostDto, { new: true }).exec();
+        return this.postModel.findOneAndUpdate({ uid }, updatePostDto, { new: true }).populate('userId', '-password -__v').exec();
     }
 
     async deletePost(uid: string): Promise<Post> {

@@ -25,7 +25,7 @@ export class PostController {
         return this.postService.createPost(createPostDto);
     }
 
-    @Put(':uid')
+    @Patch(':uid')
     async update(@Param('uid') uid: string, @Body() updatePostDto: UpdatePostDto): Promise<PostModel> {
         return this.postService.updatePost(uid, updatePostDto);
     }
