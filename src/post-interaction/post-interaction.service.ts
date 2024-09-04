@@ -13,7 +13,8 @@ export class LikeService {
 
     async addLike(createLikeDto: CreateLikeDto): Promise<Likes> {
         const newLike = new this.likeModel(createLikeDto);
-        return newLike.save();
+        const savedLike = await newLike.save();
+        return this.likeModel.findById(savedLike._id).populate('userId', '-password -__v').exec();
     }
 
     async deleteLike(postUid: string, uid: string): Promise<Likes | null> {
@@ -38,7 +39,8 @@ export class CommentService {
 
     async addComment(createCommentDto: CreateCommentDto): Promise<Comments> {
         const newComment = new this.commentModel(createCommentDto);
-        return newComment.save();
+        const savedComment = await newComment.save();
+        return this.commentModel.findById(savedComment._id).populate('userId', '-password -__v').exec();
     }
 
     async deleteComment(postUid: string, uid: string): Promise<Comments | null> {
@@ -68,7 +70,8 @@ export class ShareService {
 
     async addShare(createShareDto: CreateShareDto): Promise<Shares> {
         const newShare = new this.shareModel(createShareDto);
-        return newShare.save();
+        const savedShare = await newShare.save();
+        return this.shareModel.findById(savedShare._id).populate('userId', '-password -__v').exec();
     }
 
     async deleteShare(uid: string, postUid: string): Promise<Shares | null> {
@@ -89,7 +92,8 @@ export class SaveService {
 
     async addSave(createSaveDto: CreateSaveDto): Promise<Saves> {
         const newSave = new this.saveModel(createSaveDto);
-        return newSave.save();
+        const savedSave = await newSave.save();
+        return this.saveModel.findById(savedSave._id).populate('userId', '-password -__v').exec();
     }
 
     async deleteSave(uid: string, postUid: string): Promise<Saves | null> {

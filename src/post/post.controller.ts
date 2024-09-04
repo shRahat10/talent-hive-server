@@ -3,6 +3,7 @@ import { PostService } from './post.service';
 import { CreatePostDto, UpdatePostDto } from './dto/post.dto';
 import { Post as PostModel } from './post.schema';
 import { CreateCommentDto, CreateLikeDto, CreateSaveDto, CreateShareDto } from '../post-interaction/dto/post-interaction.dto';
+import { Comments, Likes, Saves, Shares } from 'src/post-interaction/post-interaction.schema';
 
 @Controller('post')
 export class PostController {
@@ -36,17 +37,17 @@ export class PostController {
 
     // Like api
     @Get(':uid/like')
-    async getLike(@Param('uid') uid: string) {
+    async getLike(@Param('uid') uid: string): Promise<{ likes: Likes[] }> {
         return this.postService.getLike(uid);
     }
 
     @Post(':uid/like')
-    async addLike(@Param('uid') uid: string, @Body() createLikeDto: CreateLikeDto): Promise<PostModel> {
+    async addLike(@Param('uid') uid: string, @Body() createLikeDto: CreateLikeDto): Promise<{ like: Likes }> {
         return this.postService.addLike(uid, createLikeDto);
     }
 
     @Delete(':uid/like/:likeUid')
-    async deleteLike(@Param('uid') uid: string, @Param('likeUid') likeUid: string) {
+    async deleteLike(@Param('uid') uid: string, @Param('likeUid') likeUid: string): Promise<{ like: Likes }> {
         return this.postService.deleteLike(uid, likeUid);
     }
 
@@ -56,49 +57,49 @@ export class PostController {
         @Param('uid') uid: string,
         @Query('skip') skip: number,
         @Query('limit') limit: number
-    ) {
+    ): Promise<{ comments: Comments[] }> {
         return this.postService.getComment(uid, skip, limit);
     }
 
     @Post(':uid/comment')
-    async addComment(@Param('uid') uid: string, @Body() createCommentDto: CreateCommentDto): Promise<PostModel> {
+    async addComment(@Param('uid') uid: string, @Body() createCommentDto: CreateCommentDto): Promise<{ comment: Comments }> {
         return this.postService.addComment(uid, createCommentDto);
     }
 
     @Delete(':uid/comment/:commentUid')
-    async deleteComment(@Param('uid') uid: string, @Param('commentUid') commentUid: string) {
+    async deleteComment(@Param('uid') uid: string, @Param('commentUid') commentUid: string): Promise<{ comment: Comments }> {
         return this.postService.deleteComment(uid, commentUid);
     }
 
     // Share api
     @Get(':uid/share')
-    async getShare(@Param('uid') uid: string) {
+    async getShare(@Param('uid') uid: string): Promise<{ shares: Shares[] }> {
         return this.postService.getShare(uid);
     }
 
     @Post(':uid/share')
-    async addShare(@Param('uid') uid: string, @Body() createShareDto: CreateShareDto): Promise<PostModel> {
+    async addShare(@Param('uid') uid: string, @Body() createShareDto: CreateShareDto): Promise<{ share: Shares }> {
         return this.postService.addShare(uid, createShareDto);
     }
 
     @Delete(':uid/share/:shareUid')
-    async deleteShare(@Param('uid') uid: string, @Param('shareUid') shareUid: string) {
+    async deleteShare(@Param('uid') uid: string, @Param('shareUid') shareUid: string): Promise<{ share: Shares }> {
         return this.postService.deleteShare(uid, shareUid);
     }
 
     // Save api
     @Get(':uid/save')
-    async getSave(@Param('uid') uid: string) {
+    async getSave(@Param('uid') uid: string): Promise<{ saves: Saves[] }> {
         return this.postService.getSave(uid);
     }
 
     @Post(':uid/save')
-    async addSave(@Param('uid') uid: string, @Body() createSaveDto: CreateSaveDto): Promise<PostModel> {
+    async addSave(@Param('uid') uid: string, @Body() createSaveDto: CreateSaveDto): Promise<{ save: Saves }> {
         return this.postService.addSave(uid, createSaveDto);
     }
 
     @Delete(':uid/save/:saveUid')
-    async deleteSave(@Param('uid') uid: string, @Param('saveUid') saveUid: string) {
+    async deleteSave(@Param('uid') uid: string, @Param('saveUid') saveUid: string): Promise<{ save: Saves }> {
         return this.postService.deleteSave(uid, saveUid);
     }
 }
