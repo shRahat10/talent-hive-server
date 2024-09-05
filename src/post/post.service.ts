@@ -21,10 +21,6 @@ export class PostService {
         private readonly saveService: SaveService,
     ) { }
 
-    // async findAllPost(): Promise<Post[]> {
-    //     return this.postModel.find().populate('userId', '-password -__v').sort({ createdAt: -1, _id: -1 }).exec();
-    // }
-
     async findAllPost(userId: string): Promise<PostWithLikes[]> {
         const posts = await this.postModel
             .find()
