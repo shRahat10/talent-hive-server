@@ -33,7 +33,7 @@ export class LikeService {
 
     async findLikesByPostId(postId: string): Promise<Likes[]> {
         return this.likeModel.find({ postId }).populate('userId', '-password -__v').exec();
-    }
+    }    
 }
 
 // Comment

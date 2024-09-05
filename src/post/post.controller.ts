@@ -11,8 +11,8 @@ export class PostController {
 
     // Post api
     @Get()
-    async findAll(): Promise<PostModel[]> {
-        return this.postService.findAllPost();
+    async findAll(@Query('userId') userId: string): Promise<PostModel[]> {
+        return this.postService.findAllPost(userId);
     }
 
     @Get(':id')

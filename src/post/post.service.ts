@@ -7,6 +7,10 @@ import { CreateCommentDto, CreateLikeDto, CreateSaveDto, CreateShareDto, UpdateC
 import { CommentService, LikeService, SaveService, ShareService } from '../post-interaction/post-interaction.service';
 import { Comments, Likes, Saves, Shares } from 'src/post-interaction/post-interaction.schema';
 
+export interface PostWithLikes extends Post {
+    isLiked: boolean;
+}
+
 @Injectable()
 export class PostService {
     constructor(
@@ -17,10 +21,30 @@ export class PostService {
         private readonly saveService: SaveService,
     ) { }
 
-    async findAllPost(): Promise<Post[]> {
-        return this.postModel.find().populate('userId', '-password -__v').sort({ createdAt: -1, _id: -1 }).exec();
+    // async findAllPost(): Promise<Post[]> {
+    //     return this.postModel.find().populate('userId', '-password -__v').sort({ createdAt: -1, _id: -1 }).exec();
+    // }
+
+    async findAllPost(userId: string): Promise<PostWithLikes[]> {
+        const posts = await this.postModel
+            .find()
+            .populate('userId', '-password -__v')
+            .sort({ createdAt: -1, _id: -1 })
+            .exec();
+
+        const postWithIsLiked = await Promise.all(
+            posts.map(async (post) => {
+                const likes = await this.likeService.findLikesByPostId(post._id.toString());
+                const isLiked = likes.some(like => like.userId._id.toString() === userId);
+
+                return { ...post.toObject(), isLiked } as PostWithLikes;
+            })
+        );
+
+        return postWithIsLiked;
     }
 
+    // finds post for rest of the api
     async findOnePost(id: string): Promise<Post> {
         return this.postModel.findById(id).populate('userId', '-password -__v').exec();
     }
