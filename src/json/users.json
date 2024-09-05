@@ -7,8 +7,7 @@
         "status": "active",
         "role": "user",
         "createdOn": "2024-08-30T12:23:45.567Z",
-        "modifiedOn": "2024-08-30T12:55:34.891Z",
-        "uid": "u5823492348345629"
+        "modifiedOn": "2024-08-30T12:55:34.891Z"
     },
     {
         "fullName": "Liam Scott",
@@ -18,8 +17,7 @@
         "status": "active",
         "role": "user",
         "createdOn": "2024-08-30T13:45:12.982Z",
-        "modifiedOn": "2024-08-30T14:01:22.738Z",
-        "uid": "u2837495723098401"
+        "modifiedOn": "2024-08-30T14:01:22.738Z"
     },
     {
         "fullName": "Emma Williams",
@@ -29,8 +27,7 @@
         "status": "active",
         "role": "user",
         "createdOn": "2024-08-30T14:23:11.654Z",
-        "modifiedOn": "2024-08-30T14:55:19.421Z",
-        "uid": "u8472394847383942"
+        "modifiedOn": "2024-08-30T14:55:19.421Z"
     },
     {
         "fullName": "Noah Johnson",
@@ -40,8 +37,7 @@
         "status": "active",
         "role": "user",
         "createdOn": "2024-08-30T15:12:34.345Z",
-        "modifiedOn": "2024-08-30T15:32:41.902Z",
-        "uid": "u3948572394748395"
+        "modifiedOn": "2024-08-30T15:32:41.902Z"
     },
     {
         "fullName": "Sophia Martinez",
@@ -51,8 +47,7 @@
         "status": "active",
         "role": "user",
         "createdOn": "2024-08-30T16:47:56.129Z",
-        "modifiedOn": "2024-08-30T17:15:24.003Z",
-        "uid": "u4827493928472394"
+        "modifiedOn": "2024-08-30T17:15:24.003Z"
     },
     {
         "fullName": "James Brown",
@@ -62,8 +57,7 @@
         "status": "active",
         "role": "user",
         "createdOn": "2024-08-30T17:34:23.983Z",
-        "modifiedOn": "2024-08-30T18:03:49.624Z",
-        "uid": "u1238472398472734"
+        "modifiedOn": "2024-08-30T18:03:49.624Z"
     },
     {
         "fullName": "Isabella Rodriguez",
@@ -73,8 +67,7 @@
         "status": "active",
         "role": "user",
         "createdOn": "2024-08-30T18:45:12.657Z",
-        "modifiedOn": "2024-08-30T19:12:28.762Z",
-        "uid": "u4928495757394857"
+        "modifiedOn": "2024-08-30T19:12:28.762Z"
     },
     {
         "fullName": "Lucas Green",
@@ -84,8 +77,7 @@
         "status": "active",
         "role": "user",
         "createdOn": "2024-08-30T19:34:23.892Z",
-        "modifiedOn": "2024-08-30T20:01:34.234Z",
-        "uid": "u9483759348273845"
+        "modifiedOn": "2024-08-30T20:01:34.234Z"
     },
     {
         "fullName": "Mia Davis",
@@ -95,8 +87,7 @@
         "status": "active",
         "role": "user",
         "createdOn": "2024-08-30T20:45:12.879Z",
-        "modifiedOn": "2024-08-30T21:15:27.439Z",
-        "uid": "u2938475728494857"
+        "modifiedOn": "2024-08-30T21:15:27.439Z"
     },
     {
         "fullName": "Oliver Thompson",
@@ -106,7 +97,6 @@
         "status": "active",
         "role": "user",
         "createdOn": "2024-08-30T21:23:45.435Z",
-        "modifiedOn": "2024-08-30T22:12:36.984Z",
-        "uid": "u8394723948572384"
+        "modifiedOn": "2024-08-30T22:12:36.984Z"
     }
 ]

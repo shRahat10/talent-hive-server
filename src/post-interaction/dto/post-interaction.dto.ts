@@ -9,7 +9,7 @@ export class CreateLikeDto {
 
     @IsString()
     @IsNotEmpty()
-    postUid: string;
+    postId: string;
 }
 
 // Comment
@@ -23,7 +23,7 @@ export class CreateCommentDto {
 
     @IsString()
     @IsNotEmpty()
-    postUid: string;
+    postId: string;
 
     @IsString()
     @IsNotEmpty()
@@ -39,7 +39,7 @@ export class CreateShareDto {
 
     @IsString()
     @IsNotEmpty()
-    postUid: string;
+    postId: string;
 }
 
 // Save
@@ -50,5 +50,5 @@ export class CreateSaveDto {
 
     @IsString()
     @IsNotEmpty()
-    postUid: string;
+    postId: string;
 }

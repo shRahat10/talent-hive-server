@@ -21,8 +21,8 @@ export class PostService {
         return this.postModel.find().populate('userId', '-password -__v').sort({ createdAt: -1, _id: -1 }).exec();
     }
 
-    async findOnePost(uid: string): Promise<Post> {
-        return this.postModel.findOne({ uid }).populate('userId', '-password -__v').exec();
+    async findOnePost(id: string): Promise<Post> {
+        return this.postModel.findById(id).populate('userId', '-password -__v').exec();
     }
 
     async createPost(createPostDto: CreatePostDto): Promise<Post> {
@@ -31,34 +31,34 @@ export class PostService {
         return await this.postModel.findById(savedPost._id).populate('userId', '-password -__v').exec();
     }
 
-    async updatePost(uid: string, updatePostDto: UpdatePostDto): Promise<Post> {
-        return this.postModel.findOneAndUpdate({ uid }, updatePostDto, { new: true }).populate('userId', '-password -__v').exec();
+    async updatePost(id: string, updatePostDto: UpdatePostDto): Promise<Post> {
+        return this.postModel.findByIdAndUpdate(id, updatePostDto, { new: true }).populate('userId', '-password -__v').exec();
     }
 
-    async deletePost(uid: string): Promise<Post> {
-        const post = await this.findOnePost(uid);
+    async deletePost(id: string): Promise<Post> {
+        const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
         }
 
-        await this.likeService.deleteLikesByPostUid(uid);
-        await this.commentService.deleteCommentsByPostUid(uid);
+        await this.likeService.deleteLikesByPostId(id);
+        await this.commentService.deleteCommentsByPostId(id);
 
-        return this.postModel.findOneAndDelete({ uid }).exec();
+        return this.postModel.findByIdAndDelete(id).exec();
     }
 
     // Like
-    async getLike(uid: string): Promise<{ likes: Likes[] }> {
-        const post = await this.findOnePost(uid);
+    async getLike(id: string): Promise<{ likes: Likes[] }> {
+        const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
         }
-        const likes = await this.likeService.findLikesByPostUid(uid);
+        const likes = await this.likeService.findLikesByPostId(id);
         return { likes };
     }
 
-    async addLike(uid: string, createLikeDto: CreateLikeDto): Promise<{ like: Likes }> {
-        const post = await this.findOnePost(uid);
+    async addLike(id: string, createLikeDto: CreateLikeDto): Promise<{ like: Likes }> {
+        const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
         }
@@ -70,12 +70,12 @@ export class PostService {
         return { like: newLike };
     }
 
-    async deleteLike(uid: string, likeUid: string): Promise<{ like: Likes }> {
-        const post = await this.findOnePost(uid);
+    async deleteLike(id: string, likeId: string): Promise<{ like: Likes }> {
+        const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
         }
-        const deletedLike = await this.likeService.deleteLike(uid, likeUid);
+        const deletedLike = await this.likeService.deleteLike(id, likeId);
         if (deletedLike) {
             post.likesCount -= 1;
             await post.save();
@@ -84,17 +84,17 @@ export class PostService {
     }
 
     // Comment
-    async getComment(uid: string, skip = 0, limit = 5): Promise<{ comments: Comments[] }> {
-        const post = await this.findOnePost(uid);
+    async getComment(id: string, skip = 0, limit = 5): Promise<{ comments: Comments[] }> {
+        const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
         }
-        const comments = await this.commentService.findCommentsByPostUid(uid, skip, limit);
+        const comments = await this.commentService.findCommentsByPostId(id, skip, limit);
         return { comments };
     }
 
-    async addComment(uid: string, createCommentDto: CreateCommentDto): Promise<{ comment: Comments }> {
-        const post = await this.findOnePost(uid);
+    async addComment(id: string, createCommentDto: CreateCommentDto): Promise<{ comment: Comments }> {
+        const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
         }
@@ -106,13 +106,13 @@ export class PostService {
         return { comment: newComment };
     }
 
-    async updateComment(uid: string, commentUid: string, updateCommentDto: UpdateCommentDto): Promise<{ comment: Comments }> {
-        const post = await this.findOnePost(uid);
+    async updateComment(id: string, commentId: string, updateCommentDto: UpdateCommentDto): Promise<{ comment: Comments }> {
+        const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
         }
 
-        const updatedComment = await this.commentService.updateComment(commentUid, updateCommentDto);
+        const updatedComment = await this.commentService.updateComment(commentId, updateCommentDto);
         if (!updatedComment) {
             throw new Error('Comment not found or failed to update');
         }
@@ -120,12 +120,12 @@ export class PostService {
         return { comment: updatedComment };
     }
 
-    async deleteComment(uid: string, commentUid: string): Promise<{ comment: Comments }> {
-        const post = await this.findOnePost(uid);
+    async deleteComment(id: string, commentId: string): Promise<{ comment: Comments }> {
+        const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
         }
-        const deletedComment = await this.commentService.deleteComment(uid, commentUid);
+        const deletedComment = await this.commentService.deleteComment(id, commentId);
         if (deletedComment) {
             post.commentsCount -= 1;
             await post.save();
@@ -134,17 +134,17 @@ export class PostService {
     }
 
     // Share
-    async getShare(uid: string): Promise<{ shares: Shares[] }> {
-        const post = await this.findOnePost(uid);
+    async getShare(id: string): Promise<{ shares: Shares[] }> {
+        const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
         }
-        const shares = await this.shareService.findSharesByPostUid(uid);
+        const shares = await this.shareService.findSharesByPostId(id);
         return { shares };
     }
 
-    async addShare(uid: string, createShareDto: CreateShareDto): Promise<{ share: Shares }> {
-        const post = await this.findOnePost(uid);
+    async addShare(id: string, createShareDto: CreateShareDto): Promise<{ share: Shares }> {
+        const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
         }
@@ -156,12 +156,12 @@ export class PostService {
         return { share: newShare };
     }
 
-    async deleteShare(uid: string, shareUid: string): Promise<{ share: Shares }> {
-        const post = await this.findOnePost(uid);
+    async deleteShare(id: string, shareId: string): Promise<{ share: Shares }> {
+        const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
         }
-        const deletedShare = await this.shareService.deleteShare(shareUid, uid);
+        const deletedShare = await this.shareService.deleteShare(shareId, id);
         if (deletedShare) {
             post.sharesCount -= 1;
             await post.save();
@@ -170,17 +170,17 @@ export class PostService {
     }
 
     // Save
-    async getSave(uid: string): Promise<{ saves: Saves[] }> {
-        const post = await this.findOnePost(uid);
+    async getSave(id: string): Promise<{ saves: Saves[] }> {
+        const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
         }
-        const saves = await this.saveService.findSavesByPostUid(uid);
+        const saves = await this.saveService.findSavesByPostId(id);
         return { saves };
     }
 
-    async addSave(uid: string, createSaveDto: CreateSaveDto): Promise<{ save: Saves }> {
-        const post = await this.findOnePost(uid);
+    async addSave(id: string, createSaveDto: CreateSaveDto): Promise<{ save: Saves }> {
+        const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
         }
@@ -191,12 +191,12 @@ export class PostService {
         return { save: newSave };
     }
 
-    async deleteSave(uid: string, saveUid: string): Promise<{ save: Saves }> {
-        const post = await this.findOnePost(uid);
+    async deleteSave(id: string, saveId: string): Promise<{ save: Saves }> {
+        const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
         }
-        const deletedSave = await this.saveService.deleteSave(saveUid, uid);
+        const deletedSave = await this.saveService.deleteSave(saveId, id);
         if (deletedSave) {
             await post.save();
         }

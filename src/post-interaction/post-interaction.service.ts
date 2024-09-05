@@ -17,16 +17,16 @@ export class LikeService {
         return this.likeModel.findById(savedLike._id).populate('userId', '-password -__v').exec();
     }
 
-    async deleteLike(postUid: string, uid: string): Promise<Likes | null> {
-        return this.likeModel.findOneAndDelete({ postUid, uid }).exec();
+    async deleteLike(id: string, postId: string): Promise<Likes | null> {
+        return this.likeModel.findByIdAndDelete(id, { postId }).exec();
     }
 
-    async deleteLikesByPostUid(postUid: string): Promise<void> {
-        await this.likeModel.deleteMany({ postUid }).exec();
+    async deleteLikesByPostId(postId: string): Promise<void> {
+        await this.likeModel.deleteMany({ postId }).exec();
     }
 
-    async findLikesByPostUid(postUid: string): Promise<Likes[]> {
-        return this.likeModel.find({ postUid }).populate('userId', '-password -__v').exec();
+    async findLikesByPostId(postId: string): Promise<Likes[]> {
+        return this.likeModel.find({ postId }).populate('userId', '-password -__v').exec();
     }
 }
 
@@ -43,20 +43,20 @@ export class CommentService {
         return this.commentModel.findById(savedComment._id).populate('userId', '-password -__v').exec();
     }
 
-    async updateComment(uid: string, updateCommentDto: UpdateCommentDto): Promise<Comments | null> {
-        return this.commentModel.findOneAndUpdate({ uid }, { $set: updateCommentDto }, { new: true }).populate('userId', '-password -__v').exec();
+    async updateComment(id: string, updateCommentDto: UpdateCommentDto): Promise<Comments | null> {
+        return this.commentModel.findByIdAndUpdate(id, { $set: updateCommentDto }, { new: true }).populate('userId', '-password -__v').exec();
     }
 
-    async deleteComment(postUid: string, uid: string): Promise<Comments | null> {
-        return this.commentModel.findOneAndDelete({ postUid, uid }).exec();
+    async deleteComment(postId: string, id: string): Promise<Comments | null> {
+        return this.commentModel.findByIdAndDelete(id, { postId }).exec();
     }
 
-    async deleteCommentsByPostUid(postUid: string): Promise<void> {
-        await this.commentModel.deleteMany({ postUid }).exec();
+    async deleteCommentsByPostId(postId: string): Promise<void> {
+        await this.commentModel.deleteMany({ postId }).exec();
     }
 
-    async findCommentsByPostUid(postUid: string, skip = 0, limit = 5): Promise<Comments[]> {
-        return this.commentModel.find({ postUid })
+    async findCommentsByPostId(postId: string, skip = 0, limit = 5): Promise<Comments[]> {
+        return this.commentModel.find({ postId })
             .populate('userId', '-password -__v')
             .sort({ createdAt: -1, _id: -1 })
             .skip(skip)
@@ -78,12 +78,12 @@ export class ShareService {
         return this.shareModel.findById(savedShare._id).populate('userId', '-password -__v').exec();
     }
 
-    async deleteShare(uid: string, postUid: string): Promise<Shares | null> {
-        return this.shareModel.findOneAndDelete({ uid, postUid }).exec();
+    async deleteShare(id: string, postId: string): Promise<Shares | null> {
+        return this.shareModel.findByIdAndDelete(id, { postId }).exec();
     }
 
-    async findSharesByPostUid(postUid: string): Promise<Shares[]> {
-        return this.shareModel.find({ postUid }).populate('userId', '-password -__v').exec();
+    async findSharesByPostId(postId: string): Promise<Shares[]> {
+        return this.shareModel.find({ postId }).populate('userId', '-password -__v').exec();
     }
 }
 
@@ -100,11 +100,11 @@ export class SaveService {
         return this.saveModel.findById(savedSave._id).populate('userId', '-password -__v').exec();
     }
 
-    async deleteSave(uid: string, postUid: string): Promise<Saves | null> {
-        return this.saveModel.findOneAndDelete({ uid, postUid }).exec();
+    async deleteSave(id: string, postId: string): Promise<Saves | null> {
+        return this.saveModel.findByIdAndDelete(id, { postId }).exec();
     }
 
-    async findSavesByPostUid(postUid: string): Promise<Saves[]> {
-        return this.saveModel.find({ postUid }).populate('userId', '-password -__v').exec();
+    async findSavesByPostId(postId: string): Promise<Saves[]> {
+        return this.saveModel.find({ postId }).populate('userId', '-password -__v').exec();
     }
 }

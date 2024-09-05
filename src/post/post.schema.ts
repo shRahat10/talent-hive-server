@@ -4,9 +4,6 @@ import { User } from 'src/user/user.schema';
 
 @Schema()
 export class Post extends Document {
-    @Prop({ required: true, unique: true, default: () => `p${Date.now()}${Math.floor(100 + Math.random() * 900)}` })
-    uid: string;
-
     @Prop({ type: Types.ObjectId, ref: User.name, required: true })
     userId: Types.ObjectId;
 

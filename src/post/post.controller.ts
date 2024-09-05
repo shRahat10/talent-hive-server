@@ -15,9 +15,9 @@ export class PostController {
         return this.postService.findAllPost();
     }
 
-    @Get(':uid')
-    async findOne(@Param('uid') uid: string): Promise<PostModel> {
-        return this.postService.findOnePost(uid);
+    @Get(':id')
+    async findOne(@Param('id') id: string): Promise<PostModel> {
+        return this.postService.findOnePost(id);
     }
 
     @Post()
@@ -25,86 +25,86 @@ export class PostController {
         return this.postService.createPost(createPostDto);
     }
 
-    @Patch(':uid')
-    async update(@Param('uid') uid: string, @Body() updatePostDto: UpdatePostDto): Promise<PostModel> {
-        return this.postService.updatePost(uid, updatePostDto);
+    @Patch(':id')
+    async update(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto): Promise<PostModel> {
+        return this.postService.updatePost(id, updatePostDto);
     }
 
-    @Delete(':uid')
-    async delete(@Param('uid') uid: string): Promise<PostModel> {
-        return this.postService.deletePost(uid);
+    @Delete(':id')
+    async delete(@Param('id') id: string): Promise<PostModel> {
+        return this.postService.deletePost(id);
     }
 
     // Like api
-    @Get(':uid/like')
-    async getLike(@Param('uid') uid: string): Promise<{ likes: Likes[] }> {
-        return this.postService.getLike(uid);
+    @Get(':id/like')
+    async getLike(@Param('id') id: string): Promise<{ likes: Likes[] }> {
+        return this.postService.getLike(id);
     }
 
-    @Post(':uid/like')
-    async addLike(@Param('uid') uid: string, @Body() createLikeDto: CreateLikeDto): Promise<{ like: Likes }> {
-        return this.postService.addLike(uid, createLikeDto);
+    @Post(':id/like')
+    async addLike(@Param('id') id: string, @Body() createLikeDto: CreateLikeDto): Promise<{ like: Likes }> {
+        return this.postService.addLike(id, createLikeDto);
     }
 
-    @Delete(':uid/like/:likeUid')
-    async deleteLike(@Param('uid') uid: string, @Param('likeUid') likeUid: string): Promise<{ like: Likes }> {
-        return this.postService.deleteLike(uid, likeUid);
+    @Delete(':id/like/:likeId')
+    async deleteLike(@Param('id') id: string, @Param('likeId') likeId: string): Promise<{ like: Likes }> {
+        return this.postService.deleteLike(id, likeId);
     }
 
     // Comment api
-    @Get(':uid/comment')
+    @Get(':id/comment')
     async getComment(
-        @Param('uid') uid: string,
+        @Param('id') id: string,
         @Query('skip') skip: number,
         @Query('limit') limit: number
     ): Promise<{ comments: Comments[] }> {
-        return this.postService.getComment(uid, skip, limit);
+        return this.postService.getComment(id, skip, limit);
     }
 
-    @Post(':uid/comment')
-    async addComment(@Param('uid') uid: string, @Body() createCommentDto: CreateCommentDto): Promise<{ comment: Comments }> {
-        return this.postService.addComment(uid, createCommentDto);
+    @Post(':id/comment')
+    async addComment(@Param('id') id: string, @Body() createCommentDto: CreateCommentDto): Promise<{ comment: Comments }> {
+        return this.postService.addComment(id, createCommentDto);
     }
 
-    @Patch(':uid/comment/:commentUid')
-    async updateComment(@Param('uid') uid: string, @Param('commentUid') commentUid: string, @Body() updateCommentDto: UpdateCommentDto): Promise<{ comment: Comments }> {
-        return this.postService.updateComment(uid, commentUid, updateCommentDto);
+    @Patch(':id/comment/:commentId')
+    async updateComment(@Param('id') id: string, @Param('commentId') commentId: string, @Body() updateCommentDto: UpdateCommentDto): Promise<{ comment: Comments }> {
+        return this.postService.updateComment(id, commentId, updateCommentDto);
     }
 
-    @Delete(':uid/comment/:commentUid')
-    async deleteComment(@Param('uid') uid: string, @Param('commentUid') commentUid: string): Promise<{ comment: Comments }> {
-        return this.postService.deleteComment(uid, commentUid);
+    @Delete(':id/comment/:commentId')
+    async deleteComment(@Param('id') id: string, @Param('commentId') commentId: string): Promise<{ comment: Comments }> {
+        return this.postService.deleteComment(id, commentId);
     }
 
     // Share api
-    @Get(':uid/share')
-    async getShare(@Param('uid') uid: string): Promise<{ shares: Shares[] }> {
-        return this.postService.getShare(uid);
+    @Get(':id/share')
+    async getShare(@Param('id') id: string): Promise<{ shares: Shares[] }> {
+        return this.postService.getShare(id);
     }
 
-    @Post(':uid/share')
-    async addShare(@Param('uid') uid: string, @Body() createShareDto: CreateShareDto): Promise<{ share: Shares }> {
-        return this.postService.addShare(uid, createShareDto);
+    @Post(':id/share')
+    async addShare(@Param('id') id: string, @Body() createShareDto: CreateShareDto): Promise<{ share: Shares }> {
+        return this.postService.addShare(id, createShareDto);
     }
 
-    @Delete(':uid/share/:shareUid')
-    async deleteShare(@Param('uid') uid: string, @Param('shareUid') shareUid: string): Promise<{ share: Shares }> {
-        return this.postService.deleteShare(uid, shareUid);
+    @Delete(':id/share/:shareId')
+    async deleteShare(@Param('id') id: string, @Param('shareId') shareId: string): Promise<{ share: Shares }> {
+        return this.postService.deleteShare(id, shareId);
     }
 
     // Save api
-    @Get(':uid/save')
-    async getSave(@Param('uid') uid: string): Promise<{ saves: Saves[] }> {
-        return this.postService.getSave(uid);
+    @Get(':id/save')
+    async getSave(@Param('id') id: string): Promise<{ saves: Saves[] }> {
+        return this.postService.getSave(id);
     }
 
-    @Post(':uid/save')
-    async addSave(@Param('uid') uid: string, @Body() createSaveDto: CreateSaveDto): Promise<{ save: Saves }> {
-        return this.postService.addSave(uid, createSaveDto);
+    @Post(':id/save')
+    async addSave(@Param('id') id: string, @Body() createSaveDto: CreateSaveDto): Promise<{ save: Saves }> {
+        return this.postService.addSave(id, createSaveDto);
     }
 
-    @Delete(':uid/save/:saveUid')
-    async deleteSave(@Param('uid') uid: string, @Param('saveUid') saveUid: string): Promise<{ save: Saves }> {
-        return this.postService.deleteSave(uid, saveUid);
+    @Delete(':id/save/:saveId')
+    async deleteSave(@Param('id') id: string, @Param('saveId') saveId: string): Promise<{ save: Saves }> {
+        return this.postService.deleteSave(id, saveId);
     }
 }
