@@ -12,6 +12,12 @@ export class LikeService {
     ) { }
 
     async addLike(createLikeDto: CreateLikeDto): Promise<Likes> {
+        const { userId, postId } = createLikeDto;
+        const existingLike = await this.likeModel.findOne({ userId, postId }).exec();
+        if (existingLike) {
+            throw new Error('User has already liked this post');
+        }
+
         const newLike = new this.likeModel(createLikeDto);
         const savedLike = await newLike.save();
         return this.likeModel.findById(savedLike._id).populate('userId', '-password -__v').exec();
