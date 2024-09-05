@@ -57,7 +57,7 @@ export class PostService {
         return { likes };
     }
 
-    async addLike(id: string, createLikeDto: CreateLikeDto): Promise<{ like: Likes }> {
+    async addLike(id: string, createLikeDto: CreateLikeDto): Promise<{ post: Post, like: Likes }> {
         const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
@@ -67,10 +67,10 @@ export class PostService {
             post.likesCount += 1;
             await post.save();
         }
-        return { like: newLike };
+        return { post, like: newLike };
     }
 
-    async deleteLike(id: string, likeId: string): Promise<{ like: Likes }> {
+    async deleteLike(id: string, likeId: string): Promise<{ post: Post, like: Likes }> {
         const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
@@ -80,7 +80,7 @@ export class PostService {
             post.likesCount -= 1;
             await post.save();
         }
-        return { like: deletedLike };
+        return { post, like: deletedLike };
     }
 
     // Comment
@@ -93,7 +93,7 @@ export class PostService {
         return { comments };
     }
 
-    async addComment(id: string, createCommentDto: CreateCommentDto): Promise<{ comment: Comments }> {
+    async addComment(id: string, createCommentDto: CreateCommentDto): Promise<{ post: Post, comment: Comments }> {
         const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
@@ -103,10 +103,10 @@ export class PostService {
             post.commentsCount += 1;
             await post.save();
         }
-        return { comment: newComment };
+        return { post, comment: newComment };
     }
 
-    async updateComment(id: string, commentId: string, updateCommentDto: UpdateCommentDto): Promise<{ comment: Comments }> {
+    async updateComment(id: string, commentId: string, updateCommentDto: UpdateCommentDto): Promise<{ post: Post, comment: Comments }> {
         const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
@@ -117,10 +117,10 @@ export class PostService {
             throw new Error('Comment not found or failed to update');
         }
 
-        return { comment: updatedComment };
+        return { post, comment: updatedComment };
     }
 
-    async deleteComment(id: string, commentId: string): Promise<{ comment: Comments }> {
+    async deleteComment(id: string, commentId: string): Promise<{ post: Post, comment: Comments }> {
         const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
@@ -130,7 +130,7 @@ export class PostService {
             post.commentsCount -= 1;
             await post.save();
         }
-        return { comment: deletedComment };
+        return { post, comment: deletedComment };
     }
 
     // Share
@@ -143,7 +143,7 @@ export class PostService {
         return { shares };
     }
 
-    async addShare(id: string, createShareDto: CreateShareDto): Promise<{ share: Shares }> {
+    async addShare(id: string, createShareDto: CreateShareDto): Promise<{ post: Post, share: Shares }> {
         const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
@@ -153,10 +153,10 @@ export class PostService {
             post.sharesCount += 1;
             await post.save();
         }
-        return { share: newShare };
+        return { post, share: newShare };
     }
 
-    async deleteShare(id: string, shareId: string): Promise<{ share: Shares }> {
+    async deleteShare(id: string, shareId: string): Promise<{ post: Post, share: Shares }> {
         const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
@@ -166,7 +166,7 @@ export class PostService {
             post.sharesCount -= 1;
             await post.save();
         }
-        return { share: deletedShare };
+        return { post, share: deletedShare };
     }
 
     // Save
@@ -179,7 +179,7 @@ export class PostService {
         return { saves };
     }
 
-    async addSave(id: string, createSaveDto: CreateSaveDto): Promise<{ save: Saves }> {
+    async addSave(id: string, createSaveDto: CreateSaveDto): Promise<{ post: Post, save: Saves }> {
         const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
@@ -188,10 +188,10 @@ export class PostService {
         if (newSave) {
             await post.save();
         }
-        return { save: newSave };
+        return { post, save: newSave };
     }
 
-    async deleteSave(id: string, saveId: string): Promise<{ save: Saves }> {
+    async deleteSave(id: string, saveId: string): Promise<{ post: Post, save: Saves }> {
         const post = await this.findOnePost(id);
         if (!post) {
             throw new Error('Post not found');
@@ -200,6 +200,6 @@ export class PostService {
         if (deletedSave) {
             await post.save();
         }
-        return { save: deletedSave };
+        return { post, save: deletedSave };
     }
 }

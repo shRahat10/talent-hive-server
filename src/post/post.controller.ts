@@ -42,12 +42,12 @@ export class PostController {
     }
 
     @Post(':id/like')
-    async addLike(@Param('id') id: string, @Body() createLikeDto: CreateLikeDto): Promise<{ like: Likes }> {
+    async addLike(@Param('id') id: string, @Body() createLikeDto: CreateLikeDto): Promise<{ post: PostModel, like: Likes }> {
         return this.postService.addLike(id, createLikeDto);
     }
 
     @Delete(':id/like/:likeId')
-    async deleteLike(@Param('id') id: string, @Param('likeId') likeId: string): Promise<{ like: Likes }> {
+    async deleteLike(@Param('id') id: string, @Param('likeId') likeId: string): Promise<{ post: PostModel, like: Likes }> {
         return this.postService.deleteLike(id, likeId);
     }
 
@@ -62,17 +62,17 @@ export class PostController {
     }
 
     @Post(':id/comment')
-    async addComment(@Param('id') id: string, @Body() createCommentDto: CreateCommentDto): Promise<{ comment: Comments }> {
+    async addComment(@Param('id') id: string, @Body() createCommentDto: CreateCommentDto): Promise<{ post: PostModel, comment: Comments }> {
         return this.postService.addComment(id, createCommentDto);
     }
 
     @Patch(':id/comment/:commentId')
-    async updateComment(@Param('id') id: string, @Param('commentId') commentId: string, @Body() updateCommentDto: UpdateCommentDto): Promise<{ comment: Comments }> {
+    async updateComment(@Param('id') id: string, @Param('commentId') commentId: string, @Body() updateCommentDto: UpdateCommentDto): Promise<{ post: PostModel, comment: Comments }> {
         return this.postService.updateComment(id, commentId, updateCommentDto);
     }
 
     @Delete(':id/comment/:commentId')
-    async deleteComment(@Param('id') id: string, @Param('commentId') commentId: string): Promise<{ comment: Comments }> {
+    async deleteComment(@Param('id') id: string, @Param('commentId') commentId: string): Promise<{ post: PostModel, comment: Comments }> {
         return this.postService.deleteComment(id, commentId);
     }
 
@@ -83,12 +83,12 @@ export class PostController {
     }
 
     @Post(':id/share')
-    async addShare(@Param('id') id: string, @Body() createShareDto: CreateShareDto): Promise<{ share: Shares }> {
+    async addShare(@Param('id') id: string, @Body() createShareDto: CreateShareDto): Promise<{ post: PostModel, share: Shares }> {
         return this.postService.addShare(id, createShareDto);
     }
 
     @Delete(':id/share/:shareId')
-    async deleteShare(@Param('id') id: string, @Param('shareId') shareId: string): Promise<{ share: Shares }> {
+    async deleteShare(@Param('id') id: string, @Param('shareId') shareId: string): Promise<{ post: PostModel, share: Shares }> {
         return this.postService.deleteShare(id, shareId);
     }
 
@@ -99,12 +99,12 @@ export class PostController {
     }
 
     @Post(':id/save')
-    async addSave(@Param('id') id: string, @Body() createSaveDto: CreateSaveDto): Promise<{ save: Saves }> {
+    async addSave(@Param('id') id: string, @Body() createSaveDto: CreateSaveDto): Promise<{ post: PostModel, save: Saves }> {
         return this.postService.addSave(id, createSaveDto);
     }
 
     @Delete(':id/save/:saveId')
-    async deleteSave(@Param('id') id: string, @Param('saveId') saveId: string): Promise<{ save: Saves }> {
+    async deleteSave(@Param('id') id: string, @Param('saveId') saveId: string): Promise<{ post: PostModel, save: Saves }> {
         return this.postService.deleteSave(id, saveId);
     }
 }
