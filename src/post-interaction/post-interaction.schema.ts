@@ -3,6 +3,7 @@ import { Document, Types } from 'mongoose';
 import { Post } from 'src/post/post.schema';
 import { User } from 'src/user/user.schema';
 
+// Like
 @Schema()
 export class Likes extends Document {
     @Prop({ type: Types.ObjectId, ref: User.name, required: true })
@@ -17,6 +18,7 @@ export class Likes extends Document {
 
 export const LikeSchema = SchemaFactory.createForClass(Likes);
 
+// Comment
 @Schema()
 export class Comments extends Document {
     @Prop({ type: Types.ObjectId, ref: User.name, required: true })
@@ -34,6 +36,7 @@ export class Comments extends Document {
 
 export const CommentSchema = SchemaFactory.createForClass(Comments);
 
+// Share
 @Schema()
 export class Shares extends Document {
     @Prop({ type: Types.ObjectId, ref: User.name, required: true })
@@ -42,12 +45,16 @@ export class Shares extends Document {
     @Prop({ type: Types.ObjectId, ref: Post.name, required: true })
     postId: Types.ObjectId;
 
+    @Prop()
+    content: string;
+
     @Prop({ default: new Date() })
     createdAt: Date;
 }
 
 export const ShareSchema = SchemaFactory.createForClass(Shares);
 
+// Save
 @Schema()
 export class Saves extends Document {
     @Prop({ type: Types.ObjectId, ref: User.name, required: true })

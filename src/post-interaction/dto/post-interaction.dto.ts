@@ -40,6 +40,9 @@ export class CreateShareDto {
     @IsString()
     @IsNotEmpty()
     postId: string;
+
+    @IsString()
+    content: string;
 }
 
 // Save
