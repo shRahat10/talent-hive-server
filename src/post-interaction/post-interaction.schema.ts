@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
+import { Post } from 'src/post/post.schema';
 import { User } from 'src/user/user.schema';
 
 @Schema()
@@ -7,8 +8,11 @@ export class Likes extends Document {
     @Prop({ type: Types.ObjectId, ref: User.name, required: true })
     userId: Types.ObjectId;
 
-    @Prop({ required: true })
-    postId: string;
+    @Prop({ type: Types.ObjectId, ref: Post.name, required: true })
+    postId: Types.ObjectId;
+
+    @Prop({ default: new Date() })
+    createdAt: Date;
 }
 
 export const LikeSchema = SchemaFactory.createForClass(Likes);
@@ -32,7 +36,7 @@ export const CommentSchema = SchemaFactory.createForClass(Comments);
 
 @Schema()
 export class Shares extends Document {
-     @Prop({ type: Types.ObjectId, ref: User.name, required: true })
+    @Prop({ type: Types.ObjectId, ref: User.name, required: true })
     userId: Types.ObjectId;
 
     @Prop({ required: true })

@@ -9,6 +9,7 @@ import { Comments, Likes, Saves, Shares } from 'src/post-interaction/post-intera
 
 export interface PostWithLikes extends Post {
     isLiked: boolean;
+    likeId?: string;
 }
 
 @Injectable()
@@ -31,9 +32,11 @@ export class PostService {
         const postWithIsLiked = await Promise.all(
             posts.map(async (post) => {
                 const likes = await this.likeService.findLikesByPostId(post._id.toString());
-                const isLiked = likes.some(like => like.userId._id.toString() === userId);
+                const userLike = likes.find(like => like.userId.toString() === userId);
+                const isLiked = !!userLike;
+                const likeId = isLiked ? userLike._id.toString() : null;
 
-                return { ...post.toObject(), isLiked } as PostWithLikes;
+                return { ...post.toObject(), isLiked, likeId } as PostWithLikes;
             })
         );
 
@@ -181,7 +184,7 @@ export class PostService {
         if (!post) {
             throw new Error('Post not found');
         }
-        const deletedShare = await this.shareService.deleteShare(shareId, id);
+        const deletedShare = await this.shareService.deleteShare(id, shareId);
         if (deletedShare) {
             post.sharesCount -= 1;
             await post.save();
@@ -216,7 +219,7 @@ export class PostService {
         if (!post) {
             throw new Error('Post not found');
         }
-        const deletedSave = await this.saveService.deleteSave(saveId, id);
+        const deletedSave = await this.saveService.deleteSave(id, saveId);
         if (deletedSave) {
             await post.save();
         }

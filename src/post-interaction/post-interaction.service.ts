@@ -23,7 +23,7 @@ export class LikeService {
         return this.likeModel.findById(savedLike._id).populate('userId', '-password -__v').exec();
     }
 
-    async deleteLike(id: string, postId: string): Promise<Likes | null> {
+    async deleteLike(postId: string, id: string): Promise<Likes | null> {
         return this.likeModel.findByIdAndDelete(id, { postId }).exec();
     }
 
@@ -33,7 +33,7 @@ export class LikeService {
 
     async findLikesByPostId(postId: string): Promise<Likes[]> {
         return this.likeModel.find({ postId }).populate('userId', '-password -__v').exec();
-    }    
+    }
 }
 
 // Comment
@@ -84,7 +84,7 @@ export class ShareService {
         return this.shareModel.findById(savedShare._id).populate('userId', '-password -__v').exec();
     }
 
-    async deleteShare(id: string, postId: string): Promise<Shares | null> {
+    async deleteShare(postId: string, id: string): Promise<Shares | null> {
         return this.shareModel.findByIdAndDelete(id, { postId }).exec();
     }
 
@@ -106,7 +106,7 @@ export class SaveService {
         return this.saveModel.findById(savedSave._id).populate('userId', '-password -__v').exec();
     }
 
-    async deleteSave(id: string, postId: string): Promise<Saves | null> {
+    async deleteSave(postId: string, id: string): Promise<Saves | null> {
         return this.saveModel.findByIdAndDelete(id, { postId }).exec();
     }
 
