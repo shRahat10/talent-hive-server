@@ -101,6 +101,12 @@ export class SaveService {
     ) { }
 
     async addSave(createSaveDto: CreateSaveDto): Promise<Saves> {
+        const { userId, postId } = createSaveDto;
+        const existingSave = await this.saveModel.findOne({ userId, postId }).exec();
+        if (existingSave) {
+            throw new Error('User has already saved this post');
+        }
+
         const newSave = new this.saveModel(createSaveDto);
         const savedSave = await newSave.save();
         return this.saveModel.findById(savedSave._id).populate('userId', '-password -__v').exec();

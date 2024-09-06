@@ -10,6 +10,8 @@ import { Comments, Likes, Saves, Shares } from 'src/post-interaction/post-intera
 export interface PostWithLikes extends Post {
     isLiked: boolean;
     likeId?: string;
+    isSaved: boolean;
+    saveId?: string;
 }
 
 @Injectable()
@@ -29,18 +31,25 @@ export class PostService {
             .sort({ createdAt: -1, _id: -1 })
             .exec();
 
-        const postWithIsLiked = await Promise.all(
+        const postWithIsLikedAndSaved = await Promise.all(
             posts.map(async (post) => {
+                // isLiked
                 const likes = await this.likeService.findLikesByPostId(post._id.toString());
                 const userLike = likes.find(like => like.userId.toString() === userId);
                 const isLiked = !!userLike;
                 const likeId = isLiked ? userLike._id.toString() : null;
 
-                return { ...post.toObject(), isLiked, likeId } as PostWithLikes;
+                // isSaved
+                const saves = await this.saveService.findSavesByPostId(post._id.toString());
+                const userSave = saves.find(save => save.userId.toString() === userId);
+                const isSaved = !!userSave;
+                const saveId = isSaved ? userSave._id.toString() : null;
+
+                return { ...post.toObject(), isLiked, likeId, isSaved, saveId } as PostWithLikes;
             })
         );
 
-        return postWithIsLiked;
+        return postWithIsLikedAndSaved;
     }
 
     // finds post for rest of the api
