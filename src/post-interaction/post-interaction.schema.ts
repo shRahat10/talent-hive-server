@@ -22,8 +22,8 @@ export class Comments extends Document {
     @Prop({ type: Types.ObjectId, ref: User.name, required: true })
     userId: Types.ObjectId;
 
-    @Prop({ required: true })
-    postId: string;
+    @Prop({ type: Types.ObjectId, ref: Post.name, required: true })
+    postId: Types.ObjectId;
 
     @Prop({ required: true })
     comment: string;
@@ -39,8 +39,8 @@ export class Shares extends Document {
     @Prop({ type: Types.ObjectId, ref: User.name, required: true })
     userId: Types.ObjectId;
 
-    @Prop({ required: true })
-    postId: string;
+    @Prop({ type: Types.ObjectId, ref: Post.name, required: true })
+    postId: Types.ObjectId;
 
     @Prop({ default: new Date() })
     createdAt: Date;
@@ -53,8 +53,8 @@ export class Saves extends Document {
     @Prop({ type: Types.ObjectId, ref: User.name, required: true })
     userId: Types.ObjectId;
 
-    @Prop({ required: true })
-    postId: string;
+    @Prop({ type: Types.ObjectId, ref: Post.name, required: true })
+    postId: Types.ObjectId;
 
     @Prop({ default: new Date() })
     createdAt: Date;
