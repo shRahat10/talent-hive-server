@@ -36,24 +36,6 @@ export class Comments extends Document {
 
 export const CommentSchema = SchemaFactory.createForClass(Comments);
 
-// Share
-// @Schema()
-// export class Shares extends Document {
-//     @Prop({ type: Types.ObjectId, ref: User.name, required: true })
-//     userId: Types.ObjectId;
-
-//     @Prop({ type: Types.ObjectId, ref: Post.name, required: true })
-//     postId: Types.ObjectId;
-
-//     @Prop()
-//     content: string;
-
-//     @Prop({ default: new Date() })
-//     createdAt: Date;
-// }
-
-// export const ShareSchema = SchemaFactory.createForClass(Shares);
-
 // Save
 @Schema()
 export class Saves extends Document {
