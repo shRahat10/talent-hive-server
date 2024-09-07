@@ -39,13 +39,13 @@ export class PostService {
             posts.map(async (post) => {
                 // isLiked
                 const likes = await this.likeService.findLikesByPostId(post._id.toString());
-                const userLike = likes.find(like => like.userId.toString() === userId);
+                const userLike = likes.find(like => like.userId._id.toString() === userId);
                 const isLiked = !!userLike;
                 const likeId = isLiked ? userLike._id.toString() : null;
 
                 // isSaved
                 const saves = await this.saveService.findSavesByPostId(post._id.toString());
-                const userSave = saves.find(save => save.userId.toString() === userId);
+                const userSave = saves.find(save => save.userId._id.toString() === userId);
                 const isSaved = !!userSave;
                 const saveId = isSaved ? userSave._id.toString() : null;
 
