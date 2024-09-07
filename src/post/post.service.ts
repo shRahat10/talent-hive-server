@@ -58,7 +58,15 @@ export class PostService {
 
     // finds post for rest of the api
     async findOnePost(id: string): Promise<Post> {
-        return this.postModel.findById(id).populate('userId', '-password -__v').exec();
+        return this.postModel
+            .findById(id)
+            .populate('userId', '-password -__v')
+            .populate({
+                path: 'sharedPostId',
+                model: Post.name,
+                populate: { path: 'userId', select: '-password -__v' }
+            })
+            .exec();
     }
 
     async createPost(createPostDto: CreatePostDto): Promise<Post> {
@@ -82,7 +90,10 @@ export class PostService {
     }
 
     async updatePost(id: string, updatePostDto: UpdatePostDto): Promise<Post> {
-        return this.postModel.findByIdAndUpdate(id, updatePostDto, { new: true }).populate('userId', '-password -__v').exec();
+        return this.postModel
+            .findByIdAndUpdate(id, updatePostDto, { new: true })
+            .populate('userId', '-password -__v')
+            .exec();
     }
 
     async deletePost(id: string): Promise<Post> {
@@ -98,7 +109,13 @@ export class PostService {
         await this.likeService.deleteLikesByPostId(id);
         await this.commentService.deleteCommentsByPostId(id);
 
-        return this.postModel.findByIdAndDelete(id).populate(post.sharedPostId ? 'sharedPostId' : '').exec();
+        return this.postModel
+            .findByIdAndDelete(id)
+            .populate({
+                path: 'sharedPostId',
+                populate: { path: 'userId', select: '-password -__v' }
+            })
+            .exec();
     }
 
     // Like
