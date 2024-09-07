@@ -35,6 +35,7 @@ export class PostService {
             .sort({ createdAt: -1, _id: -1 })
             .exec();
 
+        // TODO: use aggregate
         const postWithIsLikedAndSaved = await Promise.all(
             posts.map(async (post) => {
                 // isLiked
