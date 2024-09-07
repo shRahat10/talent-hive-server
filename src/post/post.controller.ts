@@ -2,8 +2,8 @@ import { Controller, Get, Post, Put, Delete, Body, Param, Query, Patch } from '@
 import { PostService } from './post.service';
 import { CreatePostDto, UpdatePostDto } from './dto/post.dto';
 import { Post as PostModel } from './post.schema';
-import { CreateCommentDto, CreateLikeDto, CreateSaveDto, CreateShareDto, UpdateCommentDto } from '../post-interaction/dto/post-interaction.dto';
-import { Comments, Likes, Saves, Shares } from 'src/post-interaction/post-interaction.schema';
+import { CreateCommentDto, CreateLikeDto, CreateSaveDto, UpdateCommentDto } from '../post-interaction/dto/post-interaction.dto';
+import { Comments, Likes, Saves } from 'src/post-interaction/post-interaction.schema';
 
 @Controller('post')
 export class PostController {
@@ -74,22 +74,6 @@ export class PostController {
     @Delete(':id/comment/:commentId')
     async deleteComment(@Param('id') id: string, @Param('commentId') commentId: string): Promise<{ post: PostModel, comment: Comments }> {
         return this.postService.deleteComment(id, commentId);
-    }
-
-    // Share api
-    @Get(':id/share')
-    async getShare(@Param('id') id: string): Promise<{ shares: Shares[] }> {
-        return this.postService.getShare(id);
-    }
-
-    @Post(':id/share')
-    async addShare(@Param('id') id: string, @Body() createShareDto: CreateShareDto): Promise<{ post: PostModel, share: Shares }> {
-        return this.postService.addShare(id, createShareDto);
-    }
-
-    @Delete(':id/share/:shareId')
-    async deleteShare(@Param('id') id: string, @Param('shareId') shareId: string): Promise<{ post: PostModel, share: Shares }> {
-        return this.postService.deleteShare(id, shareId);
     }
 
     // Save api

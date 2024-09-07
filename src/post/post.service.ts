@@ -3,9 +3,9 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Post } from './post.schema';
 import { CreatePostDto, UpdatePostDto } from './dto/post.dto';
-import { CreateCommentDto, CreateLikeDto, CreateSaveDto, CreateShareDto, UpdateCommentDto } from '../post-interaction/dto/post-interaction.dto';
-import { CommentService, LikeService, SaveService, ShareService } from '../post-interaction/post-interaction.service';
-import { Comments, Likes, Saves, Shares } from 'src/post-interaction/post-interaction.schema';
+import { CreateCommentDto, CreateLikeDto, CreateSaveDto, UpdateCommentDto } from '../post-interaction/dto/post-interaction.dto';
+import { CommentService, LikeService, SaveService } from '../post-interaction/post-interaction.service';
+import { Comments, Likes, Saves } from 'src/post-interaction/post-interaction.schema';
 
 export interface PostWithLikes extends Post {
     isLiked: boolean;
@@ -20,7 +20,6 @@ export class PostService {
         @InjectModel(Post.name) private postModel: Model<Post>,
         private readonly likeService: LikeService,
         private readonly commentService: CommentService,
-        private readonly shareService: ShareService,
         private readonly saveService: SaveService,
     ) { }
 
@@ -28,6 +27,11 @@ export class PostService {
         const posts = await this.postModel
             .find()
             .populate('userId', '-password -__v')
+            .populate({
+                path: 'sharedPostId',
+                model: Post.name,
+                populate: { path: 'userId', select: '-password -__v' }
+            })
             .sort({ createdAt: -1, _id: -1 })
             .exec();
 
@@ -58,9 +62,23 @@ export class PostService {
     }
 
     async createPost(createPostDto: CreatePostDto): Promise<Post> {
+        const { sharedPostId } = createPostDto;
+
         const newPost = new this.postModel(createPostDto);
         const savedPost = await newPost.save();
-        return await this.postModel.findById(savedPost._id).populate('userId', '-password -__v').exec();
+
+        if (sharedPostId) {
+            await this.postModel.findByIdAndUpdate(sharedPostId, { $inc: { sharesCount: 1 } })
+        }
+
+        return await this.postModel
+            .findById(savedPost._id)
+            .populate('userId', '-password -__v')
+            .populate({
+                path: 'sharedPostId',
+                populate: { path: 'userId', select: '-password -__v' }
+            })
+            .exec();
     }
 
     async updatePost(id: string, updatePostDto: UpdatePostDto): Promise<Post> {
@@ -73,10 +91,14 @@ export class PostService {
             throw new Error('Post not found');
         }
 
+        if (post.sharedPostId) {
+            await this.postModel.findByIdAndUpdate(post.sharedPostId, { $inc: { sharesCount: -1 } }).exec();
+        }
+
         await this.likeService.deleteLikesByPostId(id);
         await this.commentService.deleteCommentsByPostId(id);
 
-        return this.postModel.findByIdAndDelete(id).exec();
+        return this.postModel.findByIdAndDelete(id).populate(post.sharedPostId ? 'sharedPostId' : '').exec();
     }
 
     // Like
@@ -163,42 +185,6 @@ export class PostService {
             await post.save();
         }
         return { post, comment: deletedComment };
-    }
-
-    // Share
-    async getShare(id: string): Promise<{ shares: Shares[] }> {
-        const post = await this.findOnePost(id);
-        if (!post) {
-            throw new Error('Post not found');
-        }
-        const shares = await this.shareService.findSharesByPostId(id);
-        return { shares };
-    }
-
-    async addShare(id: string, createShareDto: CreateShareDto): Promise<{ post: Post, share: Shares }> {
-        const post = await this.findOnePost(id);
-        if (!post) {
-            throw new Error('Post not found');
-        }
-        const newShare = await this.shareService.addShare(createShareDto);
-        if (newShare) {
-            post.sharesCount += 1;
-            await post.save();
-        }
-        return { post, share: newShare };
-    }
-
-    async deleteShare(id: string, shareId: string): Promise<{ post: Post, share: Shares }> {
-        const post = await this.findOnePost(id);
-        if (!post) {
-            throw new Error('Post not found');
-        }
-        const deletedShare = await this.shareService.deleteShare(id, shareId);
-        if (deletedShare) {
-            post.sharesCount -= 1;
-            await post.save();
-        }
-        return { post, share: deletedShare };
     }
 
     // Save

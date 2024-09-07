@@ -32,18 +32,18 @@ export class CreateCommentDto {
 export class UpdateCommentDto extends PartialType(CreateCommentDto) { }
 
 // Share
-export class CreateShareDto {
-    @IsString()
-    @IsNotEmpty()
-    userId: string;
+// export class CreateShareDto {
+//     @IsString()
+//     @IsNotEmpty()
+//     userId: string;
 
-    @IsString()
-    @IsNotEmpty()
-    postId: string;
+//     @IsString()
+//     @IsNotEmpty()
+//     postId: string;
 
-    @IsString()
-    content: string;
-}
+//     @IsString()
+//     content: string;
+// }
 
 // Save
 export class CreateSaveDto {

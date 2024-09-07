@@ -1,15 +1,21 @@
-import { IsString, IsArray, IsOptional, ValidateNested, IsDate, IsNumber } from 'class-validator';
+import { IsString, IsArray, IsOptional, ValidateNested, IsDate, IsNumber, IsNotEmpty } from 'class-validator';
 import { Type } from 'class-transformer';
 import { PartialType } from '@nestjs/mapped-types';
-import { CreateCommentDto, CreateLikeDto, CreateShareDto } from 'src/post-interaction/dto/post-interaction.dto';
+import { CreateCommentDto, CreateLikeDto } from 'src/post-interaction/dto/post-interaction.dto';
 
 export class CreatePostDto {
     @IsString()
+    @IsNotEmpty()
     userId: string;
+
+    @IsOptional()
+    @IsString()
+    sharedPostId: string;
 
     @IsString()
     content: string;
 
+    @IsOptional()
     @IsArray()
     @IsString({ each: true })
     media: string[];
@@ -29,12 +35,6 @@ export class CreatePostDto {
     @Type(() => CreateCommentDto)
     @IsArray()
     comments?: CreateCommentDto[];
-
-    @IsOptional()
-    @ValidateNested({ each: true })
-    @Type(() => CreateShareDto)
-    @IsArray()
-    shares?: CreateShareDto[];
 }
 
 

@@ -7,6 +7,9 @@ export class Post extends Document {
     @Prop({ type: Types.ObjectId, ref: User.name, required: true })
     userId: Types.ObjectId;
 
+    @Prop({ type: Types.ObjectId, ref: Post.name, required: false })
+    sharedPostId: Types.ObjectId;
+
     @Prop()
     content: string;
 

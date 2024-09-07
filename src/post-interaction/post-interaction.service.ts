@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Comments, Likes, Saves, Shares } from './post-interaction.schema';
-import { CreateCommentDto, CreateLikeDto, CreateSaveDto, CreateShareDto, UpdateCommentDto } from './dto/post-interaction.dto';
+import { Comments, Likes, Saves } from './post-interaction.schema';
+import { CreateCommentDto, CreateLikeDto, CreateSaveDto, UpdateCommentDto } from './dto/post-interaction.dto';
 
 // Like
 @Injectable()
@@ -68,28 +68,6 @@ export class CommentService {
             .skip(skip)
             .limit(limit)
             .exec();
-    }
-}
-
-// Share
-@Injectable()
-export class ShareService {
-    constructor(
-        @InjectModel(Shares.name) private shareModel: Model<Shares>,
-    ) { }
-
-    async addShare(createShareDto: CreateShareDto): Promise<Shares> {
-        const newShare = new this.shareModel(createShareDto);
-        const savedShare = await newShare.save();
-        return this.shareModel.findById(savedShare._id).populate('userId', '-password -__v').exec();
-    }
-
-    async deleteShare(postId: string, id: string): Promise<Shares | null> {
-        return this.shareModel.findByIdAndDelete(id, { postId }).exec();
-    }
-
-    async findSharesByPostId(postId: string): Promise<Shares[]> {
-        return this.shareModel.find({ postId }).populate('userId', '-password -__v').exec();
     }
 }
 
