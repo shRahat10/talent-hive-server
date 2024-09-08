@@ -13,7 +13,7 @@ export class Likes extends Document {
     postId: Types.ObjectId;
 
     @Prop({ default: new Date() })
-    createdAt: Date;
+    createdOn: Date;
 }
 
 export const LikeSchema = SchemaFactory.createForClass(Likes);
@@ -31,7 +31,10 @@ export class Comments extends Document {
     comment: string;
 
     @Prop({ default: new Date() })
-    createdAt: Date;
+    createdOn?: Date;
+
+    @Prop({ default: new Date() })
+    modifiedOn?: Date;
 }
 
 export const CommentSchema = SchemaFactory.createForClass(Comments);
@@ -46,7 +49,7 @@ export class Saves extends Document {
     postId: Types.ObjectId;
 
     @Prop({ default: new Date() })
-    createdAt: Date;
+    createdOn: Date;
 }
 
 export const SaveSchema = SchemaFactory.createForClass(Saves);

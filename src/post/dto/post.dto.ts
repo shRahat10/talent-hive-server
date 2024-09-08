@@ -21,10 +21,6 @@ export class CreatePostDto {
     media: string[];
 
     @IsOptional()
-    @IsDate()
-    timestamp?: Date;
-
-    @IsOptional()
     @ValidateNested({ each: true })
     @Type(() => CreateLikeDto)
     @IsArray()
@@ -35,6 +31,14 @@ export class CreatePostDto {
     @Type(() => CreateCommentDto)
     @IsArray()
     comments?: CreateCommentDto[];
+
+    @IsOptional()
+    @IsDate()
+    createdOn?: Date;
+
+    @IsOptional()
+    @IsDate()
+    modifiedOn?: Date;
 }
 
 

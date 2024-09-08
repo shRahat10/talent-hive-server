@@ -16,9 +16,6 @@ export class Post extends Document {
     @Prop([String])
     media: string[];
 
-    @Prop({ default: new Date() })
-    timestamp: Date;
-
     @Prop({ default: 0 })
     likesCount: number;
 
@@ -27,6 +24,12 @@ export class Post extends Document {
 
     @Prop({ default: 0 })
     sharesCount: number;
+
+    @Prop({ default: new Date() })
+    createdOn?: Date;
+
+    @Prop({ default: new Date() })
+    modifiedOn?: Date;
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);
