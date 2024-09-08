@@ -20,8 +20,11 @@ export class PostController {
     }
 
     @Get(':id')
-    async findOne(@Param('id') id: string): Promise<PostModel> {
-        return this.postService.findOnePost(id);
+    async findOne(
+        @Param('id') id: string,
+        @Query('userId') userId: string,
+    ): Promise<PostModel> {
+        return this.postService.findPostByPostAndUser(id, userId);
     }
 
     @Get('share/:id')

@@ -61,6 +61,36 @@ export class PostService {
         return postWithIsLikedAndSaved;
     }
 
+    async findPostByPostAndUser(id: string, userId: string): Promise<PostWithInteractions> {
+        const post = await this.postModel
+            .findById(id)
+            .populate('userId', '-password -__v')
+            .populate({
+                path: 'sharedPostId',
+                model: Post.name,
+                populate: { path: 'userId', select: '-password -__v' }
+            })
+            .exec();
+
+        if (!post) {
+            throw new Error("Post not found");
+        }
+
+        // isLiked
+        const likes = await this.likeService.findLikesByPostId(post._id.toString());
+        const userLike = likes.find(like => like.userId._id.toString() === userId);
+        const isLiked = !!userLike;
+        const likeId = isLiked ? userLike._id.toString() : null;
+
+        // isSaved
+        const saves = await this.saveService.findSavesByPostId(post._id.toString());
+        const userSave = saves.find(save => save.userId._id.toString() === userId);
+        const isSaved = !!userSave;
+        const saveId = isSaved ? userSave._id.toString() : null;
+
+        return { ...post.toObject(), isLiked, likeId, isSaved, saveId } as PostWithInteractions;
+    }
+
     // finds post for rest of the api
     async findOnePost(id: string): Promise<Post> {
         return this.postModel
