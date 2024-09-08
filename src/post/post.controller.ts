@@ -11,8 +11,12 @@ export class PostController {
 
     // Post api
     @Get()
-    async findAll(@Query('userId') userId: string): Promise<PostModel[]> {
-        return this.postService.findAllPost(userId);
+    async findAll(
+        @Query('userId') userId: string,
+        @Query('page') page: number = 0,
+        @Query('limit') limit: number = 10
+    ): Promise<PostModel[]> {
+        return this.postService.findAllPost(userId, page, limit);
     }
 
     @Get(':id')

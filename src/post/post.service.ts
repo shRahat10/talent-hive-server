@@ -23,7 +23,9 @@ export class PostService {
         private readonly saveService: SaveService,
     ) { }
 
-    async findAllPost(userId: string): Promise<PostWithLikes[]> {
+    async findAllPost(userId: string, page: number, limit: number): Promise<PostWithLikes[]> {
+        const skip = page * limit;
+
         const posts = await this.postModel
             .find()
             .populate('userId', '-password -__v')
@@ -33,6 +35,8 @@ export class PostService {
                 populate: { path: 'userId', select: '-password -__v' }
             })
             .sort({ createdAt: -1, _id: -1 })
+            .skip(skip)
+            .limit(limit)
             .exec();
 
         // TODO: use aggregate
