@@ -7,7 +7,7 @@ import { CreateCommentDto, CreateLikeDto, CreateSaveDto, UpdateCommentDto } from
 import { CommentService, LikeService, SaveService } from '../post-interaction/post-interaction.service';
 import { Comments, Likes, Saves } from 'src/post-interaction/post-interaction.schema';
 
-export interface PostWithLikes extends Post {
+export interface PostWithInteractions extends Post {
     isLiked: boolean;
     likeId?: string;
     isSaved: boolean;
@@ -23,7 +23,7 @@ export class PostService {
         private readonly saveService: SaveService,
     ) { }
 
-    async findAllPost(userId: string, page: number, limit: number): Promise<PostWithLikes[]> {
+    async findAllPost(userId: string, page: number, limit: number): Promise<PostWithInteractions[]> {
         const skip = page * limit;
 
         const posts = await this.postModel
@@ -54,7 +54,7 @@ export class PostService {
                 const isSaved = !!userSave;
                 const saveId = isSaved ? userSave._id.toString() : null;
 
-                return { ...post.toObject(), isLiked, likeId, isSaved, saveId } as PostWithLikes;
+                return { ...post.toObject(), isLiked, likeId, isSaved, saveId } as PostWithInteractions;
             })
         );
 
@@ -65,6 +65,18 @@ export class PostService {
     async findOnePost(id: string): Promise<Post> {
         return this.postModel
             .findById(id)
+            .populate('userId', '-password -__v')
+            .populate({
+                path: 'sharedPostId',
+                model: Post.name,
+                populate: { path: 'userId', select: '-password -__v' }
+            })
+            .exec();
+    }
+
+    async findPostShares(id: string): Promise<Post[]> {
+        return this.postModel
+            .find({ sharedPostId: id })
             .populate('userId', '-password -__v')
             .populate({
                 path: 'sharedPostId',

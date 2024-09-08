@@ -24,6 +24,11 @@ export class PostController {
         return this.postService.findOnePost(id);
     }
 
+    @Get('share/:id')
+    async findPostShares(@Param('id') id: string): Promise<PostModel[]> {
+        return this.postService.findPostShares(id);
+    }
+
     @Post()
     async create(@Body() createPostDto: CreatePostDto): Promise<PostModel> {
         return this.postService.createPost(createPostDto);
