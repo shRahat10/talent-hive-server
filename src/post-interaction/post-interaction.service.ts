@@ -64,7 +64,7 @@ export class CommentService {
     async findCommentsByPostId(postId: string, skip = 0, limit = 5): Promise<Comments[]> {
         return this.commentModel.find({ postId })
             .populate('userId', '-password -__v')
-            .sort({ modifiedOn: -1, _id: -1 })
+            .sort({ updatedAt: -1, _id: -1 })
             .skip(skip)
             .limit(limit)
             .exec();

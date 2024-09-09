@@ -13,7 +13,7 @@ export class CreateLikeDto {
 
     @IsOptional()
     @IsDate()
-    createdOn?: Date;
+    createdAt?: Date;
 }
 
 // Comment
@@ -35,11 +35,11 @@ export class CreateCommentDto {
 
     @IsOptional()
     @IsDate()
-    createdOn?: Date;
+    createdAt?: Date;
 
     @IsOptional()
     @IsDate()
-    modifiedOn?: Date;
+    updatedAt?: Date;
 }
 export class UpdateCommentDto extends PartialType(CreateCommentDto) { }
 
@@ -55,5 +55,5 @@ export class CreateSaveDto {
 
     @IsOptional()
     @IsDate()
-    createdOn?: Date;
+    createdAt?: Date;
 }

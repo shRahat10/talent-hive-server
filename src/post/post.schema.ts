@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 import { User } from 'src/user/user.schema';
 
-@Schema()
+@Schema({ timestamps: true })
 export class Post extends Document {
     @Prop({ type: Types.ObjectId, ref: User.name, required: true })
     userId: Types.ObjectId;
@@ -24,12 +24,6 @@ export class Post extends Document {
 
     @Prop({ default: 0 })
     sharesCount: number;
-
-    @Prop({ default: new Date() })
-    createdOn?: Date;
-
-    @Prop({ default: new Date() })
-    modifiedOn?: Date;
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);

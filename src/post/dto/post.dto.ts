@@ -34,11 +34,11 @@ export class CreatePostDto {
 
     @IsOptional()
     @IsDate()
-    createdOn?: Date;
+    createdAt?: Date;
 
     @IsOptional()
     @IsDate()
-    modifiedOn?: Date;
+    updatedAt?: Date;
 }
 
 

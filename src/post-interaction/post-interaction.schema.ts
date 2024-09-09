@@ -4,22 +4,19 @@ import { Post } from 'src/post/post.schema';
 import { User } from 'src/user/user.schema';
 
 // Like
-@Schema()
+@Schema({ timestamps: true })
 export class Likes extends Document {
     @Prop({ type: Types.ObjectId, ref: User.name, required: true })
     userId: Types.ObjectId;
 
     @Prop({ type: Types.ObjectId, ref: Post.name, required: true })
     postId: Types.ObjectId;
-
-    @Prop({ default: new Date() })
-    createdOn: Date;
 }
 
 export const LikeSchema = SchemaFactory.createForClass(Likes);
 
 // Comment
-@Schema()
+@Schema({ timestamps: true })
 export class Comments extends Document {
     @Prop({ type: Types.ObjectId, ref: User.name, required: true })
     userId: Types.ObjectId;
@@ -29,27 +26,18 @@ export class Comments extends Document {
 
     @Prop({ required: true })
     comment: string;
-
-    @Prop({ default: new Date() })
-    createdOn?: Date;
-
-    @Prop({ default: new Date() })
-    modifiedOn?: Date;
 }
 
 export const CommentSchema = SchemaFactory.createForClass(Comments);
 
 // Save
-@Schema()
+@Schema({ timestamps: true })
 export class Saves extends Document {
     @Prop({ type: Types.ObjectId, ref: User.name, required: true })
     userId: Types.ObjectId;
 
     @Prop({ type: Types.ObjectId, ref: Post.name, required: true })
     postId: Types.ObjectId;
-
-    @Prop({ default: new Date() })
-    createdOn: Date;
 }
 
 export const SaveSchema = SchemaFactory.createForClass(Saves);
