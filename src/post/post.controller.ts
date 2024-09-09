@@ -28,8 +28,12 @@ export class PostController {
     }
 
     @Get('share/:id')
-    async findPostShares(@Param('id') id: string): Promise<PostModel[]> {
-        return this.postService.findPostShares(id);
+    async findPostShares(
+        @Param('id') id: string,
+        @Query('exclude') exclude: string
+    ): Promise<PostModel[]> {
+        const excludeIds = exclude ? exclude.split(',') : [];
+        return this.postService.findPostShares(id, excludeIds);
     }
 
     @Post()

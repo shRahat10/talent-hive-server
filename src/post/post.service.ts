@@ -104,9 +104,9 @@ export class PostService {
             .exec();
     }
 
-    async findPostShares(id: string): Promise<Post[]> {
+    async findPostShares(postId: string, excludeIds: string[]): Promise<Post[]> {
         return this.postModel
-            .find({ sharedPostId: id })
+            .find({ sharedPostId: postId, _id: { $nin: excludeIds } })
             .populate('userId', '-password -__v')
             .populate({
                 path: 'sharedPostId',
