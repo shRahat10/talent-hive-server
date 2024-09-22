@@ -140,6 +140,10 @@ export class PostService {
         return this.postModel
             .findByIdAndUpdate(id, updatePostDto, { new: true })
             .populate('userId', '-password -__v')
+            .populate({
+                path: 'sharedPostId',
+                populate: { path: 'userId', select: '-password -__v' }
+            })
             .exec();
     }
 
