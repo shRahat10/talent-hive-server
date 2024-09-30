@@ -19,6 +19,15 @@ export class PostController {
         return this.postService.findAllPost(userId, page, limit);
     }
 
+    @Get('timeline')
+    async findAllTimelinePost(
+        @Query('userId') userId: string,
+        @Query('page') page: number = 0,
+        @Query('limit') limit: number = 10
+    ): Promise<PostModel[]> {
+        return this.postService.findAllTimelinePost(userId, page, limit);
+    }
+
     @Get(':id')
     async findOne(
         @Param('id') id: string,
