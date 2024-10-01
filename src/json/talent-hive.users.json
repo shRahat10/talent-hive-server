@@ -10,6 +10,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/834863/pexels-photo-834863.jpeg",
+        "designation": "AI Engineer",
         "createdAt": "2020-10-01T08:52:12.528823",
         "updatedAt": "2020-10-01T08:52:12.528823"
     },
@@ -24,6 +25,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg",
+        "designation": "Web Developer",
         "createdAt": "2020-04-05T19:28:31.158147",
         "updatedAt": "2020-04-05T19:28:31.158147"
     },
@@ -38,6 +40,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/1587009/pexels-photo-1587009.jpeg",
+        "designation": "Cybersecurity Analyst",
         "createdAt": "2020-04-11T07:52:21.035750",
         "updatedAt": "2020-04-11T07:52:21.035750"
     },
@@ -52,6 +55,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/2120084/pexels-photo-2120084.jpeg",
+        "designation": "Frontend Developer",
         "createdAt": "2020-01-23T14:09:28.974760",
         "updatedAt": "2020-01-23T14:09:28.974760"
     },
@@ -66,6 +70,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg",
+        "designation": "Full Stack Developer",
         "createdAt": "2020-06-29T10:26:36.917607",
         "updatedAt": "2020-06-29T10:26:36.917607"
     },
@@ -80,6 +85,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg",
+        "designation": "DevOps Engineer",
         "createdAt": "2020-03-21T04:48:22.475875",
         "updatedAt": "2020-03-21T04:48:22.475875"
     },
@@ -94,6 +100,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/35537/child-children-girl-happy.jpg",
+        "designation": "DevOps Engineer",
         "createdAt": "2020-05-24T08:54:52.294101",
         "updatedAt": "2020-05-24T08:54:52.294101"
     },
@@ -108,6 +115,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/1758144/pexels-photo-1758144.jpeg",
+        "designation": "Machine Learning Engineer",
         "createdAt": "2020-06-23T07:36:59.827475",
         "updatedAt": "2020-06-23T07:36:59.827475"
     },
@@ -122,6 +130,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/871495/pexels-photo-871495.jpeg",
+        "designation": "DevOps Engineer",
         "createdAt": "2020-08-08T04:20:56.455137",
         "updatedAt": "2020-08-08T04:20:56.455137"
     },
@@ -136,6 +145,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg",
+        "designation": "Full Stack Developer",
         "createdAt": "2020-06-27T02:03:56.454951",
         "updatedAt": "2020-06-27T02:03:56.454951"
     },
@@ -150,6 +160,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/516927/pexels-photo-516927.jpeg",
+        "designation": "Backend Developer",
         "createdAt": "2020-08-30T08:47:33.309276",
         "updatedAt": "2020-08-30T08:47:33.309276"
     },
@@ -164,6 +175,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg",
+        "designation": "Data Scientist",
         "createdAt": "2020-08-28T13:25:14.331915",
         "updatedAt": "2020-08-28T13:25:14.331915"
     },
@@ -178,6 +190,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/556669/pexels-photo-556669.jpeg",
+        "designation": "Frontend Developer",
         "createdAt": "2020-12-25T09:44:18.691250",
         "updatedAt": "2020-12-25T09:44:18.691250"
     },
@@ -192,6 +205,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg",
+        "designation": "AI Engineer",
         "createdAt": "2020-08-22T07:12:11.247207",
         "updatedAt": "2020-08-22T07:12:11.247207"
     },
@@ -206,6 +220,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/775358/pexels-photo-775358.jpeg",
+        "designation": "Backend Developer",
         "createdAt": "2020-11-14T03:26:02.833244",
         "updatedAt": "2020-11-14T03:26:02.833244"
     },
@@ -220,6 +235,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/214574/pexels-photo-214574.jpeg",
+        "designation": "Web Developer",
         "createdAt": "2020-09-26T17:00:30.815472",
         "updatedAt": "2020-09-26T17:00:30.815472"
     },
@@ -234,6 +250,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/427900/pexels-photo-427900.jpeg",
+        "designation": "AI Engineer",
         "createdAt": "2020-07-11T20:46:06.289094",
         "updatedAt": "2020-07-11T20:46:06.289094"
     },
@@ -248,6 +265,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/1446948/pexels-photo-1446948.jpeg",
+        "designation": "Mobile App Developer",
         "createdAt": "2020-03-27T12:50:50.487635",
         "updatedAt": "2020-03-27T12:50:50.487635"
     },
@@ -262,6 +280,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg",
+        "designation": "Cloud Engineer",
         "createdAt": "2020-07-25T04:19:41.978068",
         "updatedAt": "2020-07-25T04:19:41.978068"
     },
@@ -276,6 +295,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/1755385/pexels-photo-1755385.jpeg",
+        "designation": "DevOps Engineer",
         "createdAt": "2020-04-17T07:14:53.598706",
         "updatedAt": "2020-04-17T07:14:53.598706"
     },
@@ -290,6 +310,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/1933873/pexels-photo-1933873.jpeg",
+        "designation": "DevOps Engineer",
         "createdAt": "2020-10-02T09:43:16.045995",
         "updatedAt": "2020-10-02T09:43:16.045995"
     },
@@ -304,6 +325,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg",
+        "designation": "Software Developer",
         "createdAt": "2020-08-11T13:39:12.471698",
         "updatedAt": "2020-08-11T13:39:12.471698"
     },
@@ -318,6 +340,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/774095/pexels-photo-774095.jpeg",
+        "designation": "Backend Developer",
         "createdAt": "2020-05-17T10:12:18.238336",
         "updatedAt": "2020-05-17T10:12:18.238336"
     },
@@ -332,6 +355,7 @@
         "status": "active",
         "role": "user",
         "profileImage": "https://images.pexels.com/photos/1121796/pexels-photo-1121796.jpeg",
+        "designation": "DevOps Engineer",
         "createdAt": "2020-04-10T07:12:43.055771",
         "updatedAt": "2020-04-10T07:12:43.055771"
     }
