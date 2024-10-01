@@ -15,7 +15,7 @@ export class PostController {
         @Query('userId') userId: string,
         @Query('page') page: number = 0,
         @Query('limit') limit: number = 10
-    ): Promise<PostModel[]> {
+    ): Promise<{ posts: PostModel[], page: number }> {
         return this.postService.findAllPost(userId, page, limit);
     }
 
@@ -24,7 +24,7 @@ export class PostController {
         @Query('userId') userId: string,
         @Query('page') page: number = 0,
         @Query('limit') limit: number = 10
-    ): Promise<PostModel[]> {
+    ): Promise<{ posts: PostModel[], page: number }> {
         return this.postService.findAllTimelinePost(userId, page, limit);
     }
 

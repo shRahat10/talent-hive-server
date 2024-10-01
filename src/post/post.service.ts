@@ -23,7 +23,7 @@ export class PostService {
         private readonly saveService: SaveService,
     ) { }
 
-    async findAllPost(userId: string, page: number, limit: number): Promise<PostWithInteractions[]> {
+    async findAllPost(userId: string, page: number, limit: number): Promise<{ posts: PostWithInteractions[], page: number }> {
         const skip = page * limit;
 
         const posts = await this.postModel
@@ -58,10 +58,13 @@ export class PostService {
             })
         );
 
-        return postWithIsLikedAndSaved;
+        return {
+            posts: postWithIsLikedAndSaved,
+            page: +page + 1
+        };
     }
 
-    async findAllTimelinePost(userId: string, page: number, limit: number): Promise<PostWithInteractions[]> {
+    async findAllTimelinePost(userId: string, page: number, limit: number): Promise<{ posts: PostWithInteractions[], page: number }> {
         const skip = page * limit;
 
         const posts = await this.postModel
@@ -96,7 +99,10 @@ export class PostService {
             })
         );
 
-        return postWithIsLikedAndSaved;
+        return {
+            posts: postWithIsLikedAndSaved,
+            page: +page + 1
+        };
     }
 
     async findPostByPostAndUser(id: string, userId: string): Promise<PostWithInteractions> {
