@@ -16,7 +16,7 @@
         "about": "As an AI Engineer, I specialize in building and optimizing machine learning models and algorithms to solve complex problems. My expertise lies in deploying AI solutions that enhance business processes and drive innovation. I am passionate about staying at the forefront of technology, continuously learning new techniques in deep learning, natural language processing, and computer vision. My goal is to create intelligent systems that can learn, adapt, and provide actionable insights for real-world applications.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-10-01T08:52:12.528823",
         "updatedAt": "2020-10-01T08:52:12.528823"
     },
@@ -37,7 +37,7 @@
         "about": "As a Web Developer, I am dedicated to crafting responsive and user-friendly websites that provide seamless experiences. With a strong background in HTML, CSS, JavaScript, and modern frameworks, I build web applications that are not only functional but also visually appealing. My focus is on writing clean, maintainable code and staying updated with the latest trends in web development. I enjoy solving technical challenges and ensuring that my solutions meet both user needs and business goals.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-04-05T19:28:31.158147",
         "updatedAt": "2020-04-05T19:28:31.158147"
     },
@@ -58,7 +58,7 @@
         "about": "As a Cybersecurity Analyst, my role involves protecting critical systems and networks from cyber threats. I have a strong foundation in risk assessment, vulnerability management, and incident response. My focus is on implementing robust security measures and staying ahead of emerging cyber risks. I am committed to safeguarding data integrity and ensuring that security protocols are in place to protect sensitive information. My passion for cybersecurity drives me to continually refine my skills and stay informed about the latest security technologies.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-04-11T07:52:21.035750",
         "updatedAt": "2020-04-11T07:52:21.035750"
     },
@@ -79,7 +79,7 @@
         "about": "As a Frontend Developer, I focus on creating intuitive, responsive, and visually engaging user interfaces. I bring ideas to life using HTML, CSS, JavaScript, and frameworks like React. My goal is to provide users with seamless experiences across devices while ensuring code quality and performance. I thrive in fast-paced environments where creativity and innovation meet technical precision. I stay current with evolving frontend trends and am passionate about improving user interaction through thoughtful design and code.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-01-23T14:09:28.974760",
         "updatedAt": "2020-01-23T14:09:28.974760"
     },
@@ -100,7 +100,7 @@
         "about": "As a Full Stack Developer, I am proficient in both frontend and backend development, which allows me to build complete web applications. My skillset includes working with technologies like JavaScript, React, Node.js, databases, and APIs. I take pride in delivering high-quality, scalable applications that address both user and business needs. My holistic understanding of the development lifecycle enables me to contribute to every stage, from concept to deployment. I am constantly learning and adapting to new tools and technologies to enhance my development expertise.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-06-29T10:26:36.917607",
         "updatedAt": "2020-06-29T10:26:36.917607"
     },
@@ -121,7 +121,7 @@
         "about": "As a DevOps Engineer, my focus is on bridging the gap between development and operations by automating processes and improving the efficiency of software delivery. I am skilled in CI/CD pipelines, cloud infrastructure, and containerization technologies like Docker and Kubernetes. My passion lies in optimizing workflows and ensuring that systems are reliable, scalable, and secure. I enjoy working in collaborative environments where continuous integration and delivery drive faster, more efficient releases.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-03-21T04:48:22.475875",
         "updatedAt": "2020-03-21T04:48:22.475875"
     },
@@ -142,7 +142,7 @@
         "about": "As a DevOps Engineer, my focus is on bridging the gap between development and operations by automating processes and improving the efficiency of software delivery. I am skilled in CI/CD pipelines, cloud infrastructure, and containerization technologies like Docker and Kubernetes. My passion lies in optimizing workflows and ensuring that systems are reliable, scalable, and secure. I enjoy working in collaborative environments where continuous integration and delivery drive faster, more efficient releases.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-05-24T08:54:52.294101",
         "updatedAt": "2020-05-24T08:54:52.294101"
     },
@@ -163,7 +163,7 @@
         "about": "As a Machine Learning Engineer, I specialize in building algorithms and models that enable systems to learn and improve from data. I have experience with various machine learning frameworks and tools, and I am passionate about applying data-driven solutions to real-world problems. My focus is on creating scalable and efficient models that provide actionable insights. I am constantly exploring new techniques in supervised and unsupervised learning, reinforcement learning, and neural networks.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-06-23T07:36:59.827475",
         "updatedAt": "2020-06-23T07:36:59.827475"
     },
@@ -184,7 +184,7 @@
         "about": "As a DevOps Engineer, my focus is on bridging the gap between development and operations by automating processes and improving the efficiency of software delivery. I am skilled in CI/CD pipelines, cloud infrastructure, and containerization technologies like Docker and Kubernetes. My passion lies in optimizing workflows and ensuring that systems are reliable, scalable, and secure. I enjoy working in collaborative environments where continuous integration and delivery drive faster, more efficient releases.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-08-08T04:20:56.455137",
         "updatedAt": "2020-08-08T04:20:56.455137"
     },
@@ -205,7 +205,7 @@
         "about": "As a Full Stack Developer, I am proficient in both frontend and backend development, which allows me to build complete web applications. My skillset includes working with technologies like JavaScript, React, Node.js, databases, and APIs. I take pride in delivering high-quality, scalable applications that address both user and business needs. My holistic understanding of the development lifecycle enables me to contribute to every stage, from concept to deployment. I am constantly learning and adapting to new tools and technologies to enhance my development expertise.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-06-27T02:03:56.454951",
         "updatedAt": "2020-06-27T02:03:56.454951"
     },
@@ -226,7 +226,7 @@
         "about": "As a Backend Developer, I specialize in building the server-side logic and architecture that power web applications. I am proficient in various backend technologies such as Node.js, Python, and databases like MySQL and MongoDB. My focus is on creating scalable, secure, and efficient backend systems that support the frontend and provide a seamless user experience. I enjoy solving complex technical challenges and ensuring that the applications I develop are both functional and reliable.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-08-30T08:47:33.309276",
         "updatedAt": "2020-08-30T08:47:33.309276"
     },
@@ -247,7 +247,7 @@
         "about": "As a Data Scientist, I use data to solve complex problems and drive decision-making. My expertise lies in statistical analysis, machine learning, and data visualization. I am passionate about transforming raw data into actionable insights that can improve business strategies and outcomes. I work with a variety of tools and frameworks to analyze and interpret data, always aiming to uncover hidden patterns and trends that can lead to better decision-making. My goal is to bridge the gap between data and practical applications.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-08-28T13:25:14.331915",
         "updatedAt": "2020-08-28T13:25:14.331915"
     },
@@ -268,7 +268,7 @@
         "about": "As a Frontend Developer, I focus on creating intuitive, responsive, and visually engaging user interfaces. I bring ideas to life using HTML, CSS, JavaScript, and frameworks like React. My goal is to provide users with seamless experiences across devices while ensuring code quality and performance. I thrive in fast-paced environments where creativity and innovation meet technical precision. I stay current with evolving frontend trends and am passionate about improving user interaction through thoughtful design and code.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-12-25T09:44:18.691250",
         "updatedAt": "2020-12-25T09:44:18.691250"
     },
@@ -289,7 +289,7 @@
         "about": "As an AI Engineer, I specialize in building and optimizing machine learning models and algorithms to solve complex problems. My expertise lies in deploying AI solutions that enhance business processes and drive innovation. I am passionate about staying at the forefront of technology, continuously learning new techniques in deep learning, natural language processing, and computer vision. My goal is to create intelligent systems that can learn, adapt, and provide actionable insights for real-world applications.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-08-22T07:12:11.247207",
         "updatedAt": "2020-08-22T07:12:11.247207"
     },
@@ -310,7 +310,7 @@
         "about": "As a Backend Developer, I specialize in building the server-side logic and architecture that power web applications. I am proficient in various backend technologies such as Node.js, Python, and databases like MySQL and MongoDB. My focus is on creating scalable, secure, and efficient backend systems that support the frontend and provide a seamless user experience. I enjoy solving complex technical challenges and ensuring that the applications I develop are both functional and reliable.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-11-14T03:26:02.833244",
         "updatedAt": "2020-11-14T03:26:02.833244"
     },
@@ -331,7 +331,7 @@
         "about": "As a Web Developer, I am dedicated to crafting responsive and user-friendly websites that provide seamless experiences. With a strong background in HTML, CSS, JavaScript, and modern frameworks, I build web applications that are not only functional but also visually appealing. My focus is on writing clean, maintainable code and staying updated with the latest trends in web development. I enjoy solving technical challenges and ensuring that my solutions meet both user needs and business goals.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-09-26T17:00:30.815472",
         "updatedAt": "2020-09-26T17:00:30.815472"
     },
@@ -352,7 +352,7 @@
         "about": "As an AI Engineer, I specialize in building and optimizing machine learning models and algorithms to solve complex problems. My expertise lies in deploying AI solutions that enhance business processes and drive innovation. I am passionate about staying at the forefront of technology, continuously learning new techniques in deep learning, natural language processing, and computer vision. My goal is to create intelligent systems that can learn, adapt, and provide actionable insights for real-world applications.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-07-11T20:46:06.289094",
         "updatedAt": "2020-07-11T20:46:06.289094"
     },
@@ -373,7 +373,7 @@
         "about": "As a Mobile App Developer, I design and build high-performance mobile applications that provide seamless user experiences across platforms. I am skilled in both iOS and Android development, and I focus on creating apps that are not only functional but also intuitive and user-friendly. I am passionate about staying up-to-date with the latest mobile technologies and trends, and I always aim to create apps that users love. My development process involves careful attention to detail, from the initial concept to the final product.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-03-27T12:50:50.487635",
         "updatedAt": "2020-03-27T12:50:50.487635"
     },
@@ -394,7 +394,7 @@
         "about": null,
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-07-25T04:19:41.978068",
         "updatedAt": "2020-07-25T04:19:41.978068"
     },
@@ -415,7 +415,7 @@
         "about": "As a DevOps Engineer, my focus is on bridging the gap between development and operations by automating processes and improving the efficiency of software delivery. I am skilled in CI/CD pipelines, cloud infrastructure, and containerization technologies like Docker and Kubernetes. My passion lies in optimizing workflows and ensuring that systems are reliable, scalable, and secure. I enjoy working in collaborative environments where continuous integration and delivery drive faster, more efficient releases.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-04-17T07:14:53.598706",
         "updatedAt": "2020-04-17T07:14:53.598706"
     },
@@ -436,7 +436,7 @@
         "about": "As a DevOps Engineer, my focus is on bridging the gap between development and operations by automating processes and improving the efficiency of software delivery. I am skilled in CI/CD pipelines, cloud infrastructure, and containerization technologies like Docker and Kubernetes. My passion lies in optimizing workflows and ensuring that systems are reliable, scalable, and secure. I enjoy working in collaborative environments where continuous integration and delivery drive faster, more efficient releases.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-10-02T09:43:16.045995",
         "updatedAt": "2020-10-02T09:43:16.045995"
     },
@@ -457,7 +457,7 @@
         "about": null,
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-08-11T13:39:12.471698",
         "updatedAt": "2020-08-11T13:39:12.471698"
     },
@@ -478,7 +478,7 @@
         "about": "As a Backend Developer, I specialize in building the server-side logic and architecture that power web applications. I am proficient in various backend technologies such as Node.js, Python, and databases like MySQL and MongoDB. My focus is on creating scalable, secure, and efficient backend systems that support the frontend and provide a seamless user experience. I enjoy solving complex technical challenges and ensuring that the applications I develop are both functional and reliable.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-05-17T10:12:18.238336",
         "updatedAt": "2020-05-17T10:12:18.238336"
     },
@@ -499,7 +499,7 @@
         "about": "As a DevOps Engineer, my focus is on bridging the gap between development and operations by automating processes and improving the efficiency of software delivery. I am skilled in CI/CD pipelines, cloud infrastructure, and containerization technologies like Docker and Kubernetes. My passion lies in optimizing workflows and ensuring that systems are reliable, scalable, and secure. I enjoy working in collaborative environments where continuous integration and delivery drive faster, more efficient releases.",
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
-        "cvLink": "",
+        "resumeLink": "",
         "createdAt": "2020-04-10T07:12:43.055771",
         "updatedAt": "2020-04-10T07:12:43.055771"
     }
