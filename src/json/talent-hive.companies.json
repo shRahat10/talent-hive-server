@@ -1,0 +1,258 @@
+[
+    {
+        "_id": {
+            "$oid": "67029978c6b4b15a1be8d95c"
+        },
+        "employerId": "67028c50c6b4b15a1be8d94c",
+        "companyName": "AlphaSync Solutions",
+        "companyEmail": "alphasyncsolutions@example.com",
+        "companyProfileImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/a7e40b2b-f989-4704-b8e9-c91e1c12fac3.png",
+        "companyCoverImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/a7e40b2b-f989-4704-b8e9-c91e1c12fac3.png",
+        "companyContactNumber": 123456789,
+        "companyDescription": "AlphaSync Solutions is a leading provider of cutting-edge technological solutions. Our team of experienced professionals is dedicated to delivering innovative software and IT services to help businesses grow and adapt in an ever-evolving digital landscape. With a focus on quality, customer satisfaction, and continuous improvement, AlphaSync Solutions strives to exceed client expectations and drive success in the tech industry.",
+        "facebookLink": "https://www.facebook.com/",
+        "linkedInLink": "https://linkedin.com/",
+        "createdAt": "2023-07-22T04:48:22.475875",
+        "updatedAt": "2023-07-22T04:48:22.475875"
+    },
+    {
+        "_id": {
+            "$oid": "67029978c6b4b15a1be8d95d"
+        },
+        "employerId": "67028c50c6b4b15a1be8d94d",
+        "companyName": "ApexForge IT",
+        "companyEmail": "apexforgeit@example.com",
+        "companyProfileImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/fc6526aa-d676-4fd8-b76a-1d6e975349b2.png",
+        "companyCoverImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/fc6526aa-d676-4fd8-b76a-1d6e975349b2.png",
+        "companyContactNumber": 123456789,
+        "companyDescription": "ApexForge IT is a leading provider of cutting-edge technological solutions. Our team of experienced professionals is dedicated to delivering innovative software and IT services to help businesses grow and adapt in an ever-evolving digital landscape. With a focus on quality, customer satisfaction, and continuous improvement, ApexForge IT strives to exceed client expectations and drive success in the tech industry.",
+        "facebookLink": "https://www.facebook.com/",
+        "linkedInLink": "https://linkedin.com/",
+        "createdAt": "2024-01-10T19:28:31.158147",
+        "updatedAt": "2024-01-10T19:28:31.158147"
+    },
+    {
+        "_id": {
+            "$oid": "67029978c6b4b15a1be8d95e"
+        },
+        "employerId": "67028c50c6b4b15a1be8d94e",
+        "companyName": "BlueHexa Innovations",
+        "companyEmail": "bluehexainnovations@example.com",
+        "companyProfileImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/e6cbf8d3-1eff-4b40-8af6-1c0f576352e8.png",
+        "companyCoverImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/e6cbf8d3-1eff-4b40-8af6-1c0f576352e8.png",
+        "companyContactNumber": 123456789,
+        "companyDescription": "BlueHexa Innovations is a leading provider of cutting-edge technological solutions. Our team of experienced professionals is dedicated to delivering innovative software and IT services to help businesses grow and adapt in an ever-evolving digital landscape. With a focus on quality, customer satisfaction, and continuous improvement, BlueHexa Innovations strives to exceed client expectations and drive success in the tech industry.",
+        "facebookLink": "https://www.facebook.com/",
+        "linkedInLink": "https://linkedin.com/",
+        "createdAt": "2023-04-03T19:28:31.158147",
+        "updatedAt": "2023-04-03T19:28:31.158147"
+    },
+    {
+        "_id": {
+            "$oid": "67029978c6b4b15a1be8d95f"
+        },
+        "employerId": "67028c50c6b4b15a1be8d94f",
+        "companyName": "BrightLogic Innovations",
+        "companyEmail": "brightlogicinnovations@example.com",
+        "companyProfileImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/9b8ed871-77a2-457b-9a04-becc78d6addf.png",
+        "companyCoverImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/9b8ed871-77a2-457b-9a04-becc78d6addf.png",
+        "companyContactNumber": 123456789,
+        "companyDescription": "BrightLogic Innovations is a leading provider of cutting-edge technological solutions. Our team of experienced professionals is dedicated to delivering innovative software and IT services to help businesses grow and adapt in an ever-evolving digital landscape. With a focus on quality, customer satisfaction, and continuous improvement, BrightLogic Innovations strives to exceed client expectations and drive success in the tech industry.",
+        "facebookLink": "https://www.facebook.com/",
+        "linkedInLink": "https://linkedin.com/",
+        "createdAt": "2024-08-27T19:28:31.158147",
+        "updatedAt": "2024-08-27T19:28:31.158147"
+    },
+    {
+        "_id": {
+            "$oid": "67029978c6b4b15a1be8d960"
+        },
+        "employerId": "67028c50c6b4b15a1be8d950",
+        "companyName": "ByteWave Solutions",
+        "companyEmail": "bytewavesolutions@example.com",
+        "companyProfileImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/d5d1d96a-ecd5-4615-a483-7268278d7f7e.png",
+        "companyCoverImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/d5d1d96a-ecd5-4615-a483-7268278d7f7e.png",
+        "companyContactNumber": 123456789,
+        "companyDescription": "ByteWave Solutions is a leading provider of cutting-edge technological solutions. Our team of experienced professionals is dedicated to delivering innovative software and IT services to help businesses grow and adapt in an ever-evolving digital landscape. With a focus on quality, customer satisfaction, and continuous improvement, ByteWave Solutions strives to exceed client expectations and drive success in the tech industry.",
+        "facebookLink": "https://www.facebook.com/",
+        "linkedInLink": "https://linkedin.com/",
+        "createdAt": "2024-06-01T19:28:31.158147",
+        "updatedAt": "2024-06-01T19:28:31.158147"
+    },
+    {
+        "_id": {
+            "$oid": "67029978c6b4b15a1be8d961"
+        },
+        "employerId": "67028c50c6b4b15a1be8d951",
+        "companyName": "CloudForge Technologies",
+        "companyEmail": "cloudforgetechnologies@example.com",
+        "companyProfileImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/b034da74-a6e8-4856-9567-b8ad7cd3c574.png",
+        "companyCoverImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/b034da74-a6e8-4856-9567-b8ad7cd3c574.png",
+        "companyContactNumber": 123456789,
+        "companyDescription": "CloudForge Technologies is a leading provider of cutting-edge technological solutions. Our team of experienced professionals is dedicated to delivering innovative software and IT services to help businesses grow and adapt in an ever-evolving digital landscape. With a focus on quality, customer satisfaction, and continuous improvement, CloudForge Technologies strives to exceed client expectations and drive success in the tech industry.",
+        "facebookLink": "https://www.facebook.com/",
+        "linkedInLink": "https://linkedin.com/",
+        "createdAt": "2023-12-11T14:09:28.974760",
+        "updatedAt": "2023-12-11T14:09:28.974760"
+    },
+    {
+        "_id": {
+            "$oid": "67029978c6b4b15a1be8d962"
+        },
+        "employerId": "67028c50c6b4b15a1be8d952",
+        "companyName": "Coderra Labs",
+        "companyEmail": "coderralabs@example.com",
+        "companyProfileImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/de6d1656-74b1-4c09-8819-bafb22103c34.png",
+        "companyCoverImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/de6d1656-74b1-4c09-8819-bafb22103c34.png",
+        "companyContactNumber": 123456789,
+        "companyDescription": "Coderra Labs is a leading provider of cutting-edge technological solutions. Our team of experienced professionals is dedicated to delivering innovative software and IT services to help businesses grow and adapt in an ever-evolving digital landscape. With a focus on quality, customer satisfaction, and continuous improvement, Coderra Labs strives to exceed client expectations and drive success in the tech industry.",
+        "facebookLink": "https://www.facebook.com/",
+        "linkedInLink": "https://linkedin.com/",
+        "createdAt": "2023-12-16T14:09:28.974760",
+        "updatedAt": "2023-12-16T14:09:28.974760"
+    },
+    {
+        "_id": {
+            "$oid": "67029978c6b4b15a1be8d963"
+        },
+        "employerId": "67028c50c6b4b15a1be8d953",
+        "companyName": "CodeWorks Global",
+        "companyEmail": "codeworksglobal@example.com",
+        "companyProfileImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/5da2f47a-76e2-48c3-8623-e7b428671139.png",
+        "companyCoverImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/5da2f47a-76e2-48c3-8623-e7b428671139.png",
+        "companyContactNumber": 123456789,
+        "companyDescription": "CodeWorks Global is a leading provider of cutting-edge technological solutions. Our team of experienced professionals is dedicated to delivering innovative software and IT services to help businesses grow and adapt in an ever-evolving digital landscape. With a focus on quality, customer satisfaction, and continuous improvement, CodeWorks Global strives to exceed client expectations and drive success in the tech industry.",
+        "facebookLink": "https://www.facebook.com/",
+        "linkedInLink": "https://linkedin.com/",
+        "createdAt": "2023-07-12T14:09:28.974760",
+        "updatedAt": "2023-07-12T14:09:28.974760"
+    },
+    {
+        "_id": {
+            "$oid": "67029978c6b4b15a1be8d964"
+        },
+        "employerId": "67028c50c6b4b15a1be8d954",
+        "companyName": "DigiCore Labs",
+        "companyEmail": "digicorelabs@example.com",
+        "companyProfileImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/fa1527db-97cb-4091-b0e8-61b4c797caad.png",
+        "companyCoverImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/fa1527db-97cb-4091-b0e8-61b4c797caad.png",
+        "companyContactNumber": 123456789,
+        "companyDescription": "DigiCore Labs is a leading provider of cutting-edge technological solutions. Our team of experienced professionals is dedicated to delivering innovative software and IT services to help businesses grow and adapt in an ever-evolving digital landscape. With a focus on quality, customer satisfaction, and continuous improvement, DigiCore Labs strives to exceed client expectations and drive success in the tech industry.",
+        "facebookLink": "https://www.facebook.com/",
+        "linkedInLink": "https://linkedin.com/",
+        "createdAt": "2023-02-15T14:09:28.974760",
+        "updatedAt": "2023-02-15T14:09:28.974760"
+    },
+    {
+        "_id": {
+            "$oid": "67029978c6b4b15a1be8d965"
+        },
+        "employerId": "67028c50c6b4b15a1be8d955",
+        "companyName": "FlexiCode Systems",
+        "companyEmail": "flexicodesystems@example.com",
+        "companyProfileImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/d1843b9f-2bd0-4b54-85eb-b1a31fc09c68.png",
+        "companyCoverImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/d1843b9f-2bd0-4b54-85eb-b1a31fc09c68.png",
+        "companyContactNumber": 123456789,
+        "companyDescription": "FlexiCode Systems is a leading provider of cutting-edge technological solutions. Our team of experienced professionals is dedicated to delivering innovative software and IT services to help businesses grow and adapt in an ever-evolving digital landscape. With a focus on quality, customer satisfaction, and continuous improvement, FlexiCode Systems strives to exceed client expectations and drive success in the tech industry.",
+        "facebookLink": "https://www.facebook.com/",
+        "linkedInLink": "https://linkedin.com/",
+        "createdAt": "2024-05-05T14:09:28.974760",
+        "updatedAt": "2024-05-05T14:09:28.974760"
+    },
+    {
+        "_id": {
+            "$oid": "67029978c6b4b15a1be8d966"
+        },
+        "employerId": "67028c50c6b4b15a1be8d956",
+        "companyName": "GlideNet Solutions",
+        "companyEmail": "glidenetsolutions@example.com",
+        "companyProfileImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/02a94907-e25c-4822-8cec-d88923be7c59.png",
+        "companyCoverImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/02a94907-e25c-4822-8cec-d88923be7c59.png",
+        "companyContactNumber": 123456789,
+        "companyDescription": "GlideNet Solutions is a leading provider of cutting-edge technological solutions. Our team of experienced professionals is dedicated to delivering innovative software and IT services to help businesses grow and adapt in an ever-evolving digital landscape. With a focus on quality, customer satisfaction, and continuous improvement, GlideNet Solutions strives to exceed client expectations and drive success in the tech industry.",
+        "facebookLink": "https://www.facebook.com/",
+        "linkedInLink": "https://linkedin.com/",
+        "createdAt": "2024-04-02T04:48:22.475875",
+        "updatedAt": "2024-04-02T04:48:22.475875"
+    },
+    {
+        "_id": {
+            "$oid": "67029978c6b4b15a1be8d967"
+        },
+        "employerId": "67028c50c6b4b15a1be8d957",
+        "companyName": "InfoPulse Digital",
+        "companyEmail": "infopulsedigital@example.com",
+        "companyProfileImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/cdcb9d35-19fc-43a2-a312-59e379ccf2ec.png",
+        "companyCoverImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/cdcb9d35-19fc-43a2-a312-59e379ccf2ec.png",
+        "companyContactNumber": 123456789,
+        "companyDescription": "InfoPulse Digital is a leading provider of cutting-edge technological solutions. Our team of experienced professionals is dedicated to delivering innovative software and IT services to help businesses grow and adapt in an ever-evolving digital landscape. With a focus on quality, customer satisfaction, and continuous improvement, InfoPulse Digital strives to exceed client expectations and drive success in the tech industry.",
+        "facebookLink": "https://www.facebook.com/",
+        "linkedInLink": "https://linkedin.com/",
+        "createdAt": "2023-02-16T04:48:22.475875",
+        "updatedAt": "2023-02-16T04:48:22.475875"
+    },
+    {
+        "_id": {
+            "$oid": "67029978c6b4b15a1be8d968"
+        },
+        "employerId": "67028c50c6b4b15a1be8d958",
+        "companyName": "InnoVista Software",
+        "companyEmail": "innovistasoftware@example.com",
+        "companyProfileImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/90ae97d3-6dcb-4d5f-832c-a19e308784bd.png",
+        "companyCoverImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/90ae97d3-6dcb-4d5f-832c-a19e308784bd.png",
+        "companyContactNumber": 123456789,
+        "companyDescription": "InnoVista Software is a leading provider of cutting-edge technological solutions. Our team of experienced professionals is dedicated to delivering innovative software and IT services to help businesses grow and adapt in an ever-evolving digital landscape. With a focus on quality, customer satisfaction, and continuous improvement, InnoVista Software strives to exceed client expectations and drive success in the tech industry.",
+        "facebookLink": "https://www.facebook.com/",
+        "linkedInLink": "https://linkedin.com/",
+        "createdAt": "2023-12-20T04:48:22.475875",
+        "updatedAt": "2023-12-20T04:48:22.475875"
+    },
+    {
+        "_id": {
+            "$oid": "67029978c6b4b15a1be8d969"
+        },
+        "employerId": "67028c50c6b4b15a1be8d959",
+        "companyName": "MetaGrid Solutions",
+        "companyEmail": "metagridsolutions@example.com",
+        "companyProfileImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/9eaeb8d1-b73c-4d8b-b153-59101122dd5f.png",
+        "companyCoverImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/9eaeb8d1-b73c-4d8b-b153-59101122dd5f.png",
+        "companyContactNumber": 123456789,
+        "companyDescription": "MetaGrid Solutions is a leading provider of cutting-edge technological solutions. Our team of experienced professionals is dedicated to delivering innovative software and IT services to help businesses grow and adapt in an ever-evolving digital landscape. With a focus on quality, customer satisfaction, and continuous improvement, MetaGrid Solutions strives to exceed client expectations and drive success in the tech industry.",
+        "facebookLink": "https://www.facebook.com/",
+        "linkedInLink": "https://linkedin.com/",
+        "createdAt": "2024-01-14T04:48:22.475875",
+        "updatedAt": "2024-01-14T04:48:22.475875"
+    },
+    {
+        "_id": {
+            "$oid": "67029978c6b4b15a1be8d96a"
+        },
+        "employerId": "67028c50c6b4b15a1be8d95a",
+        "companyName": "NexaSoft Innovations",
+        "companyEmail": "nexasoftinnovations@example.com",
+        "companyProfileImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/ac2c7b18-8e3a-42ad-b097-ef842565c41f.png",
+        "companyCoverImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/ac2c7b18-8e3a-42ad-b097-ef842565c41f.png",
+        "companyContactNumber": 123456789,
+        "companyDescription": "NexaSoft Innovations is a leading provider of cutting-edge technological solutions. Our team of experienced professionals is dedicated to delivering innovative software and IT services to help businesses grow and adapt in an ever-evolving digital landscape. With a focus on quality, customer satisfaction, and continuous improvement, NexaSoft Innovations strives to exceed client expectations and drive success in the tech industry.",
+        "facebookLink": "https://www.facebook.com/",
+        "linkedInLink": "https://linkedin.com/",
+        "createdAt": "2024-07-23T04:48:22.475875",
+        "updatedAt": "2024-07-23T04:48:22.475875"
+    },
+    {
+        "_id": {
+            "$oid": "67029978c6b4b15a1be8d96b"
+        },
+        "employerId": "67028c50c6b4b15a1be8d95b",
+        "companyName": "NovaSoft Technologies",
+        "companyEmail": "novasofttechnologies@example.com",
+        "companyProfileImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/04014ef7-f9e0-441f-80ba-c113ccb32748.png",
+        "companyCoverImage": "https://files.edgestore.dev/i7jmj3hnlj5atdep/employerCompanyLogo/_public/04014ef7-f9e0-441f-80ba-c113ccb32748.png",
+        "companyContactNumber": 123456789,
+        "companyDescription": "NovaSoft Technologies is a leading provider of cutting-edge technological solutions. Our team of experienced professionals is dedicated to delivering innovative software and IT services to help businesses grow and adapt in an ever-evolving digital landscape. With a focus on quality, customer satisfaction, and continuous improvement, NovaSoft Technologies strives to exceed client expectations and drive success in the tech industry.",
+        "facebookLink": "https://www.facebook.com/",
+        "linkedInLink": "https://linkedin.com/",
+        "createdAt": "2023-04-03T04:48:22.475875",
+        "updatedAt": "2023-04-03T04:48:22.475875"
+    }
+]

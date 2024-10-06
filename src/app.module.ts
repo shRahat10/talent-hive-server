@@ -6,6 +6,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PostModule } from './post/post.module';
 import { UserModule } from './user/user.module';
 import { PostInteractionModule } from './post-interaction/post-interaction.module';
+import { CompanyModule } from './company/company.module';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -29,6 +30,7 @@ dotenv.config();
     PostModule,
     UserModule,
     PostInteractionModule,
+    CompanyModule,
   ],
   controllers: [AppController],
   providers: [AppService],
