@@ -3,29 +3,106 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { JobPost } from './job-post.schema';
 import { CreateJobPostDto, UpdateJobPostDto } from './dto/job-post.dto';
+import * as natural from 'natural';
+import { User } from 'src/user/user.schema';
 
 @Injectable()
 export class JobPostService {
     constructor(
         @InjectModel(JobPost.name) private jobPostModel: Model<JobPost>,
+        @InjectModel(User.name) private userModel: Model<User>,
     ) { }
 
-    async getAllJobPosts(page: number, limit: number): Promise<{ jobPosts: JobPost[], page: number }> {
+    // async getAllJobPosts(userId: string, page: number, limit: number): Promise<{ jobPosts: JobPost[], page: number }> {
+    //     const skip = page * limit;
+
+    //     const jobPosts = await this.jobPostModel
+    //         .find()
+    //         .populate({
+    //             path: 'companyId',
+    //             model: 'Company',
+    //         })
+    //         .populate({
+    //             path: 'applicants.applicantId',
+    //             model: 'User',
+    //         })
+    //         .sort({ updatedAt: -1, _id: -1 })
+    //         .skip(skip)
+    //         .limit(limit)
+    //         .exec();
+
+    //     if (!jobPosts) {
+    //         throw new NotFoundException("Job posts not found");
+    //     }
+
+    //     return {
+    //         jobPosts: jobPosts,
+    //         page: +page + 1
+    //     };
+    // }
+
+    async getAllJobPosts(userId: string, page: number, limit: number): Promise<{ jobPosts: JobPost[], page: number }> {
         const skip = page * limit;
+
+        const currentUser = await this.userModel.findById(userId).select('designation about').exec();
+
+        if (!currentUser) {
+            throw new NotFoundException('Logged-in user not found');
+        }
+
+        const { designation, about: userAbout } = currentUser;
 
         const jobPosts = await this.jobPostModel
             .find()
+            .populate({
+                path: 'companyId',
+                model: 'Company',
+            })
+            .populate({
+                path: 'applicants.applicantId',
+                model: 'User',
+            })
             .sort({ updatedAt: -1, _id: -1 })
             .skip(skip)
             .limit(limit)
             .exec();
 
-        if (!jobPosts) {
+        if (!jobPosts || jobPosts.length === 0) {
             throw new NotFoundException("Job posts not found");
         }
 
+        if (designation || userAbout) {
+            const natural = require('natural');
+
+            const jobPostsWithSimilarity = jobPosts.map(jobPost => {
+                const { jobTitle, about } = jobPost;
+                const jobDescription = about.description;
+
+                let similarity = 0;
+
+                if (designation && jobTitle) {
+                    similarity += natural.JaroWinklerDistance(jobTitle, designation);
+                }
+
+                if (userAbout && jobDescription) {
+                    similarity += natural.JaroWinklerDistance(jobDescription, userAbout);
+                }
+
+                return { jobPost, similarity };
+            });
+
+            jobPostsWithSimilarity.sort((a, b) => b.similarity - a.similarity);
+
+            const sortedJobPosts = jobPostsWithSimilarity.map(item => item.jobPost);
+
+            return {
+                jobPosts: sortedJobPosts,
+                page: +page + 1
+            };
+        }
+
         return {
-            jobPosts: jobPosts,
+            jobPosts,
             page: +page + 1
         };
     }

@@ -9,10 +9,11 @@ export class JobPostController {
 
     @Get()
     async getAllJobPosts(
+        @Query('userId') userId: string,
         @Query('page') page: number = 0,
         @Query('limit') limit: number = 10
     ): Promise<{ jobPosts: JobPost[], page: number }> {
-        return this.jobPostService.getAllJobPosts(page, limit);
+        return this.jobPostService.getAllJobPosts(userId, page, limit);
     }
 
     @Get(':companyId')
