@@ -25,6 +25,13 @@ export class JobPostController {
         return this.jobPostService.getJobPostsByCompany(companyId, page, limit);
     }
 
+    @Get('details/:jobPostId')
+    async getOneJobPost(
+        @Param('jobPostId') jobPostId: string
+    ): Promise<JobPost> {
+        return this.jobPostService.getOneJobPost(jobPostId);
+    }
+
     @Post()
     async createJobPost(@Body() createJobPostDto: CreateJobPostDto): Promise<JobPost> {
         return this.jobPostService.createJobPost(createJobPostDto);

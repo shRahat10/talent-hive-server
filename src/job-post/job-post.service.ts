@@ -112,6 +112,14 @@ export class JobPostService {
 
         const jobPosts = await this.jobPostModel
             .find({ companyId })
+            .populate({
+                path: 'companyId',
+                model: 'Company',
+            })
+            .populate({
+                path: 'applicants.applicantId',
+                model: 'User',
+            })
             .sort({ updatedAt: -1, _id: -1 })
             .skip(skip)
             .limit(limit)
@@ -125,6 +133,26 @@ export class JobPostService {
             jobPosts: jobPosts,
             page: +page + 1
         };
+    }
+
+    async getOneJobPost(jobPostId: string): Promise<JobPost> {
+        const jobPost = await this.jobPostModel
+            .findOne({ _id: jobPostId })
+            .populate({
+                path: 'companyId',
+                model: 'Company',
+            })
+            .populate({
+                path: 'applicants.applicantId',
+                model: 'User',
+            })
+            .exec();
+
+        if (!jobPost) {
+            throw new NotFoundException(`Job post with ID ${jobPostId} not found`);
+        }
+
+        return jobPost;
     }
 
     async createJobPost(createJobPostDto: CreateJobPostDto): Promise<JobPost> {
