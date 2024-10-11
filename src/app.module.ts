@@ -8,6 +8,7 @@ import { UserModule } from './user/user.module';
 import { PostInteractionModule } from './post-interaction/post-interaction.module';
 import { CompanyModule } from './company/company.module';
 import { JobPostModule } from './job-post/job-post.module';
+import { ConnectionRequestModule } from './connection-request/connection-request.module';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -33,6 +34,7 @@ dotenv.config();
     PostInteractionModule,
     CompanyModule,
     JobPostModule,
+    ConnectionRequestModule,
   ],
   controllers: [AppController],
   providers: [AppService],
