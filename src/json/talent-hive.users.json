@@ -17,6 +17,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-10-01T08:52:12.528823",
         "updatedAt": "2020-10-01T08:52:12.528823"
     },
@@ -38,6 +39,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-04-05T19:28:31.158147",
         "updatedAt": "2020-04-05T19:28:31.158147"
     },
@@ -59,6 +61,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-04-11T07:52:21.035750",
         "updatedAt": "2020-04-11T07:52:21.035750"
     },
@@ -80,6 +83,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-01-23T14:09:28.974760",
         "updatedAt": "2020-01-23T14:09:28.974760"
     },
@@ -101,6 +105,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-06-29T10:26:36.917607",
         "updatedAt": "2020-06-29T10:26:36.917607"
     },
@@ -122,6 +127,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-03-21T04:48:22.475875",
         "updatedAt": "2020-03-21T04:48:22.475875"
     },
@@ -143,6 +149,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-05-24T08:54:52.294101",
         "updatedAt": "2020-05-24T08:54:52.294101"
     },
@@ -164,6 +171,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-06-23T07:36:59.827475",
         "updatedAt": "2020-06-23T07:36:59.827475"
     },
@@ -185,6 +193,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-08-08T04:20:56.455137",
         "updatedAt": "2020-08-08T04:20:56.455137"
     },
@@ -206,6 +215,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-06-27T02:03:56.454951",
         "updatedAt": "2020-06-27T02:03:56.454951"
     },
@@ -227,6 +237,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-08-30T08:47:33.309276",
         "updatedAt": "2020-08-30T08:47:33.309276"
     },
@@ -248,6 +259,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-08-28T13:25:14.331915",
         "updatedAt": "2020-08-28T13:25:14.331915"
     },
@@ -269,6 +281,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-12-25T09:44:18.691250",
         "updatedAt": "2020-12-25T09:44:18.691250"
     },
@@ -290,6 +303,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-08-22T07:12:11.247207",
         "updatedAt": "2020-08-22T07:12:11.247207"
     },
@@ -311,6 +325,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-11-14T03:26:02.833244",
         "updatedAt": "2020-11-14T03:26:02.833244"
     },
@@ -332,6 +347,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-09-26T17:00:30.815472",
         "updatedAt": "2020-09-26T17:00:30.815472"
     },
@@ -353,6 +369,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-07-11T20:46:06.289094",
         "updatedAt": "2020-07-11T20:46:06.289094"
     },
@@ -374,6 +391,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-03-27T12:50:50.487635",
         "updatedAt": "2020-03-27T12:50:50.487635"
     },
@@ -395,6 +413,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-07-25T04:19:41.978068",
         "updatedAt": "2020-07-25T04:19:41.978068"
     },
@@ -416,6 +435,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-04-17T07:14:53.598706",
         "updatedAt": "2020-04-17T07:14:53.598706"
     },
@@ -437,6 +457,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-10-02T09:43:16.045995",
         "updatedAt": "2020-10-02T09:43:16.045995"
     },
@@ -458,6 +479,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-08-11T13:39:12.471698",
         "updatedAt": "2020-08-11T13:39:12.471698"
     },
@@ -479,6 +501,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-05-17T10:12:18.238336",
         "updatedAt": "2020-05-17T10:12:18.238336"
     },
@@ -500,6 +523,7 @@
         "facebookLink": "https://www.facebook.com/",
         "linkedInLink": "https://linkedin.com/",
         "resumeLink": "",
+        "connections": [],
         "createdAt": "2020-04-10T07:12:43.055771",
         "updatedAt": "2020-04-10T07:12:43.055771"
     }

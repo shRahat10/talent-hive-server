@@ -17,6 +17,7 @@
     "facebookLink": "https://www.facebook.com/",
     "linkedInLink": "https://linkedin.com/",
     "resumeLink": "",
+    "connections": [],
     "createdAt": "2023-07-22T04:48:22.475875",
     "updatedAt": "2023-07-22T04:48:22.475875"
   },
@@ -38,6 +39,7 @@
     "facebookLink": "https://www.facebook.com/",
     "linkedInLink": "https://linkedin.com/",
     "resumeLink": "",
+    "connections": [],
     "createdAt": "2024-01-10T19:28:31.158147",
     "updatedAt": "2024-01-10T19:28:31.158147"
   },
@@ -59,6 +61,7 @@
     "facebookLink": "https://www.facebook.com/",
     "linkedInLink": "https://linkedin.com/",
     "resumeLink": "",
+    "connections": [],
     "createdAt": "2023-04-03T19:28:31.158147",
     "updatedAt": "2023-04-03T19:28:31.158147"
   },
@@ -80,6 +83,7 @@
     "facebookLink": "https://www.facebook.com/",
     "linkedInLink": "https://linkedin.com/",
     "resumeLink": "",
+    "connections": [],
     "createdAt": "2024-08-27T19:28:31.158147",
     "updatedAt": "2024-08-27T19:28:31.158147"
   },
@@ -101,6 +105,7 @@
     "facebookLink": "https://www.facebook.com/",
     "linkedInLink": "https://linkedin.com/",
     "resumeLink": "",
+    "connections": [],
     "createdAt": "2024-06-01T19:28:31.158147",
     "updatedAt": "2024-06-01T19:28:31.158147"
   },
@@ -122,6 +127,7 @@
     "facebookLink": "https://www.facebook.com/",
     "linkedInLink": "https://linkedin.com/",
     "resumeLink": "",
+    "connections": [],
     "createdAt": "2023-12-11T14:09:28.974760",
     "updatedAt": "2023-12-11T14:09:28.974760"
   },
@@ -143,6 +149,7 @@
     "facebookLink": "https://www.facebook.com/",
     "linkedInLink": "https://linkedin.com/",
     "resumeLink": "",
+    "connections": [],
     "createdAt": "2023-12-16T14:09:28.974760",
     "updatedAt": "2023-12-16T14:09:28.974760"
   },
@@ -164,6 +171,7 @@
     "facebookLink": "https://www.facebook.com/",
     "linkedInLink": "https://linkedin.com/",
     "resumeLink": "",
+    "connections": [],
     "createdAt": "2023-07-12T14:09:28.974760",
     "updatedAt": "2023-07-12T14:09:28.974760"
   },
@@ -185,6 +193,7 @@
     "facebookLink": "https://www.facebook.com/",
     "linkedInLink": "https://linkedin.com/",
     "resumeLink": "",
+    "connections": [],
     "createdAt": "2023-02-15T14:09:28.974760",
     "updatedAt": "2023-02-15T14:09:28.974760"
   },
@@ -206,6 +215,7 @@
     "facebookLink": "https://www.facebook.com/",
     "linkedInLink": "https://linkedin.com/",
     "resumeLink": "",
+    "connections": [],
     "createdAt": "2024-05-05T14:09:28.974760",
     "updatedAt": "2024-05-05T14:09:28.974760"
   },
@@ -227,6 +237,7 @@
     "facebookLink": "https://www.facebook.com/",
     "linkedInLink": "https://linkedin.com/",
     "resumeLink": "",
+    "connections": [],
     "createdAt": "2024-04-02T04:48:22.475875",
     "updatedAt": "2024-04-02T04:48:22.475875"
   },
@@ -241,13 +252,13 @@
     "status": "active",
     "role": "employer",
     "profileImage": "https://images.pexels.com/photos/103123/pexels-photo-103123.jpeg",
-    
     "designation": "Full Stack Developer",
     "phoneNumber": 123456789,
     "about": "As a Full Stack Developer, I have worked extensively in the field of software development. My expertise includes building scalable applications, optimizing performance, and ensuring robust security measures. I am passionate about technology and continuously work on enhancing my skills to deliver top-notch solutions.",
     "facebookLink": "https://www.facebook.com/",
     "linkedInLink": "https://linkedin.com/",
     "resumeLink": "",
+    "connections": [],
     "createdAt": "2023-02-16T04:48:22.475875",
     "updatedAt": "2023-02-16T04:48:22.475875"
   },
@@ -269,6 +280,7 @@
     "facebookLink": "https://www.facebook.com/",
     "linkedInLink": "https://linkedin.com/",
     "resumeLink": "",
+    "connections": [],
     "createdAt": "2023-12-20T04:48:22.475875",
     "updatedAt": "2023-12-20T04:48:22.475875"
   },
@@ -290,6 +302,7 @@
     "facebookLink": "https://www.facebook.com/",
     "linkedInLink": "https://linkedin.com/",
     "resumeLink": "",
+    "connections": [],
     "createdAt": "2024-01-14T04:48:22.475875",
     "updatedAt": "2024-01-14T04:48:22.475875"
   },
@@ -311,6 +324,7 @@
     "facebookLink": "https://www.facebook.com/",
     "linkedInLink": "https://linkedin.com/",
     "resumeLink": "",
+    "connections": [],
     "createdAt": "2024-07-23T04:48:22.475875",
     "updatedAt": "2024-07-23T04:48:22.475875"
   },
@@ -332,6 +346,7 @@
     "facebookLink": "https://www.facebook.com/",
     "linkedInLink": "https://linkedin.com/",
     "resumeLink": "",
+    "connections": [],
     "createdAt": "2023-04-03T04:48:22.475875",
     "updatedAt": "2023-04-03T04:48:22.475875"
   }
