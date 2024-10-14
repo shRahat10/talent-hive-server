@@ -3,12 +3,14 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 import { ConnectionRequest } from './connection-request.schema';
 import { User } from 'src/user/user.schema';
+import { Connection } from 'src/connection/connection.schema';
 
 @Injectable()
 export class ConnectionRequestService {
     constructor(
         @InjectModel(ConnectionRequest.name) private connectionRequestModel: Model<ConnectionRequest>,
         @InjectModel(User.name) private userModel: Model<User>,
+        @InjectModel(Connection.name) private connectionModel: Model<Connection>,
     ) { }
 
     async getPendingRequests(userId: Types.ObjectId): Promise<ConnectionRequest[]> {
@@ -30,8 +32,8 @@ export class ConnectionRequestService {
         }
 
         // Check if users are already connected
-        const sender = await this.userModel.findById(senderId);
-        if (sender.connections && sender.connections.includes(receiverId)) {
+        const senderConnections = await this.connectionModel.findOne({ userId: senderId });
+        if (senderConnections && senderConnections.connectedUserIds.includes(receiverId)) {
             throw new BadRequestException('You are already connected with this user.');
         }
 
@@ -84,12 +86,24 @@ export class ConnectionRequestService {
 
         await this.userModel.updateOne(
             { _id: sender },
-            { $addToSet: { connections: receiver } }
+            { $inc: { connectionsCount: 1 } }
         );
 
         await this.userModel.updateOne(
             { _id: receiver },
-            { $addToSet: { connections: sender } }
+            { $inc: { connectionsCount: 1 } }
+        );
+
+        // Add each user to the other's connection list
+        await this.connectionModel.updateOne(
+            { userId: sender },
+            { $addToSet: { connectedUserIds: receiver } },
+            { upsert: true }
+        );
+        await this.connectionModel.updateOne(
+            { userId: receiver },
+            { $addToSet: { connectedUserIds: sender } },
+            { upsert: true }
         );
 
         const senderInfo = await this.userModel.findById(sender).select('-password -__v').exec();
@@ -105,7 +119,7 @@ export class ConnectionRequestService {
         };
     }
 
-    async connectionRequestDeletion(
+    async deleteConnectionRequest(
         connectionRequestId: Types.ObjectId,
         userId: Types.ObjectId,
         action: 'reject' | 'delete'
@@ -135,12 +149,22 @@ export class ConnectionRequestService {
     }> {
         await this.userModel.updateOne(
             { _id: userId1 },
-            { $pull: { connections: userId2 } }
+            { $inc: { connectionsCount: -1 } }
         );
 
         await this.userModel.updateOne(
             { _id: userId2 },
-            { $pull: { connections: userId1 } }
+            { $inc: { connectionsCount: -1 } }
+        );
+
+        // Remove each user from the other's connection list
+        await this.connectionModel.updateOne(
+            { userId: userId1 },
+            { $pull: { connectedUserIds: userId2 } }
+        );
+        await this.connectionModel.updateOne(
+            { userId: userId2 },
+            { $pull: { connectedUserIds: userId1 } }
         );
 
         const user1Info = await this.userModel.findById(userId1).select('-password -__v').exec();

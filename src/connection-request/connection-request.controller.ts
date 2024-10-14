@@ -35,19 +35,19 @@ export class ConnectionRequestController {
 
     // Handle both rejecting and deleting a connection request
     @Delete(':action/:id/:userId')
-    async connectionRequestDeletion(
+    async deleteConnectionRequest(
         @Param('action') action: 'reject' | 'delete',
         @Param('id') id: string,
         @Param('userId') userId: string,
     ) {
-        return this.connectionRequestService.connectionRequestDeletion(
+        return this.connectionRequestService.deleteConnectionRequest(
             new Types.ObjectId(id),
             new Types.ObjectId(userId),
             action,
         );
     }
 
-    // Remove an existing connection between two users
+    // Remove an existing connection between two users after accepting
     @Delete(':userId1/:userId2')
     async removeConnection(
         @Param('userId1') userId1: string,
