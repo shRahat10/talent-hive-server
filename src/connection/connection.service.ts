@@ -18,7 +18,14 @@ export class ConnectionService {
     }
 
     async getConnections(userId: Types.ObjectId): Promise<Connection> {
-        const connection = await this.connectionModel.findOne({ userId });
+        const connection = await this.connectionModel
+            .findOne({ userId })
+            .populate({
+                path: 'connectedUserIds',
+                model: 'User',
+                select: 'fullName userName email profileImage'
+            });
+
         if (!connection) throw new NotFoundException('User connections not found.');
         return connection;
     }
