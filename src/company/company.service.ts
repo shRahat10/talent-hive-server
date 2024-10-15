@@ -31,25 +31,18 @@ export class CompanyService {
         };
     }
 
-    async findCompaniesByEmployer(employerId: string, page: number, limit: number): Promise<{ companies: Company[], page: number }> {
-        const skip = page * limit;
-
+    async findCompaniesByEmployer(employerId: string): Promise<Company[]> {
         const companies = await this.companyModel
             .find({ employerId })
             .populate('employerId', '-__v')
             .sort({ updatedAt: -1, _id: -1 })
-            .skip(skip)
-            .limit(limit)
             .exec();
 
         if (!companies) {
             throw new Error("Companies not found");
         }
 
-        return {
-            companies: companies,
-            page: +page + 1
-        };
+        return companies;
     }
 
     async createCompany(createCompanyDto: CreateCompanyDto): Promise<Company> {

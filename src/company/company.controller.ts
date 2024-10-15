@@ -17,11 +17,9 @@ export class CompanyController {
 
     @Get(':employerId')
     async findCompaniesByEmployer(
-        @Param('employerId') employerId: string,
-        @Query('page') page: number = 0,
-        @Query('limit') limit: number = 10
-    ): Promise<{ companies: Company[], page: number }> {
-        return this.companyService.findCompaniesByEmployer(employerId, page, limit);
+        @Param('employerId') employerId: string
+    ): Promise<Company[]> {
+        return this.companyService.findCompaniesByEmployer(employerId);
     }
 
     @Post()
