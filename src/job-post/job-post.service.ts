@@ -157,7 +157,10 @@ export class JobPostService {
 
     async createJobPost(createJobPostDto: CreateJobPostDto): Promise<JobPost> {
         const newJobPost = new this.jobPostModel(createJobPostDto);
-        return newJobPost.save();
+        const savedJobPost = await newJobPost.save();
+
+        return this.jobPostModel.findById(savedJobPost._id).populate('companyId').lean().exec();
+
     }
 
     async updateJobPost(id: string, updateJobPostDto: UpdateJobPostDto): Promise<JobPost> {

@@ -12,6 +12,9 @@ export class JobPost extends Document {
     jobTitle: string;
 
     @Prop({ required: true })
+    position: string;
+
+    @Prop({ required: true })
     workplaceType: string;
 
     @Prop({ required: true })

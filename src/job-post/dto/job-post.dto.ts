@@ -40,6 +40,10 @@ export class CreateJobPostDto {
 
     @IsString()
     @IsNotEmpty()
+    position: string;
+
+    @IsString()
+    @IsNotEmpty()
     workplaceType: string;
 
     @IsString()
