@@ -2,10 +2,49 @@ import { Body, Controller, Delete, Get, Param, Post, Patch } from '@nestjs/commo
 import { ConnectionRequestService } from './connection-request.service';
 import { Types } from 'mongoose';
 import { CreateConnectionRequestDto } from './dto/connection-request.dto';
+import { ConnectionService } from 'src/connection/connection.service';
 
 @Controller('connection-request')
 export class ConnectionRequestController {
-    constructor(private readonly connectionRequestService: ConnectionRequestService) { }
+    constructor(
+        private readonly connectionRequestService: ConnectionRequestService,
+        private readonly connectionService: ConnectionService,
+    ) { }
+
+    // Check if two users are connected, sent request, or received request
+    @Post('check-status')
+    async checkConnectionStatus(
+        @Body('loggedInUserId') loggedInUserId: string,
+        @Body('userIds') userIds: string[],
+    ) {
+        const loggedInUserObjId = new Types.ObjectId(loggedInUserId);
+
+        const results = await Promise.all(userIds.map(async (userId) => {
+            const userObjId = new Types.ObjectId(userId);
+
+            const areConnected = await this.connectionService.checkIfConnected(loggedInUserObjId, userObjId);
+            const hasSentRequest = await this.connectionRequestService.hasSentRequest(loggedInUserObjId, userObjId);
+            const hasReceivedRequest = await this.connectionRequestService.hasReceivedRequest(loggedInUserObjId, userObjId);
+
+            let status = 'no_relationship';
+            if (areConnected) {
+                status = 'connected';
+            }
+            else if (hasSentRequest) {
+                status = 'request_sent';
+            }
+            else if (hasReceivedRequest) {
+                status = 'request_received';
+            }
+
+            return {
+                userId,
+                status,
+            };
+        }));
+
+        return results;
+    }
 
     @Get('pending/:userId')
     async getPendingRequests(@Param('userId') userId: string) {
@@ -28,22 +67,28 @@ export class ConnectionRequestController {
     }
 
     // Accept a connection request
-    @Patch('accept/:id')
-    async acceptConnectionRequest(@Param('id') id: string) {
-        return this.connectionRequestService.acceptConnectionRequest(new Types.ObjectId(id));
+    @Patch('accept/:userId/:otherUserId')
+    async acceptConnectionRequest(
+        @Param('userId') userId: string,
+        @Param('otherUserId') otherUserId: string
+    ) {
+        return this.connectionRequestService.acceptConnectionRequest(
+            new Types.ObjectId(userId),
+            new Types.ObjectId(otherUserId)
+        );
     }
 
     // Handle both rejecting and deleting a connection request
-    @Delete(':action/:id/:userId')
+    @Delete(':action/:userId/:otherUserId')
     async deleteConnectionRequest(
         @Param('action') action: 'reject' | 'delete',
-        @Param('id') id: string,
         @Param('userId') userId: string,
+        @Param('otherUserId') otherUserId: string,
     ) {
         return this.connectionRequestService.deleteConnectionRequest(
-            new Types.ObjectId(id),
             new Types.ObjectId(userId),
-            action,
+            new Types.ObjectId(otherUserId),
+            action
         );
     }
 

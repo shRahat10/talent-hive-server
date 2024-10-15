@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConnectionRequest, ConnectionRequestSchema } from './connection-request.schema';
 import { User, UserSchema } from 'src/user/user.schema';
 import { Connection, ConnectionSchema } from 'src/connection/connection.schema';
+import { ConnectionService } from 'src/connection/connection.service';
 
 @Module({
   imports: [
@@ -12,7 +13,7 @@ import { Connection, ConnectionSchema } from 'src/connection/connection.schema';
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     MongooseModule.forFeature([{ name: Connection.name, schema: ConnectionSchema }])
   ],
-  providers: [ConnectionRequestService],
+  providers: [ConnectionRequestService, ConnectionService],
   controllers: [ConnectionRequestController]
 })
 export class ConnectionRequestModule { }

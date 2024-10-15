@@ -10,6 +10,13 @@ export class ConnectionService {
         @InjectModel(Connection.name) private connectionModel: Model<Connection>,
     ) { }
 
+    // Check if two users are connected
+    async checkIfConnected(userId1: Types.ObjectId, userId2: Types.ObjectId): Promise<boolean> {
+        const userConnections = await this.connectionModel.findOne({ userId: userId1 });
+        if (!userConnections) return false;
+        return userConnections.connectedUserIds.includes(userId2);
+    }
+
     async getConnections(userId: Types.ObjectId): Promise<Connection> {
         const connection = await this.connectionModel.findOne({ userId });
         if (!connection) throw new NotFoundException('User connections not found.');

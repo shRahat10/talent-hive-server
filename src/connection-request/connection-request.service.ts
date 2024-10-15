@@ -13,12 +13,34 @@ export class ConnectionRequestService {
         @InjectModel(Connection.name) private connectionModel: Model<Connection>,
     ) { }
 
+    // Check if user1 has sent a request to user2
+    async hasSentRequest(userId1: Types.ObjectId, userId2: Types.ObjectId): Promise<boolean> {
+        const existingRequest = await this.connectionRequestModel.findOne({
+            sender: userId1,
+            receiver: userId2,
+            status: 'pending',
+        });
+        return !!existingRequest;
+    }
+
+    // Check if user1 has received a request from user2
+    async hasReceivedRequest(userId1: Types.ObjectId, userId2: Types.ObjectId): Promise<boolean> {
+        const existingRequest = await this.connectionRequestModel.findOne({
+            sender: userId2,
+            receiver: userId1,
+            status: 'pending',
+        });
+        return !!existingRequest;
+    }
+
+    // All Pending Requests 
     async getPendingRequests(userId: Types.ObjectId): Promise<ConnectionRequest[]> {
         return this.connectionRequestModel
             .find({ receiver: userId, status: 'pending' })
             .populate('sender', 'fullName userName email profileImage');
     }
 
+    // All Sent Requests 
     async getSentRequests(userId: Types.ObjectId): Promise<ConnectionRequest[]> {
         return this.connectionRequestModel
             .find({ sender: userId, status: 'pending' })
@@ -67,22 +89,29 @@ export class ConnectionRequestService {
         return await newConnectionRequest.save();
     }
 
-    async acceptConnectionRequest(connectionRequestId: Types.ObjectId): Promise<{
+    async acceptConnectionRequest(
+        userId: Types.ObjectId,
+        otherUserId: Types.ObjectId
+    ): Promise<{
         message: string,
         deletedRequestId: Types.ObjectId,
         senderInfo: User,
         receiverInfo: User
     }> {
-        const connectionRequest = await this.connectionRequestModel.findById(connectionRequestId);
-        if (!connectionRequest) {
-            throw new NotFoundException('Connection request not found.');
-        }
+        const connectionRequest = await this.connectionRequestModel.findOne({
+            $or: [
+                { sender: userId, receiver: otherUserId },
+                { sender: otherUserId, receiver: userId }
+            ],
+            status: 'pending'
+        });
 
-        if (connectionRequest.status !== 'pending') {
-            throw new BadRequestException('This connection request has already been processed.');
+        if (!connectionRequest) {
+            throw new NotFoundException('Pending connection request not found.');
         }
 
         const { sender, receiver } = connectionRequest;
+        const connectionRequestId = connectionRequest._id as Types.ObjectId;
 
         await this.userModel.updateOne(
             { _id: sender },
@@ -120,16 +149,23 @@ export class ConnectionRequestService {
     }
 
     async deleteConnectionRequest(
-        connectionRequestId: Types.ObjectId,
         userId: Types.ObjectId,
+        otherUserId: Types.ObjectId,
         action: 'reject' | 'delete'
     ): Promise<{ message: string; deletedRequestId: Types.ObjectId }> {
-        const connectionRequest = await this.connectionRequestModel.findById(connectionRequestId);
+        const connectionRequest = await this.connectionRequestModel.findOne({
+            $or: [
+                { sender: userId, receiver: otherUserId },
+                { sender: otherUserId, receiver: userId }
+            ],
+        });
+
         if (!connectionRequest) {
             throw new NotFoundException('Connection request not found.');
         }
 
         const { sender, receiver } = connectionRequest;
+        const connectionRequestId = connectionRequest._id as Types.ObjectId;
 
         if (!sender.equals(userId) && !receiver.equals(userId)) {
             throw new BadRequestException(`You are not authorized to ${action} this connection request.`);
