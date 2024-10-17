@@ -11,6 +11,7 @@ import { JobPostModule } from './job-post/job-post.module';
 import { ConnectionRequestModule } from './connection-request/connection-request.module';
 import { ConnectionModule } from './connection/connection.module';
 import * as dotenv from 'dotenv';
+import { CompanyFollowersModule } from './company-followers/company-followers.module';
 dotenv.config();
 
 @Module({
@@ -37,6 +38,7 @@ dotenv.config();
     JobPostModule,
     ConnectionRequestModule,
     ConnectionModule,
+    CompanyFollowersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

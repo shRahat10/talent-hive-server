@@ -39,6 +39,10 @@ export class CreateCompanyDto {
     linkedInLink: string;
 
     @IsOptional()
+    @IsNumber()
+    followers: number;
+
+    @IsOptional()
     @IsDate()
     createdAt?: Date;
 

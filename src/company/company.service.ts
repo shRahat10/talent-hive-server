@@ -3,11 +3,13 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Company } from './company.schema';
 import { Model } from 'mongoose';
 import { CreateCompanyDto, UpdateCompanyDto } from './dto/company.dto';
+import { CompanyFollower } from 'src/company-followers/company-followers.schema';
 
 @Injectable()
 export class CompanyService {
     constructor(
         @InjectModel(Company.name) private companyModel: Model<Company>,
+        @InjectModel(CompanyFollower.name) private followerModel: Model<CompanyFollower>,
     ) { }
 
     async findAllCompanies(page: number, limit: number): Promise<{ companies: Company[], page: number }> {
@@ -26,7 +28,45 @@ export class CompanyService {
         }
 
         return {
-            companies: companies,
+            companies,
+            page: +page + 1
+        };
+    }
+
+    async getFollowedCompanies(userId: string, page: number, limit: number): Promise<{ companies: Company[], page: number }> {
+        const skip = page * limit;
+
+        const followerDocs = await this.followerModel.find({ followerIds: userId }).exec();
+        const followedCompanyIds = followerDocs.map(doc => doc.companyId);
+
+        const companies = await this.companyModel
+            .find({ _id: { $in: followedCompanyIds } })
+            .populate('employerId', '-__v')
+            .skip(skip)
+            .limit(limit)
+            .exec();
+
+        return {
+            companies,
+            page: +page + 1
+        };
+    }
+
+    async getNotFollowedCompanies(userId: string, page: number, limit: number): Promise<{ companies: Company[], page: number }> {
+        const skip = page * limit;
+
+        const followerDocs = await this.followerModel.find({ followerIds: userId }).exec();
+        const followedCompanyIds = followerDocs.map(doc => doc.companyId);
+
+        const companies = await this.companyModel
+            .find({ _id: { $nin: followedCompanyIds } })
+            .populate('employerId', '-__v')
+            .skip(skip)
+            .limit(limit)
+            .exec();
+
+        return {
+            companies,
             page: +page + 1
         };
     }

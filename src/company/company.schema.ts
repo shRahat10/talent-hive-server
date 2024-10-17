@@ -31,6 +31,9 @@ export class Company extends Document {
 
     @Prop()
     linkedInLink: string;
+
+    @Prop({ default: 0 })
+    followers: number;
 }
 
 export const CompanySchema = SchemaFactory.createForClass(Company);

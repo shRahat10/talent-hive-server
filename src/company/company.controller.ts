@@ -9,10 +9,28 @@ export class CompanyController {
 
     @Get()
     async findAllCompanies(
-        @Query('page') page: number = 0,
-        @Query('limit') limit: number = 10
+        @Query('page') page: number,
+        @Query('limit') limit: number
     ): Promise<{ companies: Company[], page: number }> {
         return this.companyService.findAllCompanies(page, limit);
+    }
+
+    @Get('followed/:userId')
+    async getFollowedCompanies(
+        @Param('userId') userId: string,
+        @Query('page') page: number,
+        @Query('limit') limit: number
+    ): Promise<{ companies: Company[], page: number }> {
+        return this.companyService.getFollowedCompanies(userId, page, limit);
+    }
+
+    @Get('not-followed/:userId')
+    async getNotFollowedCompanies(
+        @Param('userId') userId: string,
+        @Query('page') page: number,
+        @Query('limit') limit: number
+    ): Promise<{ companies: Company[], page: number }> {
+        return this.companyService.getNotFollowedCompanies(userId, page, limit);
     }
 
     @Get(':employerId')
