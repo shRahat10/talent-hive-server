@@ -71,6 +71,29 @@ export class CompanyService {
         };
     }
 
+    async findCompanyById(id: string, userId: string): Promise<{ company: Company, isFollowed: boolean }> {
+        const company = await this.companyModel
+            .findById(id)
+            .populate('employerId', '-__v')
+            .sort({ updatedAt: -1, _id: -1 })
+            .lean()
+            .exec();
+
+        if (!company) {
+            throw new Error("Company not found");
+        }
+
+        const isFollowed = await this.followerModel.exists({
+            companyId: id,
+            followerIds: userId,
+        });
+
+        return {
+            company,
+            isFollowed: Boolean(isFollowed),
+        };
+    }
+
     async findCompaniesByEmployer(employerId: string): Promise<Company[]> {
         const companies = await this.companyModel
             .find({ employerId })

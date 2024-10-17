@@ -33,6 +33,14 @@ export class CompanyController {
         return this.companyService.getNotFollowedCompanies(userId, page, limit);
     }
 
+    @Get('company-details/:id/:userId')
+    async findCompanyById(
+        @Param('id') id: string,
+        @Param('userId') userId: string
+    ): Promise<{ company: Company, isFollowed: boolean }> {
+        return this.companyService.findCompanyById(id, userId);
+    }
+
     @Get(':employerId')
     async findCompaniesByEmployer(
         @Param('employerId') employerId: string
