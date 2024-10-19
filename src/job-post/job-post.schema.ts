@@ -39,8 +39,15 @@ export class JobPost extends Document {
         additionalRequirements: string[];
     };
 
-    @Prop({ type: [{ applicantId: { type: Types.ObjectId, ref: User.name, } }] })
-    applicants: { applicantId: Types.ObjectId }[];
+    @Prop({
+        type: [
+            {
+                applicantId: { type: Types.ObjectId, ref: User.name, },
+                resumeLink: { type: String }
+            }
+        ]
+    })
+    applicants: { applicantId: Types.ObjectId, resumeLink: string }[];
 }
 
 export const JobPostSchema = SchemaFactory.createForClass(JobPost);

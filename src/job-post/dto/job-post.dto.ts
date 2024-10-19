@@ -2,6 +2,16 @@ import { IsString, IsArray, IsOptional, IsNotEmpty, ValidateNested, IsMongoId, I
 import { Type } from 'class-transformer';
 import { PartialType } from '@nestjs/mapped-types';
 
+export class ApplicantDto {
+    @IsMongoId()
+    @IsNotEmpty()
+    applicantId: string;
+
+    @IsString()
+    @IsNotEmpty()
+    resumeLink: string;
+}
+
 class AboutDto {
     @IsString()
     @IsNotEmpty()
@@ -21,12 +31,6 @@ class AboutDto {
     @IsString({ each: true })
     @IsNotEmpty()
     additionalRequirements: string[];
-}
-
-class ApplicantDto {
-    @IsMongoId()
-    @IsNotEmpty()
-    applicantId: string;
 }
 
 export class CreateJobPostDto {

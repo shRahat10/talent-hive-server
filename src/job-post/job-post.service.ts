@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { JobPost } from './job-post.schema';
-import { CreateJobPostDto, UpdateJobPostDto } from './dto/job-post.dto';
+import { ApplicantDto, CreateJobPostDto, UpdateJobPostDto } from './dto/job-post.dto';
 import * as natural from 'natural';
 import { User } from 'src/user/user.schema';
 
@@ -61,6 +61,7 @@ export class JobPostService {
             .populate({
                 path: 'applicants.applicantId',
                 model: 'User',
+                select: '-password -__v'
             })
             .sort({ updatedAt: -1, _id: -1 })
             .skip(skip)
@@ -119,6 +120,7 @@ export class JobPostService {
             .populate({
                 path: 'applicants.applicantId',
                 model: 'User',
+                select: '-password -__v'
             })
             .sort({ updatedAt: -1, _id: -1 })
             .skip(skip)
@@ -145,6 +147,7 @@ export class JobPostService {
             .populate({
                 path: 'applicants.applicantId',
                 model: 'User',
+                select: '-password -__v'
             })
             .exec();
 
@@ -175,6 +178,23 @@ export class JobPostService {
         }
 
         return updatedJobPost;
+    }
+
+    async applyForJobPost(jobPostId: string, applicantDto: ApplicantDto): Promise<JobPost> {
+        const jobPost = await this.jobPostModel.findById(jobPostId).exec();
+
+        if (!jobPost) {
+            throw new NotFoundException(`Job post with ID ${jobPostId} not found`);
+        }
+
+        jobPost.applicants.push({
+            applicantId: new Types.ObjectId(applicantDto.applicantId),
+            resumeLink: applicantDto.resumeLink,
+        });
+
+        await jobPost.save();
+
+        return jobPost;
     }
 
     async deleteJobPost(id: string): Promise<JobPost> {

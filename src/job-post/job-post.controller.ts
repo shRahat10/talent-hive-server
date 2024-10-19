@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { JobPostService } from './job-post.service';
 import { JobPost } from './job-post.schema';
-import { CreateJobPostDto, UpdateJobPostDto } from './dto/job-post.dto';
+import { ApplicantDto, CreateJobPostDto, UpdateJobPostDto } from './dto/job-post.dto';
 
 @Controller('job-post')
 export class JobPostController {
@@ -43,6 +43,14 @@ export class JobPostController {
         @Body() updateJobPostDto: UpdateJobPostDto
     ): Promise<JobPost> {
         return this.jobPostService.updateJobPost(id, updateJobPostDto);
+    }
+
+    @Patch('apply/:id')
+    async applyForJobPost(
+        @Param('id') id: string,
+        @Body() applicantDto: ApplicantDto
+    ): Promise<JobPost> {
+        return this.jobPostService.applyForJobPost(id, applicantDto);
     }
 
     @Delete(':id')
