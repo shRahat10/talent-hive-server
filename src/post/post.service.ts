@@ -301,11 +301,7 @@ export class PostService {
 
     // Save
     async getSave(id: string): Promise<{ saves: Saves[] }> {
-        const post = await this.findOnePost(id);
-        if (!post) {
-            throw new Error('Post not found');
-        }
-        const saves = await this.saveService.findSavesByPostId(id);
+        const saves = await this.saveService.findSavesByUserId(id);
         return { saves };
     }
 

@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Comments, Likes, Saves } from './post-interaction.schema';
 import { CreateCommentDto, CreateLikeDto, CreateSaveDto, UpdateCommentDto } from './dto/post-interaction.dto';
+import { Post } from 'src/post/post.schema';
 
 // Like
 @Injectable()
@@ -96,5 +97,23 @@ export class SaveService {
 
     async findSavesByPostId(postId: string): Promise<Saves[]> {
         return this.saveModel.find({ postId }).populate('userId', '-password -__v').exec();
+    }
+
+    async findSavesByUserId(userId: string): Promise<Saves[]> {
+        return this.saveModel
+            .find({ userId })
+            .populate('userId', '-password -__v')
+            .populate({
+                path: 'postId',
+                populate: {
+                    path: 'sharedPostId',
+                    model: Post.name,
+                    populate: {
+                        path: 'userId',
+                        select: '-password -__v'
+                    }
+                }
+            })
+            .exec();
     }
 }
