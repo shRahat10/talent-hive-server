@@ -6,6 +6,7 @@ import { CreatePostDto, UpdatePostDto } from './dto/post.dto';
 import { CreateCommentDto, CreateLikeDto, CreateSaveDto, UpdateCommentDto } from '../post-interaction/dto/post-interaction.dto';
 import { CommentService, LikeService, SaveService } from '../post-interaction/post-interaction.service';
 import { Comments, Likes, Saves } from 'src/post-interaction/post-interaction.schema';
+import { NotificationService } from 'src/notification/notification.service';
 
 export interface PostWithInteractions extends Post {
     isLiked: boolean;
@@ -21,6 +22,7 @@ export class PostService {
         private readonly likeService: LikeService,
         private readonly commentService: CommentService,
         private readonly saveService: SaveService,
+        private readonly notificationService: NotificationService,
     ) { }
 
     async findAllPost(userId: string, page: number, limit: number): Promise<{ posts: PostWithInteractions[], page: number }> {
@@ -161,13 +163,21 @@ export class PostService {
     }
 
     async createPost(createPostDto: CreatePostDto): Promise<Post> {
-        const { sharedPostId } = createPostDto;
+        const { sharedPostId, userId } = createPostDto;
 
         const newPost = new this.postModel(createPostDto);
         const savedPost = await newPost.save();
 
         if (sharedPostId) {
-            await this.postModel.findByIdAndUpdate(sharedPostId, { $inc: { sharesCount: 1 } })
+            const sharedPost = await this.postModel.findByIdAndUpdate(sharedPostId, { $inc: { sharesCount: 1 } })
+
+            // create notification for share
+            await this.notificationService.createNotification({
+                type: 'share',
+                recipient: sharedPost.userId.toString(),
+                sender: userId,
+                postId: sharedPostId,
+            });
         }
 
         return await this.postModel
@@ -232,6 +242,14 @@ export class PostService {
         if (newLike) {
             post.likesCount += 1;
             await post.save();
+
+            // create notification for like
+            await this.notificationService.createNotification({
+                type: 'like',
+                recipient: post.userId._id.toString(),
+                sender: createLikeDto.userId,
+                postId:post._id.toString(),
+            });
         }
         return { post, like: newLike };
     }
@@ -268,6 +286,14 @@ export class PostService {
         if (newComment) {
             post.commentsCount += 1;
             await post.save();
+
+            // create notification for comment
+            await this.notificationService.createNotification({
+                type: 'comment',
+                recipient: post.userId._id.toString(),
+                sender: createCommentDto.userId,
+                postId: post._id.toString(),
+            });
         }
         return { post, comment: newComment };
     }

@@ -12,6 +12,7 @@ import { ConnectionRequestModule } from './connection-request/connection-request
 import { ConnectionModule } from './connection/connection.module';
 import * as dotenv from 'dotenv';
 import { CompanyFollowersModule } from './company-followers/company-followers.module';
+import { NotificationModule } from './notification/notification.module';
 dotenv.config();
 
 @Module({
@@ -39,6 +40,7 @@ dotenv.config();
     ConnectionRequestModule,
     ConnectionModule,
     CompanyFollowersModule,
+    NotificationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

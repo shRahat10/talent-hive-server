@@ -4,6 +4,7 @@ import { Model, Types } from 'mongoose';
 import { ConnectionRequest } from './connection-request.schema';
 import { User } from 'src/user/user.schema';
 import { Connection } from 'src/connection/connection.schema';
+import { NotificationService } from 'src/notification/notification.service';
 
 @Injectable()
 export class ConnectionRequestService {
@@ -11,6 +12,7 @@ export class ConnectionRequestService {
         @InjectModel(ConnectionRequest.name) private connectionRequestModel: Model<ConnectionRequest>,
         @InjectModel(User.name) private userModel: Model<User>,
         @InjectModel(Connection.name) private connectionModel: Model<Connection>,
+        private notificationService: NotificationService,
     ) { }
 
     // Check if user1 has sent a request to user2
@@ -86,18 +88,17 @@ export class ConnectionRequestService {
             status: 'pending',
         });
 
+        // Create a notification for the receiver about the new connection request
+        await this.notificationService.createNotification({
+            type: 'connection_request',
+            recipient: receiverId.toString(),
+            sender: senderId.toString(),
+        });
+
         return await newConnectionRequest.save();
     }
 
-    async acceptConnectionRequest(
-        userId: Types.ObjectId,
-        otherUserId: Types.ObjectId
-    ): Promise<{
-        message: string,
-        deletedRequestId: Types.ObjectId,
-        senderInfo: User,
-        receiverInfo: User
-    }> {
+    async acceptConnectionRequest(userId: Types.ObjectId, otherUserId: Types.ObjectId): Promise<{ message: string, deletedRequestId: Types.ObjectId, senderInfo: User, receiverInfo: User }> {
         const connectionRequest = await this.connectionRequestModel.findOne({
             $or: [
                 { sender: userId, receiver: otherUserId },
@@ -140,6 +141,12 @@ export class ConnectionRequestService {
 
         await this.connectionRequestModel.findByIdAndDelete(connectionRequestId);
 
+        await this.notificationService.createNotification({
+            type: 'connection_accept',
+            recipient: sender.toString(),
+            sender: receiver.toString(),
+        });
+
         return {
             message: 'Connection request accepted. You are now connected.',
             deletedRequestId: connectionRequestId,
@@ -179,10 +186,7 @@ export class ConnectionRequestService {
         };
     }
 
-    async removeConnection(userId1: Types.ObjectId, userId2: Types.ObjectId): Promise<{
-        user1Info: User,
-        user2Info: User
-    }> {
+    async removeConnection(userId1: Types.ObjectId, userId2: Types.ObjectId): Promise<{ user1Info: User, user2Info: User }> {
         await this.userModel.updateOne(
             { _id: userId1 },
             { $inc: { connectionsCount: -1 } }
