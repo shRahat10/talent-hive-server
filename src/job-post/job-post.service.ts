@@ -167,11 +167,14 @@ export class JobPostService {
     }
 
     async updateJobPost(id: string, updateJobPostDto: UpdateJobPostDto): Promise<JobPost> {
-        const updatedJobPost = await this.jobPostModel.findByIdAndUpdate(
-            id,
-            { $set: updateJobPostDto },
-            { new: true, runValidators: true }
-        ).exec();
+        const updatedJobPost = await this.jobPostModel
+            .findByIdAndUpdate(
+                id,
+                { $set: updateJobPostDto },
+                { new: true, runValidators: true })
+            .populate('companyId')
+            .lean()
+            .exec();
 
         if (!updatedJobPost) {
             throw new NotFoundException(`Job post with ID ${id} not found`);
