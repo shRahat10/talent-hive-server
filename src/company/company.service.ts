@@ -4,12 +4,14 @@ import { Company } from './company.schema';
 import { Model } from 'mongoose';
 import { CreateCompanyDto, UpdateCompanyDto } from './dto/company.dto';
 import { CompanyFollower } from 'src/company-followers/company-followers.schema';
+import { JobPost } from 'src/job-post/job-post.schema';
 
 @Injectable()
 export class CompanyService {
     constructor(
         @InjectModel(Company.name) private companyModel: Model<Company>,
         @InjectModel(CompanyFollower.name) private followerModel: Model<CompanyFollower>,
+        @InjectModel(JobPost.name) private jobPostModel: Model<JobPost>,
     ) { }
 
     async findAllCompanies(page: number, limit: number): Promise<{ companies: Company[], page: number }> {
@@ -133,6 +135,8 @@ export class CompanyService {
         if (!deletedCompany) {
             throw new NotFoundException(`Company with ID ${id} not found`);
         }
+
+        await this.jobPostModel.deleteMany({ companyId: id }).exec();
 
         return deletedCompany;
     }
