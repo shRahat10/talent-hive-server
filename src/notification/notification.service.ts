@@ -31,7 +31,9 @@ export class NotificationService {
 
     const notifications = await this.notificationModel
       .find({ recipient: userId })
-      .sort({ updatedAt: -1, _id: -1 })
+      .sort({ createdAt: -1 })
+      .populate({ path: 'recipient', select: 'fullName profileImage' })
+      .populate({ path: 'sender', select: 'fullName profileImage' })
       .skip(skip)
       .limit(limit)
       .exec();
@@ -44,11 +46,38 @@ export class NotificationService {
 
   async markAsRead(notificationId: string): Promise<Notification> {
     const notification = await this.notificationModel.findById(notificationId);
+
     if (!notification) {
       throw new NotFoundException('Notification not found');
     }
+
     notification.isRead = true;
-    return notification.save();
+
+    await notification.save();
+
+    return this.notificationModel
+      .findById(notificationId)
+      .populate({ path: 'recipient', select: 'fullName profileImage' })
+      .populate({ path: 'sender', select: 'fullName profileImage' })
+      .exec();
+  }
+
+  async markAllAsRead(userId: string): Promise<Notification[]> {
+    const unreadNotifications = await this.notificationModel
+      .find({ recipient: userId, isRead: false })
+      .populate({ path: 'recipient', select: 'fullName profileImage' })
+      .populate({ path: 'sender', select: 'fullName profileImage' })
+      .exec();
+
+    const updatedNotifications = await Promise.all(
+      unreadNotifications.map(async (notification) => {
+        notification.isRead = true;
+        await notification.save();
+        return notification;
+      })
+    );
+
+    return updatedNotifications;
   }
 
   async deleteNotification(notificationId: string): Promise<void> {

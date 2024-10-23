@@ -30,6 +30,11 @@ export class NotificationController {
         return this.notificationService.markAsRead(id);
     }
 
+    @Patch(':userId/mark-all-read')
+    async markAllNotificationsAsRead(@Param('userId') userId: string): Promise<Notification[]> {
+        return this.notificationService.markAllAsRead(userId);
+    }
+
     @Delete(':id')
     @HttpCode(HttpStatus.NO_CONTENT)
     async deleteNotification(@Param('id') id: string): Promise<void> {
