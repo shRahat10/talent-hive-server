@@ -19,7 +19,7 @@ dotenv.config();
   imports: [
     // MongooseModule.forRoot(
     //   process.env.MONGO_URI,
-    //   { dbName: 'Property' }
+    //   { dbName: '' }
     // ),
 
     ConfigModule.forRoot({
