@@ -30,7 +30,7 @@ export class NotificationService {
     const skip = page * limit;
 
     const notifications = await this.notificationModel
-      .find({ recipient: userId })
+      .find({ recipient: userId, sender: { $ne: userId } })
       .sort({ createdAt: -1 })
       .populate({ path: 'recipient', select: 'fullName profileImage' })
       .populate({ path: 'sender', select: 'fullName profileImage' })
