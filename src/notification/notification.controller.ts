@@ -15,6 +15,12 @@ export class NotificationController {
         return this.notificationService.getNotificationsForUser(userId, page, limit);
     }
 
+    @Get(':userId/unread-count')
+    async getUnreadNotificationCount(@Param('userId') userId: string): Promise<{ count: number }> {
+        const count = await this.notificationService.getUnreadCountForUser(userId);
+        return { count };
+    }
+
     @Post()
     async create(
         @Body() data: { type: string; recipient: string; sender: string; postId?: string; jobId?: string }

@@ -44,6 +44,10 @@ export class NotificationService {
     }
   }
 
+  async getUnreadCountForUser(userId: string): Promise<number> {
+    return this.notificationModel.countDocuments({ recipient: userId, isRead: false }).exec();
+  }
+
   async markAsRead(notificationId: string): Promise<Notification> {
     const notification = await this.notificationModel.findById(notificationId);
 
