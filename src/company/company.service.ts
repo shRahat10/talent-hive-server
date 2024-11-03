@@ -14,6 +14,19 @@ export class CompanyService {
         @InjectModel(JobPost.name) private jobPostModel: Model<JobPost>,
     ) { }
 
+    async companyMetaData(id: string): Promise<Company> {
+        const company = await this.companyModel
+            .findById(id)
+            .select('companyName')
+            .exec();
+
+        if (!company) {
+            throw new Error("Company not found");
+        }
+
+        return company;
+    }
+
     async findAllCompanies(page: number, limit: number): Promise<{ companies: Company[], page: number }> {
         const skip = page * limit;
 

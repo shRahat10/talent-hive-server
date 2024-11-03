@@ -7,6 +7,13 @@ import { CreateCompanyDto, UpdateCompanyDto } from './dto/company.dto';
 export class CompanyController {
     constructor(private readonly companyService: CompanyService) { }
 
+    @Get('metadata/:id')
+    async companyMetaData(
+        @Param('id') id: string,
+    ): Promise<Company> {
+        return this.companyService.companyMetaData(id);
+    }
+
     @Get()
     async findAllCompanies(
         @Query('page') page: number,
