@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Company } from './company.schema';
 import { Model } from 'mongoose';
@@ -25,6 +25,21 @@ export class CompanyService {
         }
 
         return company;
+    }
+
+    async searchByName(name: string) {
+        try {
+            const companies = await this.companyModel
+                .find({ companyName: { $regex: name, $options: 'i' } })
+                .select('companyName companyProfileImage')
+                .exec();
+
+            return companies;
+        } catch (error) {
+            throw new InternalServerErrorException(
+                error.message || 'Unable to get companies'
+            );
+        }
     }
 
     async findAllCompanies(page: number, limit: number): Promise<{ companies: Company[], page: number }> {

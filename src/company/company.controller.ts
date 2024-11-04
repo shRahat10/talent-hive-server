@@ -14,6 +14,13 @@ export class CompanyController {
         return this.companyService.companyMetaData(id);
     }
 
+    @Get('search-by-name')
+    async searchByName(
+        @Query('name') name: string
+    ) {
+        return this.companyService.searchByName(name);
+    }
+
     @Get()
     async findAllCompanies(
         @Query('page') page: number,
