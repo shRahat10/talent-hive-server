@@ -112,8 +112,8 @@ export class PostController {
         return this.postService.addSave(id, createSaveDto);
     }
 
-    @Delete(':id/save/:saveId')
-    async deleteSave(@Param('id') id: string, @Param('saveId') saveId: string): Promise<{ post: PostModel, save: Saves }> {
-        return this.postService.deleteSave(id, saveId);
+    @Delete('save/:saveId')
+    async deleteSave(@Param('saveId') saveId: string): Promise<Saves> {
+        return this.postService.deleteSave(saveId);
     }
 }

@@ -343,15 +343,9 @@ export class PostService {
         return { post, save: newSave };
     }
 
-    async deleteSave(id: string, saveId: string): Promise<{ post: Post, save: Saves }> {
-        const post = await this.findOnePost(id);
-        if (!post) {
-            throw new Error('Post not found');
-        }
-        const deletedSave = await this.saveService.deleteSave(id, saveId);
-        if (deletedSave) {
-            await post.save();
-        }
-        return { post, save: deletedSave };
+    async deleteSave(saveId: string): Promise<Saves> {
+        const deletedSave = await this.saveService.deleteSave(saveId);
+        
+        return deletedSave;
     }
 }

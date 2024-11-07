@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { Comments, Likes, Saves } from './post-interaction.schema';
 import { CreateCommentDto, CreateLikeDto, CreateSaveDto, UpdateCommentDto } from './dto/post-interaction.dto';
 import { Post } from 'src/post/post.schema';
+import { User } from 'src/user/user.schema';
 
 // Like
 @Injectable()
@@ -91,8 +92,8 @@ export class SaveService {
         return this.saveModel.findById(savedSave._id).populate('userId', '-password -__v').exec();
     }
 
-    async deleteSave(postId: string, id: string): Promise<Saves | null> {
-        return this.saveModel.findByIdAndDelete(id, { postId }).exec();
+    async deleteSave(id: string): Promise<Saves | null> {
+        return this.saveModel.findByIdAndDelete(id).exec();
     }
 
     async findSavesByPostId(postId: string): Promise<Saves[]> {
@@ -105,15 +106,22 @@ export class SaveService {
             .populate('userId', '-password -__v')
             .populate({
                 path: 'postId',
-                populate: {
-                    path: 'sharedPostId',
-                    model: Post.name,
-                    populate: {
+                populate: [
+                    {
                         path: 'userId',
                         select: '-password -__v'
+                    },
+                    {
+                        path: 'sharedPostId',
+                        model: Post.name,
+                        populate: {
+                            path: 'userId',
+                            select: '-password -__v'
+                        }
                     }
-                }
+                ]
             })
             .exec();
     }
+
 }
